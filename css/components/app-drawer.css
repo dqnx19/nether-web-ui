@@ -36,6 +36,8 @@
     left: 20px;
     display: flex;
     justify-content: start;
+    flex-direction: column;
+    gap: 10px;
 
     z-index: 2000;
 

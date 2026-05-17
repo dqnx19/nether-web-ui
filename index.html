@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="img/favicon.svg">
     <style>
+        /* Fonts */
+        @import url("css/fonts.css");
+
         /* Elements */
         @import url("css/elements/all.css");
         @import url("css/elements/body.css");
@@ -15,55 +18,26 @@
         @import url("css/elements/h2.css");
         @import url("css/elements/p.css");
         @import url("css/elements/section.css");
+        @import url("css/elements/header.css");
 
         /* Components */
         @import url("css/components/cards.css");
         @import url("css/components/copy-box.css");
-
         @import url('css/components/app-drawer.css');
+        @import url("css/components/file-content-box.css");
     </style>
-    <script src="js/components/app-drawer.js" defer></script>
     <script src="js/components/copy-box.js" defer></script>
-    <link rel="stylesheet" href="css/fonts.css">
     <script src="index.js" defer></script>
+    <script src="https://nether.click/js/import-app-drawer.js" defer></script>
+    <script src="js/components/app-drawer.js" defer></script>
 </head>
 
 <body>
     <header>
-        <button onclick="openAppDrawer()" class="app-drawer-button">
-            <div class="dots">
-                <span></span><span></span><span></span>
-                <span></span><span></span><span></span>
-                <span></span><span></span><span></span>
-            </div>
-        </button>
-        <div class="app-drawer">
-            <button onclick="openAppDrawer()" class="app-drawer-button">
-                <div class="dots">
-                    <span></span><span></span><span></span>
-                    <span></span><span></span><span></span>
-                    <span></span><span></span><span></span>
-                </div>
-            </button>
-            <a href="https://srb.nether.click">
-                <img src="https://srb.nether.click/img/icons/logo.svg" alt="">
-                Sigma Republic Transport
-            </a>
-            <a href="https://srb.nether.click">
-                <img src="https://sigma-republic-bank.netlify.app/img/icons/logo.svg" alt="">
-                Sigma Republic Bank
-            </a>
-            <a href="">App 3</a>
-        </div>
+        <div class="app-drawer-wrapper"></div>
     </header>
-    <main>
-
-    </main>
+    <main></main>
     <footer></footer>
-
-    <div>
-
-    </div>
 </body>
 
 </html>

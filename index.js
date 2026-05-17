@@ -15,7 +15,7 @@ const lang = navigator.language.slice(0, 2);
 const t = i18n[lang] || i18n.en;
 
 function showHome() {
-    document.title = t.home_title + " - Web Reset"
+    document.title = t.home_title + " - Nether Modern Web"
     main.innerHTML = `
         <h1>Home Page</h1>
         <section>
@@ -90,17 +90,44 @@ function showHome() {
 }
 
 function showCSSFileDetails(nameUpperCase, nameLowerCase, type) {
-    document.title = `${nameUpperCase} - Web Reset`
+    document.title = `${nameUpperCase} - Nether Modern Web`
     main.innerHTML = `
         <h1>${nameUpperCase}</h1>
         <section>
-            <h2>Implementing</h2>
+            <h2>CSS</h2>
             <div class="copy-box">
-                <input type="text" value="@import url('css/${type}/${nameLowerCase}.css');" readonly>
+                <input type="text" value="@import url('https://modern-web.nether.click/css/${type}/${nameLowerCase}.css');" readonly>
                 <button>Copy</button>
             </div>
+            <br>
+            <div class="copy-box">
+                <input type="text" value="&lt;link rel=&quot;stylesheet&quot; href=&quot;https://modern-web.nether.click/css/${type}/${nameLowerCase}.css&quot;&gt;" readonly>
+                <button>Copy</button>
+            </div>
+            <br>
+            <pre class="file-content" id="css"></pre>
+        </section>
+        <section>
+            <h2>JS</h2>
+            <div class="copy-box">
+                <input type="text" value="&lt;script src&quot;https://modern-web.nether.click/css/${type}/${nameLowerCase}.js&quot;&gt;" readonly>
+            </div>
+            <br>
+            <pre class="file-content" id="css"></pre>
         </section>
     `
+
+    fetch("css/" + type + "/" + nameLowerCase + ".css")
+    .then(response => response.text())
+    .then(data => {
+        document.querySelector(".file-content#css").textContent = data;
+    });
+
+    fetch("js/" + type + "/" + nameLowerCase + ".js")
+    .then(response => response.text())
+    .then(data => {
+        document.querySelector(".file-content#js").textContent = data;
+    });
 }
 
 showHome();

@@ -3,8 +3,7 @@
     align-items: center;
     gap: 12px;
 
-    width: fit-content;
-    max-width: 100%;
+    width: 100%;
 
     padding: 12px;
 
@@ -14,7 +13,7 @@
 }
 
 .copy-box input {
-    width: 320px;
+    width: 100%;
 
     background: transparent;
     border: none;
