@@ -1,11 +1,14 @@
 footer button, footer a {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
 
     border-radius: 10px;
     cursor: pointer;
-    transition: transform 0.2s ease
+    transition: transform 0.2s ease;
+
+    border: none;
+    background-color: transparent;
 }
 
 footer button img, footer a img {
