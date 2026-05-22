@@ -15,7 +15,7 @@ const lang = navigator.language.slice(0, 2);
 const t = i18n[lang] || i18n.en;
 
 function showHome() {
-    document.title = t.home_title + " - Nether Modern Web"
+    document.title = "Nether Modern Web"
     main.innerHTML = `
         <h1>Home Page</h1>
         <section>
