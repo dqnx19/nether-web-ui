@@ -2,18 +2,10 @@ const header = document.querySelector("header");
 const main = document.querySelector("main");
 const footer = document.querySelector("footer");
 
-const i18n = {
-    cs: {
-        home_title: "Domovská stránka"
-    },
-    en: {
-        home_title: "Home Page"
-    }
-}
-
-const lang = navigator.language.slice(0, 2);
-const t = i18n[lang] || i18n.en;
-
+header.innerHTML = `
+    <div class="app-drawer-wrapper"></div>
+    <img src="img/favicon.svg" class="logo">
+`
 function showHome() {
     document.title = "Nether Modern Web"
     main.innerHTML = `
