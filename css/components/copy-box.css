@@ -1,18 +1,50 @@
 .copy-box {
     display: flex;
-    align-items: center;
     gap: 12px;
+    flex-direction: column;
 
     width: 100%;
 
     padding: 12px;
 
-    background: #1e1e1e;
+    background: rgba(40, 45, 62, 0.8);
     border: 1px solid #333;
     border-radius: 14px;
 }
 
-.copy-box input {
+.copy-box .head .language {
+    color: #f5f5f5;
+    font-size: 12px;
+    font-weight: bold;
+
+    border-bottom: #111 solid 2px;
+    background-color: unset;
+}
+
+.copy-box .head .copy-button {
+    padding: 10px 14px;
+
+    border: none;
+    border-radius: 10px;
+
+    font-weight: 600;
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+    
+    background-color: transparent;
+}
+
+.copy-box .head .copy-button img {
+    width: 16px;
+    height: 16px;
+
+    margin-right: 6px;
+}
+
+.copy-box .body .code {
     width: 100%;
 
     background: transparent;
@@ -25,30 +57,13 @@
 
     overflow: hidden;
     text-overflow: ellipsis;
+    
+    border-radius: 14px;
+    font-weight: bold;
 }
 
-.copy-box button {
-    padding: 10px 14px;
 
-    border: none;
-    border-radius: 10px;
 
-    background: #ffffff;
-    color: #111;
-
-    font-weight: 600;
-    cursor: pointer;
-
-    transition:
-        transform 0.2s ease,
-        background 0.2s ease;
-}
-
-.copy-box button:hover {
+.copy-box .copy-button:hover {
     transform: scale(1.04);
-    background: #eaeaea;
-}
-
-.copy-box button:active {
-    transform: scale(0.96);
 }

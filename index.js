@@ -86,40 +86,82 @@ function showCSSFileDetails(nameUpperCase, nameLowerCase, type) {
     main.innerHTML = `
         <h1>${nameUpperCase}</h1>
         <section>
-            <h2>CSS</h2>
+            <h2>CSS import</h2>
+            <p>Use one of the following methods to import the CSS file (do not use both of them):</p>
+            <br>
             <div class="copy-box">
-                <input type="text" value="@import url('https://modern-web.nether.click/css/${type}/${nameLowerCase}.css');" readonly>
-                <button>Copy</button>
+                <div class="head">
+                    <span class="language">CSS</span>
+                    <button class="copy-button">
+                        <img src="img/copy-icon.svg" alt="Copy Icon">
+                        Copy
+                    </button>
+                </div>
+                <div class="body">
+                    <input class="code" type="text"
+                        value="@import url('https://modern-web.nether.click/css/${type}/${nameLowerCase}.css');"
+                        readonly>
+                </div>
             </div>
             <br>
             <div class="copy-box">
-                <input type="text" value="&lt;link rel=&quot;stylesheet&quot; href=&quot;https://modern-web.nether.click/css/${type}/${nameLowerCase}.css&quot;&gt;" readonly>
-                <button>Copy</button>
+                <div class="head">
+                    <span class="language">HTML</span>
+                    <button class="copy-button">
+                        <img src="img/copy-icon.svg" alt="Copy Icon">
+                        Copy
+                    </button>
+                </div>
+                <div class="body">
+                    <input class="code" type="text"
+                        value="&lt;link rel=&quot;stylesheet&quot; href=&quot;https://modern-web.nether.click/css/${type}/${nameLowerCase}.css&quot;&gt;"
+                        readonly>
+                </div>
             </div>
-            <br>
-            <pre class="file-content" id="css"></pre>
         </section>
         <section>
             <h2>JS</h2>
             <div class="copy-box">
-                <input type="text" value="&lt;script src&quot;https://modern-web.nether.click/css/${type}/${nameLowerCase}.js&quot;&gt;" readonly>
+                <div class="head">
+                    <span class="language">HTML</span>
+                    <button class="copy-button">
+                        <img src="img/copy-icon.svg" alt="Copy Icon">
+                        Copy
+                    </button>
+                </div>
+                <div class="body">
+                    <input class="code" type="text"
+                        value="&lt;script src&quot;https://modern-web.nether.click/css/${type}/${nameLowerCase}.js&quot;&gt;"
+                        readonly>
+                </div>
             </div>
             <br>
-            <pre class="file-content" id="css"></pre>
+            <div class="copy-box">
+                <div class="head">
+                    <span class="language">JS</span>
+                    <button class="copy-button">
+                        <img src="img/copy-icon.svg" alt="Copy Icon">
+                        Copy
+                    </button>
+                </div>
+                <div class="body">
+                    <pre class="code" id="js"></pre>
+                </div>
+            </div>
         </section>
     `
 
     fetch("css/" + type + "/" + nameLowerCase + ".css")
-    .then(response => response.text())
-    .then(data => {
-        document.querySelector(".file-content#css").textContent = data;
-    });
+        .then(response => response.text())
+        .then(data => {
+            document.querySelector(".code#css").textContent = data;
+        });
 
     fetch("js/" + type + "/" + nameLowerCase + ".js")
-    .then(response => response.text())
-    .then(data => {
-        document.querySelector(".file-content#js").textContent = data;
-    });
+        .then(response => response.text())
+        .then(data => {
+            document.querySelector(".code#js").textContent = data;
+        });
 }
 
 showHome();

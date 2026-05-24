@@ -1,11 +1,11 @@
 const app_drawer = document.querySelector(".app-drawer");
 const app_drawer_button = document.querySelector(".app-drawer-button");
 
-export function open_app_drawer() {
+function open_app_drawer() {
     app_drawer.classList.toggle("open");
 }
 
-export function generate_app_drawer_button() {
+function generate_app_drawer_button() {
     app_drawer_button.innerHTML = `
     <div class="dots">
         <span></span><span></span><span></span>
