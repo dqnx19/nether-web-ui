@@ -1,18 +1,7 @@
 const app_drawer = document.querySelector(".app-drawer");
-const app_drawer_button = document.querySelector(".app-drawer-button");
 
 function open_app_drawer() {
     app_drawer.classList.toggle("open");
-}
-
-function generate_app_drawer_button() {
-    app_drawer_button.innerHTML = `
-    <div class="dots">
-        <span></span><span></span><span></span>
-        <span></span><span></span><span></span>
-        <span></span><span></span><span></span>
-    </div>
-`;
 }
 
 // klik mimo → zavřít

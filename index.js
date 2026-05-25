@@ -1,6 +1,10 @@
-const header = document.querySelector("header");
-const main = document.querySelector("main");
-const footer = document.querySelector("footer");
+const header = document.createElement("header");
+const main = document.createElement("main");
+const footer = document.createElement("footer");
+
+document.body.appendChild(header);
+document.body.appendChild(main);
+document.body.appendChild(footer);
 
 header.innerHTML = `
     <div class="app-drawer-wrapper"></div>
@@ -162,6 +166,13 @@ function showCSSFileDetails(nameUpperCase, nameLowerCase, type) {
         .then(data => {
             document.querySelector(".code#js").textContent = data;
         });
+    
+    fetch("html/" + type + "/" + nameLowerCase + ".html")
+        .then(response => response.text())
+        .then(data => {
+            document.querySelector(".code#html").textContent = data;
+        });
 }
 
 showHome();
+console.log("HEADER READY:", document.querySelector(".app-drawer-wrapper"));
