@@ -28,14 +28,98 @@
         @import url("css/components/grouped-list.css");
     </style>
     <script src="js/components/copy-box.js" defer></script>
-
-
 </head>
 
 <body>
     <script src="index.js" defer></script>
     <script src="https://nether.click/js/import-app-drawer.js" defer></script>
     <script src="js/components/app-drawer.js" defer></script>
+    <div>
+        <h1>Home Page</h1>
+        <section>
+            <h2>Elements</h2>
+            <h3>Base Structure</h3>
+            <div class="grouped-list">
+                <button class="item" onclick="showCSSFileDetails('All', 'all', 'elements')">
+                    <span>All elements</span>
+                </button>
+                <button class="item" onclick="showCSSFileDetails('Body', 'body', 'elements')">
+                    <span>Body</span>
+                </button>
+                <button class="item" onclick="showCSSFileDetails('Header', 'header', 'elements')">
+                    <span>Header</span>
+                </button>
+                <button class="item" onclick="showCSSFileDetails('Main', 'main', 'elements')">
+                    <span>Main</span>
+                </button>
+                <button class="item" onclick="showCSSFileDetails('Footer', 'footer' , 'elements')">
+                    <span>Footer</span>
+                </button>
+                <button class="item">
+                    <span>Section</span>
+                </button>
+            </div>
+            <div class="cards">
+                
+            </div>
+            <h3>Text and Lists</h3>
+            <div class="cards">
+                <button class="card" onclick="showCSSFileDetails('H1 (Heading 1)', 'h1', 'elements')">
+                    <span>H1 (Heading 1)</span>
+                </button>
+                <button class="card" onclick="showCSSFileDetails('H2 (Heading 1)', 'h2', 'elements')">
+                    <span>H2 (Heading 2)</span>
+                </button>
+                <button class="card" onclick="showCSSFileDetails('P (Paragraph)', 'p', 'elements')">
+                    <span>P (Paragraph)</span>
+                </button>
+                <button class="card" onclick="showCSSFileDetails('A (Link)', 'a', 'elements')">
+                    <span>A (Link)</span>
+                </button>
+                <button class="card" onclick="showCSSFileDetails('LI (List Iem)', 'li', 'elements')">
+                    <span>LI (List Item)</span>
+                </button>
+            </div>
+            <h3>Images</h3>
+            <div class="cards">
+                <button class="card" onclick="showCSSFileDetails('Img (Image)', 'img', 'elements')">
+                    <span>Img (Image)</span>
+                </button>
+            </div>
+            <h3>Table</h3>
+            <div class="cards">
+                <button class="card">
+                    <span>Table</span>
+                </button>
+                <button class="card">
+                    <span>TR (Table Row)</span>
+                </button>
+            </div>
+        </section>
+        <section>
+            <h2>Components</h2>
+            <div class="cards">
+                <button class="card" onclick="showCSSFileDetails('App Drawer', 'app-drawer', 'components')">
+                    <span>App Drawer</span>
+                </button>
+                <button class="card" onclick="showCSSFileDetails('Cards', 'cards', 'components')">
+                    <span>Cards</span>
+                </button>
+                <button class="card" onclick="showCSSFileDetails('Copy Box', 'copy-box', 'components')">
+                    <span>Copy Box</span>
+                </button>
+                <button class="card" onclick="showCSSFileDetails('Footer Bar', 'footer-bar', 'components')">
+                    <span>Footer Bar</span>
+                </button>
+                <button class="card" onclick="showCSSFileDetails('Logo', 'logo', 'components')">
+                    <span>Logo</span>
+                </button>
+                <button class="card" onclick="showCSSFileDetails('Services Icons', 'services-icons', 'components')">
+                    <span>Services Icons</span>
+                </button>
+            </div>
+        </section>
+    </div>
 </body>
 
 </html>
