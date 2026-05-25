@@ -1,0 +1,26 @@
+.grouped-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.grouped-list .item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    border-radius: 5px;
+    background-color: #1c1f24;
+    min-height: 100px;
+    padding: 20px;
+}
+
+.grouped-list .item:first-child {
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+.grouped-list .item:last-child {
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}

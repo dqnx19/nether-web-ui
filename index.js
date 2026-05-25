@@ -74,11 +74,23 @@ function showHome() {
         <section>
             <h2>Components</h2>
             <div class="cards">
+                <button class="card" onclick="showCSSFileDetails('App Drawer', 'app-drawer', 'components')">
+                    <span>App Drawer</span>
+                </button>
                 <button class="card" onclick="showCSSFileDetails('Cards', 'cards', 'components')">
                     <span>Cards</span>
                 </button>
                 <button class="card" onclick="showCSSFileDetails('Copy Box', 'copy-box', 'components')">
                     <span>Copy Box</span>
+                </button>
+                <button class="card" onclick="showCSSFileDetails('Footer Bar', 'footer-bar', 'components')">
+                    <span>Footer Bar</span>
+                </button>
+                <button class="card" onclick="showCSSFileDetails('Logo', 'logo', 'components')">
+                    <span>Logo</span>
+                </button>
+                <button class="card" onclick="showCSSFileDetails('Services Icons', 'services-icons', 'components')">
+                    <span>Services Icons</span>
                 </button>
             </div>
         </section>
