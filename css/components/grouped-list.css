@@ -1,7 +1,8 @@
 .grouped-list {
     display: flex;
     flex-direction: column;
-    gap: 1px;
+    gap: 5px;
+    margin-top: 10px;
 }
 
 .grouped-list .item {
@@ -13,14 +14,16 @@
     background-color: #1c1f24;
     padding: 20px;
     max-width: 100%;
+    border: none;
+    background-color: #505050;
 }
 
 .grouped-list .item:first-child {
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 .grouped-list .item:last-child {
-    border-bottom-left-radius: 50px;
-    border-bottom-right-radius: 50px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
