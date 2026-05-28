@@ -8,7 +8,7 @@
 .grouped-list .item {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 5px;
 
     border-radius: 5px;
     background-color: #1c1f24;
@@ -16,6 +16,17 @@
     max-width: 100%;
     border: none;
     background-color: #505050;
+    text-align: left;
+}
+
+.grouped-list .item:hover {
+    background-color: #606060;
+    cursor: pointer;
+}
+
+.grouped-list .item img {
+    width: 32px;
+    height: 32px;
 }
 
 .grouped-list .item:first-child {
