@@ -1,3 +1,4 @@
+const app_drawer_button = document.querySelector(".app-drawer-button");
 const app_drawer = document.querySelector(".app-drawer");
 
 function open_app_drawer() {
