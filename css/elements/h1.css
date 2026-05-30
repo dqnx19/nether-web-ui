@@ -8,8 +8,10 @@ h1 {
     margin: 0 0 3rem;
     padding: 1rem 1.25rem;
 
-    background: #1C1F24;
     color: white;
 
     border-radius: 1rem;
+
+    backdrop-filter: blur(10px);
+    background-color: transparent;
 }
