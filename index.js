@@ -97,6 +97,9 @@ function showHome() {
                 <button class="item" onclick="showCSSFileDetails('Services Icons', 'services-icons', 'components')">
                     Services Icons
                 </button>
+                <button class="item" onclick="showCSSFileDetails('Train Formation', 'train-formation', 'components')">
+                    Train Formation
+                </button>
             </div>
         </section>
     `
