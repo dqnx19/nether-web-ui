@@ -1,3 +1,11 @@
+header {
+    pointer-events: none;
+}
+
+header * {
+    pointer-events: auto;
+}
+
 .app-drawer-button {
     all: unset;
     position: fixed;
@@ -39,16 +47,20 @@
     flex-direction: column;
     gap: 10px;
 
-    z-index: 2000;
+    z-index: 99999;
 
     background-color: #282a2c;
     opacity: 0.95;
     padding: 20px;
 
     border-radius: 20px;
+    max-height: 70vh;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
-.app-drawer button:not(.app-drawer-button), .app-drawer a {
+.app-drawer button:not(.app-drawer-button),
+.app-drawer a {
     display: flex;
     flex-direction: row;
     gap: 8px;
@@ -63,7 +75,8 @@
     transition: transform 0.2s ease;
 }
 
-.app-drawer a img, .app-drawer button img {
+.app-drawer a img,
+.app-drawer button img {
     width: 48px;
     height: 48px;
 }
