@@ -8,7 +8,21 @@ document.body.appendChild(footer);
 
 header.innerHTML = `
     <div class="app-drawer-wrapper"></div>
-    <img src="img/favicon.svg" class="logo">
+    <img src="img/icons/favicon.svg" class="logo">
+`
+footer.innerHTML = `
+    <button onclick="showHome()">
+        <img src="img/icons/favicon.svg">
+    </button>
+    <button onclick="showElements()">
+        <img src="img/links-icons/elements.svg">
+    </button>
+    <button onclick="showComponents()">
+        <img src="img/links-icons/components.svg">
+    </button>
+    <button onclick="showI18N()">
+        <img src="img/links-icons/i18n.svg">
+    </button>
 `
 
 function showHome() {
@@ -17,8 +31,22 @@ function showHome() {
     main.innerHTML = `
         <h1>Home Page</h1>
         <section>
-            <h2>Elements</h2>
-            <h3>Base Structure</h3>
+            <div class="grouped-list">
+                <button class="item" onclick="showElements()">Elements</button>
+                <button class="item" onclick="showComponents()">Components</button>
+                <button class="item" onclick="showI18N()">Internationalization (I18N)</button>
+            </div>
+        </section>
+    `
+}
+
+function showElements() {
+    scrollUp();
+    document.title = "Elements - Nether Modern Web"
+    main.innerHTML = `
+        <h1>Elements</h1>
+        <section>
+            <h2>Base Structure</h2>
             <div class="grouped-list">
                 <button class="item" onclick="showCSSFileDetails('All', 'all', 'elements')">
                     All elements
@@ -39,10 +67,9 @@ function showHome() {
                     Section
                 </button>
             </div>
-            <div class="cards">
-
-            </div>
-            <h3>Text and Lists</h3>
+        </section>
+        <section>
+            <h2>Text and Lists</h2>
             <div class="grouped-list">
                 <button class="item" onclick="showCSSFileDetails('H1 (Heading 1)', 'h1', 'elements')">
                     H1 (Heading 1)
@@ -60,13 +87,17 @@ function showHome() {
                     LI (List Item)
                 </button>
             </div>
-            <h3>Images</h3>
+        </section>
+        <section>
+            <h2>Images</h2>
             <div class="grouped-list">
                 <button class="item" onclick="showCSSFileDetails('Img (Image)', 'img', 'elements')">
                     Img (Image)
                 </button>
             </div>
-            <h3>Table</h3>
+        </section>
+        <section>
+            <h2>Table</h2>
             <div class="grouped-list">
                 <button class="item" onclick="showCSSFileDetails('Table', 'table', 'elements')">
                     Table
@@ -76,8 +107,15 @@ function showHome() {
                 </button>
             </div>
         </section>
-        <section>
-            <h2>Components</h2>
+    `;
+}
+
+function showComponents() {
+    scrollUp();
+    document.title = "Components - Nether Modern Web"
+    main.innerHTML = `
+        <h1>Components</h1>
+        <section> 
             <div class="grouped-list">
                 <button class="item" onclick="showCSSFileDetails('App Drawer', 'app-drawer', 'components')">
                     App Drawer
@@ -102,7 +140,57 @@ function showHome() {
                 </button>
             </div>
         </section>
-    `
+    `;
+}
+
+function showI18N() {
+    scrollUp();
+    document.title = "I18N - Nether Modern Web"
+    main.innerHTML = `
+        <h1>Internationalization (I18N)</h1>
+        <section>
+            <div class="grouped-list">
+                <button class="item" onclick="showI18NCategory('Basic', 'basic')">Basic</button>
+                <button class="item" onclick="showI18NCategory('Currencies', 'currencies')">Currencies</button>
+                <button class="item" onclick="showI18NCategory('Geography', 'geography')">Geography</button>
+                <button class="item"onclick="showI18NCategory('Transportation', 'transportation')">Transportation</button>
+            </div>
+        </section>
+    `;
+}
+
+function showI18NCategory(nameUpperCase, nameLowerCase) {
+    scrollUp();
+    document.title = `${nameUpperCase} - I18N - Nether Modern Web`
+    main.innerHTML = `
+        <h1>${nameUpperCase}</h1>
+        <section>
+            <h2>JS</h2>
+            <div class="copy-box">
+                <div class="head">
+                    <span class="language">HTML</span>
+                </div>
+                <div class="body">
+                    <pre class="code">&lt;script src&quot;https://modern-web.nether.click/i18n/${nameLowerCase}.js&quot;&gt;</pre>
+                </div>
+            </div>
+            <br>
+            <div class="copy-box">
+                <div class="head">
+                    <span class="language">JS</span>
+                </div>
+                <div class="body">
+                    <pre class="code" id="js"></pre>
+                </div>
+            </div>
+        </section>
+    `;
+
+    fetch("i18n/" + nameLowerCase + ".js")
+        .then(response => response.text())
+        .then(data => {
+            document.querySelector(".code#js").textContent = data;
+        });
 }
 
 function showCSSFileDetails(nameUpperCase, nameLowerCase, type) {

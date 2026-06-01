@@ -1,0 +1,28 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="compGradient" x1="8" y1="8" x2="56" y2="56">
+      <stop offset="0%" stop-color="#6366F1"/>
+      <stop offset="50%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#22C55E"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="8" y="8" width="20" height="20" rx="5"
+        stroke="url(#compGradient)" stroke-width="4"/>
+
+  <rect x="36" y="8" width="20" height="20" rx="5"
+        stroke="url(#compGradient)" stroke-width="4"/>
+
+  <rect x="22" y="36" width="20" height="20" rx="5"
+        stroke="url(#compGradient)" stroke-width="4"/>
+
+  <path d="M28 18H36"
+        stroke="url(#compGradient)"
+        stroke-width="4"
+        stroke-linecap="round"/>
+
+  <path d="M32 28V36"
+        stroke="url(#compGradient)"
+        stroke-width="4"
+        stroke-linecap="round"/>
+</svg>
