@@ -32,9 +32,18 @@ function showHome() {
         <h1>Home Page</h1>
         <section>
             <div class="grouped-list">
-                <button class="item" onclick="showElements()">Elements</button>
-                <button class="item" onclick="showComponents()">Components</button>
-                <button class="item" onclick="showI18N()">Internationalization (I18N)</button>
+                <button class="item" onclick="showElements()">
+                    <img src="img/links-icons/elements.svg">
+                    Elements
+                </button>
+                <button class="item" onclick="showComponents()">
+                    <img src="img/links-icons/components.svg">
+                    Components
+                </button>
+                <button class="item" onclick="showI18N()">
+                    <img src="img/links-icons/i18n.svg">
+                    Internationalization (I18N)
+                </button>
             </div>
         </section>
     `
@@ -145,7 +154,7 @@ function showComponents() {
 
 function showI18N() {
     scrollUp();
-    document.title = "I18N - Nether Modern Web"
+    document.title = "Internationalization (I18N) - Nether Modern Web"
     main.innerHTML = `
         <h1>Internationalization (I18N)</h1>
         <section>
@@ -161,7 +170,7 @@ function showI18N() {
 
 function showI18NCategory(nameUpperCase, nameLowerCase) {
     scrollUp();
-    document.title = `${nameUpperCase} - I18N - Nether Modern Web`
+    document.title = `${nameUpperCase} - Internationalization (I18N) - Nether Modern Web`
     main.innerHTML = `
         <h1>${nameUpperCase}</h1>
         <section>
