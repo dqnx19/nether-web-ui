@@ -12,7 +12,7 @@
     vertical-align: middle;
 
     border-radius: 5px;
-    background-color: #1e1f20;
+    background-color: #363636;
     padding: 20px;
     max-width: 100%;
     border: none;
@@ -20,7 +20,7 @@
 }
 
 .grouped-list .item:hover {
-    background-color: #1c2329;
+    background-color: #242424;
 
     cursor: pointer;
 

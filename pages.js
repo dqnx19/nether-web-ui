@@ -1,16 +1,15 @@
-const header = document.createElement("header");
-const main = document.createElement("main");
-const footer = document.createElement("footer");
+import { createElement, setTitle, scrollUp, setContentOfHeader, setContentOfMain, setContentOfFooter } from "https://js.nether.click/nether.js"
 
-document.body.appendChild(header);
-document.body.appendChild(main);
-document.body.appendChild(footer);
+const header = createElement("header");
+const main = createElement("main");
+const footer = createElement("footer");
 
-header.innerHTML = `
+setContentOfHeader(`
     <div class="app-drawer-wrapper"></div>
     <img src="img/icons/favicon.svg" class="logo">
-`
-footer.innerHTML = `
+`);
+
+setContentOfFooter(`
     <button onclick="showHome()">
         <img src="img/icons/favicon.svg">
     </button>
@@ -23,12 +22,33 @@ footer.innerHTML = `
     <button onclick="showI18N()">
         <img src="img/links-icons/i18n.svg">
     </button>
-`
+`);
+
+switch (new URLSearchParams(window.location.search).get("showas")) {
+    case "app":
+        header.style.display = "none"
+        break
+
+    case "web":
+        break
+
+    default:
+        break
+}
+
+window.showHome = showHome
+window.showElements = showElements
+window.showComponents = showComponents
+window.showCSSFileDetails = showCSSFileDetails
+window.showI18N = showI18N
+window.showI18NCategory = showI18NCategory
+
+
 
 function showHome() {
     scrollUp();
-    document.title = "Nether Modern Web"
-    main.innerHTML = `
+    setTitle("Nether Modern Web")
+    setContentOfMain(`
         <h1>Home Page</h1>
         <section>
             <div class="grouped-list">
@@ -46,110 +66,90 @@ function showHome() {
                 </button>
             </div>
         </section>
-    `
+    `)
 }
 
 function showElements() {
     scrollUp();
-    document.title = "Elements - Nether Modern Web"
-    main.innerHTML = `
-        <h1>Elements</h1>
+    setTitle("Elements - Nether Modern Web")
+
+    setContentOfMain(`
         <section>
-            <h2>Base Structure</h2>
-            <div class="grouped-list">
-                <button class="item" onclick="showCSSFileDetails('All', 'all', 'elements')">
-                    All elements
-                </button>
-                <button class="item" onclick="showCSSFileDetails('Body', 'body', 'elements')">
-                    Body
-                </button>
-                <button class="item" onclick="showCSSFileDetails('Header', 'header', 'elements')">
-                    Header
-                </button>
-                <button class="item" onclick="showCSSFileDetails('Main', 'main', 'elements')">
-                    Main
-                </button>
-                <button class="item" onclick="showCSSFileDetails('Footer', 'footer' , 'elements')">
-                    Footer
-                </button>
-                <button class="item" onclick="showCSSFileDetails('Section', 'section', 'elements')">
-                    Section
-                </button>
-            </div>
+            <div class="grouped-list" id="elements-list"></div>
         </section>
-        <section>
-            <h2>Text and Lists</h2>
-            <div class="grouped-list">
-                <button class="item" onclick="showCSSFileDetails('H1 (Heading 1)', 'h1', 'elements')">
-                    H1 (Heading 1)
-                </button>
-                <button class="item" onclick="showCSSFileDetails('H2 (Heading 1)', 'h2', 'elements')">
-                    H2 (Heading 2)
-                </button>
-                <button class="item" onclick="showCSSFileDetails('P (Paragraph)', 'p', 'elements')">
-                    P (Paragraph)
-                </button>
-                <button class="item" onclick="showCSSFileDetails('A (Link)', 'a', 'elements')">
-                    A (Link)
-                </button>
-                <button class="item" onclick="showCSSFileDetails('LI (List Iem)', 'li', 'elements')">
-                    LI (List Item)
-                </button>
-            </div>
-        </section>
-        <section>
-            <h2>Images</h2>
-            <div class="grouped-list">
-                <button class="item" onclick="showCSSFileDetails('Img (Image)', 'img', 'elements')">
-                    Img (Image)
-                </button>
-            </div>
-        </section>
-        <section>
-            <h2>Table</h2>
-            <div class="grouped-list">
-                <button class="item" onclick="showCSSFileDetails('Table', 'table', 'elements')">
-                    Table
-                </button>
-                <button class="item" onclick="showCSSFileDetails('TR (Table Row)', 'tr', 'elements')">
-                    TR (Table Row)
-                </button>
-            </div>
-        </section>
-    `;
+    `)
+
+    const elements = [
+        { label: "All elements", key: "all", title: "All elements" },
+        { label: "Body", key: "body", title: "Body" },
+        { label: "Header", key: "header", title: "Header" },
+        { label: "Main", key: "main", title: "Main" },
+        { label: "Footer", key: "footer", title: "Footer" },
+        { label: "Section", key: "section", title: "Section" },
+
+        { label: "H1 (Heading 1)", key: "h1", title: "H1 (Heading 1)" },
+        { label: "H2 (Heading 2)", key: "h2", title: "H2 (Heading 2)" },
+        { label: "P (Paragraph)", key: "p", title: "P (Paragraph)" },
+        { label: "A (Link)", key: "a", title: "A (Link)" },
+        { label: "LI (List Item)", key: "li", title: "LI (List Item)" },
+
+        { label: "Img (Image)", key: "img", title: "Img (Image)" },
+
+        { label: "Table", key: "table", title: "Table" },
+        { label: "TR (Table Row)", key: "tr", title: "TR (Table Row)" }
+    ];
+
+    const container = document.getElementById("elements-list");
+
+    elements.forEach(element => {
+        const button = document.createElement("button");
+
+        button.textContent = element.label;
+
+        button.className = "item"
+        button.onclick = () => {
+            showCSSFileDetails(element.title, element.key, "elements");
+        };
+
+        container.appendChild(button);
+    });
 }
 
 function showComponents() {
     scrollUp();
-    document.title = "Components - Nether Modern Web"
+    setTitle("Components - Nether Modern Web")
+
+    const components = [
+        { label: "App Drawer", key: "app-drawer", title: "App Drawer" },
+        { label: "Cards", key: "cards", title: "Cards" },
+        { label: "Copy Box", key: "copy-box", title: "Copy Box" },
+        { label: "Footer Bar", key: "footer-bar", title: "Footer Bar" },
+        { label: "Logo", key: "logo", title: "Logo" },
+        { label: "Services Icons", key: "services-icons", title: "Services Icons" },
+        { label: "Train Formation", key: "train-formation", title: "Train Formation" }
+    ];
+
     main.innerHTML = `
         <h1>Components</h1>
         <section> 
-            <div class="grouped-list">
-                <button class="item" onclick="showCSSFileDetails('App Drawer', 'app-drawer', 'components')">
-                    App Drawer
-                </button>
-                <button class="item" onclick="showCSSFileDetails('Cards', 'cards', 'components')">
-                    Cards
-                </button>
-                <button class="item" onclick="showCSSFileDetails('Copy Box', 'copy-box', 'components')">
-                    Copy Box
-                </button>
-                <button class="item" onclick="showCSSFileDetails('Footer Bar', 'footer-bar', 'components')">
-                    Footer Bar
-                </button>
-                <button class="item" onclick="showCSSFileDetails('Logo', 'logo', 'components')">
-                    Logo
-                </button>
-                <button class="item" onclick="showCSSFileDetails('Services Icons', 'services-icons', 'components')">
-                    Services Icons
-                </button>
-                <button class="item" onclick="showCSSFileDetails('Train Formation', 'train-formation', 'components')">
-                    Train Formation
-                </button>
-            </div>
+            <div class="grouped-list" id="components-list"></div>
         </section>
     `;
+
+    const container = document.getElementById("components-list");
+
+    components.forEach(component => {
+        const button = document.createElement("button");
+
+        button.textContent = component.label;
+
+        button.className = "item"
+        button.onclick = () => {
+            showCSSFileDetails(component.title, component.key, "components");
+        };
+
+        container.appendChild(button);
+    });
 }
 
 function showI18N() {
@@ -162,7 +162,7 @@ function showI18N() {
                 <button class="item" onclick="showI18NCategory('Basic', 'basic')">Basic</button>
                 <button class="item" onclick="showI18NCategory('Currencies', 'currencies')">Currencies</button>
                 <button class="item" onclick="showI18NCategory('Geography', 'geography')">Geography</button>
-                <button class="item"onclick="showI18NCategory('Transportation', 'transportation')">Transportation</button>
+                <button class="item" onclick="showI18NCategory('Transportation', 'transportation')">Transportation</button>
             </div>
         </section>
     `;
@@ -204,7 +204,7 @@ function showI18NCategory(nameUpperCase, nameLowerCase) {
 
 function showCSSFileDetails(nameUpperCase, nameLowerCase, type) {
     scrollUp();
-    document.title = `${nameUpperCase} - Nether Modern Web`
+    setTitle(`${nameUpperCase} - Nether Modern Web`)
     main.innerHTML = `
         <h1>${nameUpperCase}</h1>
         <section>
@@ -292,13 +292,6 @@ function showCSSFileDetails(nameUpperCase, nameLowerCase, type) {
         .then(data => {
             document.querySelector(".code#html").textContent = data;
         });
-}
-
-function scrollUp() {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
 }
 
 showHome();
