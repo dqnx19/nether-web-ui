@@ -1,17 +1,16 @@
 h1 {
     font-family: 'Lexend', sans-serif;
-    font-size: 2rem;
+    font-size: 2.4rem;
     font-weight: 700;
+    line-height: 1.15;
 
-    line-height: 1.2;
+    margin: 0 0 2.5rem;
+    padding: 0;
 
-    margin: 0 0 3rem;
-    padding: 1rem 1.25rem;
+    color: #ffffff;
 
-    color: white;
+    letter-spacing: -0.5px;
 
-    border-radius: 1rem;
-
-    backdrop-filter: blur(10px);
-    background-color: transparent;
+    /* Jemný akcent pod nadpisem */
+    position: relative;
 }

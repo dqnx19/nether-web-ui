@@ -6,7 +6,9 @@ const footer = createElement("footer");
 
 setContentOfHeader(`
     <div class="app-drawer-wrapper"></div>
-    <img src="img/icons/favicon.svg" class="logo">
+    <button onclick="showHome()" class="logo">
+        <img src="img/icons/favicon.svg">
+    </button>
 `);
 
 setContentOfFooter(`
@@ -24,16 +26,8 @@ setContentOfFooter(`
     </button>
 `);
 
-switch (new URLSearchParams(window.location.search).get("showas")) {
-    case "app":
-        header.style.display = "none"
-        break
-
-    case "web":
-        break
-
-    default:
-        break
+if (new URLSearchParams(window.location.search).get("showas") === "app") {
+    header.style.display = "none";
 }
 
 window.showHome = showHome
@@ -72,7 +66,6 @@ function showHome() {
 function showElements() {
     scrollUp();
     setTitle("Elements - Nether Modern Web")
-
     setContentOfMain(`
         <section>
             <div class="grouped-list" id="elements-list"></div>
@@ -120,13 +113,15 @@ function showComponents() {
     setTitle("Components - Nether Modern Web")
 
     const components = [
-        { label: "App Drawer", key: "app-drawer", title: "App Drawer" },
-        { label: "Cards", key: "cards", title: "Cards" },
-        { label: "Copy Box", key: "copy-box", title: "Copy Box" },
-        { label: "Footer Bar", key: "footer-bar", title: "Footer Bar" },
-        { label: "Logo", key: "logo", title: "Logo" },
-        { label: "Services Icons", key: "services-icons", title: "Services Icons" },
-        { label: "Train Formation", key: "train-formation", title: "Train Formation" }
+        { label: "App Drawer", key: "app-drawer"},
+        { label: "Cards", key: "cards"},
+        { label: "Copy Box", key: "copy-box"},
+        { label: "Footer Bar", key: "footer-bar"},
+        { label: "Grouped List", key: "grouped-list"},
+        { label: "Logo", key: "logo"},
+        { label: "Services Icons", key: "services-icons"},
+        { label: "Tabs Switching", key: "tabs-switching"},
+        { label: "Train Formation", key: "train-formation"}
     ];
 
     main.innerHTML = `
@@ -145,7 +140,7 @@ function showComponents() {
 
         button.className = "item"
         button.onclick = () => {
-            showCSSFileDetails(component.title, component.key, "components");
+            showCSSFileDetails(component.label, component.key, "components");
         };
 
         container.appendChild(button);
@@ -215,7 +210,6 @@ function showCSSFileDetails(nameUpperCase, nameLowerCase, type) {
             <div class="copy-box">
                 <div class="head">
                     <span class="language">CSS</span>
-                    
                 </div>
                 <div class="body">
                     <pre class="code">@import url("https://modern-web.nether.click/css/${type}/${nameLowerCase}.css");</pre>
