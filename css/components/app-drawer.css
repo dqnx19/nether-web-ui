@@ -6,6 +6,34 @@ header * {
     pointer-events: auto;
 }
 
+.app-drawer {
+    display: none;
+}
+
+.app-drawer.open {
+    position: fixed;
+    top: 70px;
+    left: 20px;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    gap: 10px;
+
+    z-index: 99999;
+
+    background-color: #282a2c;
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+
+    opacity: 0.95;
+    padding: 20px;
+
+    border-radius: 20px;
+    max-height: 70vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
 .app-drawer-button {
     all: unset;
     position: fixed;
@@ -32,31 +60,6 @@ header * {
     height: 6px;
     border-radius: 50%;
     background: white;
-}
-
-.app-drawer {
-    display: none;
-}
-
-.app-drawer.open {
-    position: fixed;
-    top: 70px;
-    left: 20px;
-    display: flex;
-    justify-content: start;
-    flex-direction: column;
-    gap: 10px;
-
-    z-index: 99999;
-
-    background-color: #282a2c;
-    opacity: 0.95;
-    padding: 20px;
-
-    border-radius: 20px;
-    max-height: 70vh;
-    overflow-y: auto;
-    overflow-x: hidden;
 }
 
 .app-drawer button:not(.app-drawer-button),

@@ -1,4 +1,27 @@
-import { createElement, setTitle, scrollUp, setContentOfHeader, setContentOfMain, setContentOfFooter } from "https://js.nether.click/nether.js"
+import { createElement, setTitle, scrollUp, setContentOfHeader, setContentOfMain, setContentOfFooter, importCSSFromList } from "https://js.nether.click/nether.js"
+
+importCSSFromList([
+    "css/fonts.css",
+
+    "css/elements/all.css",
+    "css/elements/body.css",
+    "css/elements/main.css",
+    "css/elements/h1.css",
+    "css/elements/h2.css",
+    "css/elements/p.css",
+    "css/elements/section.css",
+    "css/elements/header.css",
+    "css/elements/li.css",
+    "css/elements/button.css",
+    "css/elements/footer.css",
+
+    "css/components/cards.css",
+    "css/components/copy-box.css",
+    "css/components/app-drawer.css",
+    "css/components/logo.css",
+    "css/components/grouped-list.css",
+    "css/components/footer-bar.css"
+])
 
 const header = createElement("header");
 const main = createElement("main");
@@ -73,23 +96,24 @@ function showElements() {
     `)
 
     const elements = [
-        { label: "All elements", key: "all", title: "All elements" },
-        { label: "Body", key: "body", title: "Body" },
-        { label: "Header", key: "header", title: "Header" },
-        { label: "Main", key: "main", title: "Main" },
-        { label: "Footer", key: "footer", title: "Footer" },
-        { label: "Section", key: "section", title: "Section" },
-
-        { label: "H1 (Heading 1)", key: "h1", title: "H1 (Heading 1)" },
-        { label: "H2 (Heading 2)", key: "h2", title: "H2 (Heading 2)" },
-        { label: "P (Paragraph)", key: "p", title: "P (Paragraph)" },
-        { label: "A (Link)", key: "a", title: "A (Link)" },
-        { label: "LI (List Item)", key: "li", title: "LI (List Item)" },
-
-        { label: "Img (Image)", key: "img", title: "Img (Image)" },
-
-        { label: "Table", key: "table", title: "Table" },
-        { label: "TR (Table Row)", key: "tr", title: "TR (Table Row)" }
+        { label: "A (Link)", key: "a" },
+        { label: "All elements", key: "all" },
+        { label: "Body", key: "body" },
+        { label: "Button", key: "button" },
+        { label: "Footer", key: "footer" },
+        { label: "Form", key: "form" },
+        { label: "H1 (Heading 1)", key: "h1" },
+        { label: "H2 (Heading 2)", key: "h2" },
+        { label: "Header", key: "header" },
+        { label: "Img (Image)", key: "img" },
+        { label: "Input", key: "main" },
+        { label: "LI (List Item)", key: "li" },
+        { label: "Main", key: "main" },
+        { label: "P (Paragraph)", key: "p" },
+        { label: "Section", key: "section" },
+        { label: "Select", key: "select" },
+        { label: "Table", key: "table" },
+        { label: "TH (Table Heading)", key: "th" }
     ];
 
     const container = document.getElementById("elements-list");
@@ -113,15 +137,15 @@ function showComponents() {
     setTitle("Components - Nether Modern Web")
 
     const components = [
-        { label: "App Drawer", key: "app-drawer"},
-        { label: "Cards", key: "cards"},
-        { label: "Copy Box", key: "copy-box"},
-        { label: "Footer Bar", key: "footer-bar"},
-        { label: "Grouped List", key: "grouped-list"},
-        { label: "Logo", key: "logo"},
-        { label: "Services Icons", key: "services-icons"},
-        { label: "Tabs Switching", key: "tabs-switching"},
-        { label: "Train Formation", key: "train-formation"}
+        { label: "App Drawer", key: "app-drawer" },
+        { label: "Cards", key: "cards" },
+        { label: "Copy Box", key: "copy-box" },
+        { label: "Footer Bar", key: "footer-bar" },
+        { label: "Grouped List", key: "grouped-list" },
+        { label: "Logo", key: "logo" },
+        { label: "Services Icons", key: "services-icons" },
+        { label: "Tabs Switching", key: "tabs-switching" },
+        { label: "Train Formation", key: "train-formation" }
     ];
 
     main.innerHTML = `
@@ -149,8 +173,8 @@ function showComponents() {
 
 function showI18N() {
     scrollUp();
-    document.title = "Internationalization (I18N) - Nether Modern Web"
-    main.innerHTML = `
+    setTitle("Internationalization (I18N) - Nether Modern Web")
+    setContentOfMain(`
         <h1>Internationalization (I18N)</h1>
         <section>
             <div class="grouped-list">
@@ -160,13 +184,13 @@ function showI18N() {
                 <button class="item" onclick="showI18NCategory('Transportation', 'transportation')">Transportation</button>
             </div>
         </section>
-    `;
+    `)
 }
 
 function showI18NCategory(nameUpperCase, nameLowerCase) {
     scrollUp();
-    document.title = `${nameUpperCase} - Internationalization (I18N) - Nether Modern Web`
-    main.innerHTML = `
+    setTitle(`${nameUpperCase} - Internationalization (I18N) - Nether Modern Web`)
+    setContentOfMain(`
         <h1>${nameUpperCase}</h1>
         <section>
             <h2>JS</h2>
@@ -188,7 +212,7 @@ function showI18NCategory(nameUpperCase, nameLowerCase) {
                 </div>
             </div>
         </section>
-    `;
+    `)
 
     fetch("i18n/" + nameLowerCase + ".js")
         .then(response => response.text())
@@ -200,7 +224,7 @@ function showI18NCategory(nameUpperCase, nameLowerCase) {
 function showCSSFileDetails(nameUpperCase, nameLowerCase, type) {
     scrollUp();
     setTitle(`${nameUpperCase} - Nether Modern Web`)
-    main.innerHTML = `
+    setContentOfMain(`
         <h1>${nameUpperCase}</h1>
         <section>
             <h2>CSS</h2>
@@ -267,7 +291,7 @@ function showCSSFileDetails(nameUpperCase, nameLowerCase, type) {
                 </div>
             </div>
         </section>
-    `
+    `)
 
     fetch("css/" + type + "/" + nameLowerCase + ".css")
         .then(response => response.text())

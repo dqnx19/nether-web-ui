@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
     const button = document.querySelector(".copy-box .head .copy-button");
-    const input = document.querySelector(".copy-box .body .code");
+    const code = document.querySelector(".copy-box .body .code");
 
     button.addEventListener("click", async () => {
-        await navigator.clipboard.writeText(input.value);
+        await navigator.clipboard.writeText(code.innerHTML);
 
         button.innerHTML = `
             <button class="copy-button">
