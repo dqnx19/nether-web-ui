@@ -31,6 +31,39 @@ footer {
     animation: footerPopIn 0.6s cubic-bezier(0.25, 1.25, 0.5, 1) forwards;
 }
 
+footer button,
+footer a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+
+    padding: 10px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+
+    border: none;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(6px);
+
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+footer button img,
+footer a img {
+    width: 40px;
+    height: 40px;
+    pointer-events: none;
+}
+
+footer button:hover,
+footer a:hover {
+    transform: scale(1.06);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
 @keyframes footerPopIn {
     0% {
         transform: translateX(-50%) translateY(120%);
