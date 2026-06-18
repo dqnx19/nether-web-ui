@@ -23,7 +23,7 @@ header * {
 
     background-color: #282a2c;
     background-color: transparent;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(1000px);
 
     opacity: 0.95;
     padding: 20px;

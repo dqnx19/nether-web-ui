@@ -1,4 +1,4 @@
-import { createElement, setTitle, scrollUp, setContentOfHeader, setContentOfMain, setContentOfFooter, importCSSFromList } from "https://js.nether.click/nether.js"
+import { setFavicon, setAttribute, createElement, setTitle, scrollUp, setContentOfHeader, setContentOfMain, setContentOfFooter, importCSSFromList, importJSFromList, getURLParam } from "https://js.nether.click/nether.js"
 
 importCSSFromList([
     "fonts/lexend/lexend.css",
@@ -19,12 +19,19 @@ importCSSFromList([
     "components/css/app-drawer.css",
     "components/css/logo.css",
     "components/css/grouped-list.css",
-    "components/css/footer-bar.css"
+    "components/css/links-list.css"
 ])
 
-const header = createElement("header");
-const main = createElement("main");
-const footer = createElement("footer");
+importJSFromList([
+    "https://nether.click/js/import-app-drawer.js",
+    "components/js/app-drawer.js",
+    "components/js/copy-box.js",
+    "components/js/footer.js"
+])
+
+setAttribute("html", "lang", "en")
+
+setFavicon("img/icons/favicon.svg")
 
 setContentOfHeader(`
     <div class="app-drawer-wrapper"></div>
@@ -34,32 +41,50 @@ setContentOfHeader(`
 `);
 
 setContentOfFooter(`
-    <button onclick="showHome()">
-        <img src="img/icons/favicon.svg">
-    </button>
-    <button onclick="showElements()">
-        <img src="img/links-icons/elements.svg">
-    </button>
-    <button onclick="showComponents()">
-        <img src="img/links-icons/components.svg">
-    </button>
-    <button onclick="showI18N()">
-        <img src="img/links-icons/i18n.svg">
-    </button>
+    <button class="expand-bar"></button>
+    <div class="buttons">
+        <button onclick="showHome()">
+            <img src="img/icons/favicon.svg">
+        </button>
+        <button onclick="showComponents()">
+            <img src="img/links-icons/components.svg">
+        </button>
+    </div>
+    <div class="expanded-content">
+        <div class="links-list">
+            <button onclick="showHome()">
+                <img src="img/icons/favicon.svg">
+            </button>
+            <button onclick="showComponents()">
+                <img src="img/links-icons/components.svg">
+            </button>
+        </div>
+    </div>
 `);
 
-if (new URLSearchParams(window.location.search).get("showas") === "app") {
+if (getURLParam("showas") === "app") {
     header.style.display = "none";
 }
 
 window.showHome = showHome
-window.showElements = showElements
 window.showComponents = showComponents
 window.showCSSFileDetails = showCSSFileDetails
-window.showI18N = showI18N
-window.showI18NCategory = showI18NCategory
 
+function router() {
+    switch (getURLParam("page")) {
+        case "home": 
+            showHome()
+            return
 
+        case "components":
+            showComponents()
+            return
+
+        default:
+            showHome()
+            return
+    }
+}
 
 function showHome() {
     scrollUp();
@@ -67,8 +92,8 @@ function showHome() {
     setContentOfMain(`
         <h1>Home Page</h1>
         <section>
-            <div class="grouped-list">
-                <button class="item" onclick="showComponents()">
+            <div class="links-list">
+                <button onclick="showComponents()">
                     <img src="img/links-icons/components.svg">
                     Components
                 </button>
@@ -82,23 +107,38 @@ function showComponents() {
     setTitle("Components - Nether Modern Web")
 
     const components = [
+        { label: "A", key: "a" },
+        { label: "All", key: "all" },
         { label: "App Drawer", key: "app-drawer" },
+        { label: "Body", key: "body" },
+        { label: "Button", key: "button" },
         { label: "Cards", key: "cards" },
         { label: "Copy Box", key: "copy-box" },
-        { label: "Footer Bar", key: "footer-bar" },
+        { label: "Footer", key: "footer" },
+        { label: "Form", key: "form" },
         { label: "Grouped List", key: "grouped-list" },
+        { label: "Header", key: "header" },
+        { label: "Headings", key: "headings" },
+        { label: "Img", key: "img" },
+        { label: "Li", key: "li" },
+        { label: "Links List", key: "links-list" },
         { label: "Logo", key: "logo" },
+        { label: "Main", key: "main" },
+        { label: "P", key: "p" },
+        { label: "Section", key: "section" },
         { label: "Services Icons", key: "services-icons" },
+        { label: "Table", key: "table" },
         { label: "Tabs Switching", key: "tabs-switching" },
         { label: "Train Formation", key: "train-formation" }
     ];
 
-    document.querySelector("main").innerHTML = `
+
+    setContentOfMain(`
         <h1>Components</h1>
         <section> 
             <div class="grouped-list" id="components-list"></div>
         </section>
-    `;
+    `)
 
     const container = document.getElementById("components-list");
 
@@ -109,14 +149,14 @@ function showComponents() {
 
         button.className = "item"
         button.onclick = () => {
-            showCSSFileDetails(component.label, component.key, "components");
+            showCSSFileDetails(component.label, component.key);
         };
 
         container.appendChild(button);
     });
 }
 
-function showCSSFileDetails(nameUpperCase, nameLowerCase, type) {
+function showCSSFileDetails(nameUpperCase, nameLowerCase) {
     scrollUp();
     setTitle(`${nameUpperCase} - Nether Modern Web`)
     setContentOfMain(`
@@ -131,7 +171,7 @@ function showCSSFileDetails(nameUpperCase, nameLowerCase, type) {
                     <span class="language">CSS</span>
                 </div>
                 <div class="body">
-                    <pre class="code">@import url("https://modern-web.nether.click/css/${type}/${nameLowerCase}.css");</pre>
+                    <pre class="code">@import url("https://modern-web.nether.click/css/${nameLowerCase}.css");</pre>
                 </div>
             </div>
             <br>
@@ -140,7 +180,7 @@ function showCSSFileDetails(nameUpperCase, nameLowerCase, type) {
                     <span class="language">HTML</span>
                 </div>
                 <div class="body">
-                    <pre class="code">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://modern-web.nether.click/css/${type}/${nameLowerCase}.css&quot;&gt;</pre>
+                    <pre class="code">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://modern-web.nether.click/components/css//${nameLowerCase}.css&quot;&gt;</pre>
                 </div>
             </div>
             <br>
@@ -153,7 +193,7 @@ function showCSSFileDetails(nameUpperCase, nameLowerCase, type) {
                 </div>
             </div>
             <br>
-            <button><a href="https://modern-web.nether.click/css/${type}/${nameLowerCase}.css" download>Download File</a></button>
+            <button><a href="https://modern-web.nether.click/components/css/${nameLowerCase}.css" download>Download File</a></button>
         </section>
         <section>
             <h2>JS</h2>
@@ -162,7 +202,7 @@ function showCSSFileDetails(nameUpperCase, nameLowerCase, type) {
                     <span class="language">HTML</span>
                 </div>
                 <div class="body">
-                    <pre class="code">&lt;script src&quot;https://modern-web.nether.click/css/${type}/${nameLowerCase}.js&quot;&gt;</pre>
+                    <pre class="code">&lt;script src&quot;https://modern-web.nether.click/components/css/${nameLowerCase}.js&quot;&gt;</pre>
                 </div>
             </div>
             <br>
@@ -188,23 +228,23 @@ function showCSSFileDetails(nameUpperCase, nameLowerCase, type) {
         </section>
     `)
 
-    fetch("css/" + type + "/" + nameLowerCase + ".css")
+    fetch("components" + "/" + "css" + "/" + nameLowerCase + ".css")
         .then(response => response.text())
         .then(data => {
             document.querySelector(".code#css").textContent = data;
         });
 
-    fetch("js/" + type + "/" + nameLowerCase + ".js")
+    fetch("components" + "/" + "js" + "/" + nameLowerCase + ".js")
         .then(response => response.text())
         .then(data => {
             document.querySelector(".code#js").textContent = data;
         });
 
-    fetch("html/" + type + "/" + nameLowerCase + ".html")
+    fetch("components" + "/" + "html" + "/" + nameLowerCase + ".html")
         .then(response => response.text())
         .then(data => {
             document.querySelector(".code#html").textContent = data;
         });
 }
 
-showHome();
+router();

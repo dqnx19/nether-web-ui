@@ -1,38 +1,52 @@
 footer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    flex-wrap: nowrap;
-
-    border-radius: 10px;
-
     position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    right: 0;
+    bottom: 0;
 
-    width: fit-content;
-    max-width: calc(100vw - 40px);
+    transition: height 0.1s ease;
+    align-items: center;
+
+    background-color: #070a0f;
 
     padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
 
     z-index: 1000;
 
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
-
-    word-wrap: break-word;
-    overflow-wrap: break-word;
     overflow-x: auto;
-    overflow-y: visible;
-
-    animation: footerPopIn 0.6s cubic-bezier(0.25, 1.25, 0.5, 1) forwards;
 }
 
-footer button,
-footer a {
+footer.expanded {
+    height: 95vh;
+}
+
+footer .expand-bar {
+    width: 80px;
+    height: 5px;
+
+    background-color: rgb(119, 119, 119);
+    border: none;
+    border-radius: 10px;
+
+    display: block;
+}
+
+footer .buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    justify-content: center;
+}
+
+footer .buttons button,
+footer .buttons a {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -50,32 +64,43 @@ footer a {
     transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
-footer button img,
-footer a img {
+footer .buttons button img,
+footer .buttons a img {
     width: 40px;
     height: 40px;
     pointer-events: none;
 }
 
-footer button:hover,
-footer a:hover {
+footer .buttons button:hover,
+footer .buttons a:hover {
     transform: scale(1.06);
     background: rgba(255, 255, 255, 0.15);
     box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 }
 
-@keyframes footerPopIn {
-    0% {
-        transform: translateX(-50%) translateY(120%);
-        opacity: 0;
-    }
+footer.dragging,
+footer.dragging * {
+    user-select: none;
+}
 
-    70% {
-        transform: translateX(-50%) translateY(-8px);
-        opacity: 1;
-    }
+footer .expand-bar {
+    cursor: ns-resize;
+}
 
-    100% {
-        transform: translateX(-50%) translateY(0);
-    }
+footer.dragging .expand-bar {
+    background-color: rgb(180, 180, 180);
+}
+
+.expand-bar {
+    touch-action: none;
+    cursor: ns-resize;
+}
+
+footer .expanded-content {
+    display: none;
+}
+
+footer.expanded .expanded-content {
+    display: flex;
+    flex-direction: column;
 }

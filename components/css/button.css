@@ -1,9 +1,13 @@
 button:not(header button, footer button) {
-    background-color: coral;
+    background-color: #0d1117;
     text-align: center;
     height: 50px;
     border-radius: 10px;
-    border: 1px solid #4b4b4b;
+    border: 1px solid #1d2228;
     cursor: pointer;
     padding: 10px;
+}
+
+.button:hover:not(header button, footer button) {
+    background-color: #262c36;
 }
