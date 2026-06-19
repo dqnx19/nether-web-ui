@@ -1,4 +1,5 @@
 a:not(header a) {
     font-family: 'Lexend', sans-serif;
     font-size: 11pt;
+    text-decoration: none;
 }

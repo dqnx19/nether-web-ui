@@ -3,6 +3,7 @@
     height: 75px;
     border: none;
     background-color: transparent;
+    cursor: pointer;
 }
 
 .logo img {

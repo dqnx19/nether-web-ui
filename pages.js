@@ -19,14 +19,16 @@ importCSSFromList([
     "components/css/app-drawer.css",
     "components/css/logo.css",
     "components/css/grouped-list.css",
-    "components/css/links-list.css"
+    "components/css/links-list.css",
+    "components/css/tabs-switching.css"
 ])
 
 importJSFromList([
     "https://nether.click/js/import-app-drawer.js",
     "components/js/app-drawer.js",
     "components/js/copy-box.js",
-    "components/js/footer.js"
+    "components/js/footer.js",
+    "components/js/tabs-switching.js"
 ])
 
 setAttribute("html", "lang", "en")
@@ -41,25 +43,15 @@ setContentOfHeader(`
 `);
 
 setContentOfFooter(`
-    <button class="expand-bar"></button>
-    <div class="buttons">
-        <button onclick="showHome()">
-            <img src="img/icons/favicon.svg">
-        </button>
-        <button onclick="showComponents()">
-            <img src="img/links-icons/components.svg">
-        </button>
-    </div>
-    <div class="expanded-content">
-        <div class="links-list">
-            <button onclick="showHome()">
-                <img src="img/icons/favicon.svg">
-            </button>
-            <button onclick="showComponents()">
-                <img src="img/links-icons/components.svg">
-            </button>
-        </div>
-    </div>
+    <button onclick="showHome()">
+        <img src="img/icons/favicon.svg">
+    </button>
+    <button onclick="showComponents()">
+        <img src="img/links-icons/components.svg">
+    </button>
+    <button onclick="showAbout()">
+        <img src="img/links-icons/about.svg">
+    </button>
 `);
 
 if (getURLParam("showas") === "app") {
@@ -68,6 +60,7 @@ if (getURLParam("showas") === "app") {
 
 window.showHome = showHome
 window.showComponents = showComponents
+window.showAbout = showAbout
 window.showCSSFileDetails = showCSSFileDetails
 
 function router() {
@@ -80,6 +73,10 @@ function router() {
             showComponents()
             return
 
+        case "about":
+            showAbout()
+            return
+
         default:
             showHome()
             return
@@ -90,12 +87,16 @@ function showHome() {
     scrollUp();
     setTitle("Nether Modern Web")
     setContentOfMain(`
-        <h1>Home Page</h1>
+        <h1>Nether Modern Web</h1>
         <section>
-            <div class="links-list">
-                <button onclick="showComponents()">
+            <div class="grouped-list">
+                <button class="item" onclick="showComponents()">
                     <img src="img/links-icons/components.svg">
                     Components
+                </button>
+                <button class="item" onclick="showAbout()">
+                    <img src="img/links-icons/about.svg">
+                    About
                 </button>
             </div>
         </section>
@@ -162,67 +163,84 @@ function showCSSFileDetails(nameUpperCase, nameLowerCase) {
     setContentOfMain(`
         <h1>${nameUpperCase}</h1>
         <section>
-            <h2>CSS</h2>
-            <li>Use one of the following methods to import the CSS file</li>
-            <li>Do not use both of them</li>
-            <br>
-            <div class="copy-box">
-                <div class="head">
-                    <span class="language">CSS</span>
+            <div class="tabs-switching">
+                <div class="tabs">
+                    <button class="tab active" onclick="showTab('css', this)">css</button>
+                    <button class="tab" onclick="showTab('js', this)">js</button>
+                    <button class="tab" onclick="showTab('html', this)">html</button>
                 </div>
-                <div class="body">
-                    <pre class="code">@import url("https://modern-web.nether.click/css/${nameLowerCase}.css");</pre>
+
+                <div class="tab-content active" id="css">
+                    <h2>CSS</h2>
+                    <li>Use one of the following methods to import the CSS file</li>
+                    <li>Do not use both of them</li>
+                    <br>
+                    <div class="copy-box">
+                        <div class="head">
+                            <span class="language">CSS</span>
+                        </div>
+                        <div class="body">
+                            <pre
+                                class="code">@import url("https://modern-web.nether.click/components/css/${nameLowerCase}.css");</pre>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="copy-box">
+                        <div class="head">
+                            <span class="language">HTML</span>
+                        </div>
+                        <div class="body">
+                            <pre
+                                class="code">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://modern-web.nether.click/components/css/${nameLowerCase}.css&quot;&gt;</pre>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="copy-box">
+                        <div class="head">
+                            <span class="language">CSS</span>
+                        </div>
+                        <div class="body">
+                            <pre class="code" id="css"></pre>
+                        </div>
+                    </div>
+                    <br>
+                    <button><a href="https://modern-web.nether.click/components/css/${nameLowerCase}.css"
+                            download>Download
+                            File</a></button>
                 </div>
-            </div>
-            <br>
-            <div class="copy-box">
-                <div class="head">
-                    <span class="language">HTML</span>
+
+                <div class="tab-content" id="js">
+                    <h2>JS</h2>
+                    <div class="copy-box">
+                        <div class="head">
+                            <span class="language">HTML</span>
+                        </div>
+                        <div class="body">
+                            <pre
+                                class="code">&lt;script src&quot;https://modern-web.nether.click/components/css/${nameLowerCase}.js&quot;&gt;</pre>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="copy-box">
+                        <div class="head">
+                            <span class="language">JS</span>
+                        </div>
+                        <div class="body">
+                            <pre class="code" id="js"></pre>
+                        </div>
+                    </div>
                 </div>
-                <div class="body">
-                    <pre class="code">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://modern-web.nether.click/components/css//${nameLowerCase}.css&quot;&gt;</pre>
-                </div>
-            </div>
-            <br>
-            <div class="copy-box">
-                <div class="head">
-                    <span class="language">CSS</span>
-                </div>
-                <div class="body">
-                    <pre class="code" id="css"></pre>
-                </div>
-            </div>
-            <br>
-            <button><a href="https://modern-web.nether.click/components/css/${nameLowerCase}.css" download>Download File</a></button>
-        </section>
-        <section>
-            <h2>JS</h2>
-            <div class="copy-box">
-                <div class="head">
-                    <span class="language">HTML</span>
-                </div>
-                <div class="body">
-                    <pre class="code">&lt;script src&quot;https://modern-web.nether.click/components/css/${nameLowerCase}.js&quot;&gt;</pre>
-                </div>
-            </div>
-            <br>
-            <div class="copy-box">
-                <div class="head">
-                    <span class="language">JS</span>
-                </div>
-                <div class="body">
-                    <pre class="code" id="js"></pre>
-                </div>
-            </div>
-        </section>
-        <section>
-            <h2>HTML (Example)</h2>
-            <div class="copy-box">
-                <div class="head">
-                    <span class="language">HTML</span>
-                </div>
-                <div class="body">
-                    <pre class="code" type="text" id="html"></pre>
+
+                <div class="tab-content" id="html">
+                    <h2>HTML (Example)</h2>
+                    <div class="copy-box">
+                        <div class="head">
+                            <span class="language">HTML</span>
+                        </div>
+                        <div class="body">
+                            <pre class="code" type="text" id="html"></pre>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -245,6 +263,21 @@ function showCSSFileDetails(nameUpperCase, nameLowerCase) {
         .then(data => {
             document.querySelector(".code#html").textContent = data;
         });
+}
+
+function showAbout() {
+    scrollUp()
+    setTitle("About - Nether Modern Web")
+    setContentOfMain(`
+        <h1>About</h1>
+        <section>
+            <h2>What is Nether Modern Web</h2>
+            <ul>
+                <li>Founded in May 2026</li>
+                <li>Web service providing free css and js components and basic styles for web developement</li>
+            </ul>
+        </section>
+    `)
 }
 
 router();

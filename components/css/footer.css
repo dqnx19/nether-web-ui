@@ -15,7 +15,7 @@ footer {
 
     display: flex;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
     gap: 5px;
 
     z-index: 1000;
@@ -23,30 +23,8 @@ footer {
     overflow-x: auto;
 }
 
-footer.expanded {
-    height: 95vh;
-}
-
-footer .expand-bar {
-    width: 80px;
-    height: 5px;
-
-    background-color: rgb(119, 119, 119);
-    border: none;
-    border-radius: 10px;
-
-    display: block;
-}
-
-footer .buttons {
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
-    justify-content: center;
-}
-
-footer .buttons button,
-footer .buttons a {
+footer button,
+footer a {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -64,43 +42,16 @@ footer .buttons a {
     transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
-footer .buttons button img,
-footer .buttons a img {
+footer button img,
+footer a img {
     width: 40px;
     height: 40px;
     pointer-events: none;
 }
 
-footer .buttons button:hover,
-footer .buttons a:hover {
+footer button:hover,
+footer a:hover {
     transform: scale(1.06);
     background: rgba(255, 255, 255, 0.15);
     box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-}
-
-footer.dragging,
-footer.dragging * {
-    user-select: none;
-}
-
-footer .expand-bar {
-    cursor: ns-resize;
-}
-
-footer.dragging .expand-bar {
-    background-color: rgb(180, 180, 180);
-}
-
-.expand-bar {
-    touch-action: none;
-    cursor: ns-resize;
-}
-
-footer .expanded-content {
-    display: none;
-}
-
-footer.expanded .expanded-content {
-    display: flex;
-    flex-direction: column;
 }

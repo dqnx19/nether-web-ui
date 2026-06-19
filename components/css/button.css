@@ -6,8 +6,17 @@ button:not(header button, footer button) {
     border: 1px solid #1d2228;
     cursor: pointer;
     padding: 10px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
-.button:hover:not(header button, footer button) {
+button:not(header button, footer button):hover {
     background-color: #262c36;
+}
+
+button:not(header button, footer button):active {
+    transform: scale(0.98);
+}
+
+button:not(header button, footer button) * {
+    text-decoration: none;
 }

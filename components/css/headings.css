@@ -2,27 +2,26 @@ h1 {
     font-family: 'Lexend', sans-serif;
     font-size: 30px;
     font-weight: 700;
-    line-height: 1.15;
 
-    margin: 20px;
+    line-height: 1.15;
+    
     padding: 0;
+    margin-bottom: 60px;
 
     color: #ffffff;
+    background-color: #0d1117;
+    border: 1px solid #2b2b2b;
 
-    letter-spacing: -0.5px;
-
-    /* Jemný akcent pod nadpisem */
-    position: relative;
+    border-radius: 16px;
+    padding: 16px;
+    text-align: left;
 }
 
 h2 {
     font-family: 'Lexend', sans-serif;
-    font-weight: bold;
-    text-decoration: none;
-
-    text-align: left;
     font-size: 24px;
-
+    font-weight: bold;
+    
     margin-bottom: 30px;
 
     color: white;
