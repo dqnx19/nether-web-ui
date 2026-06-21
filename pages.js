@@ -19,8 +19,8 @@ importCSSFromList([
     "components/css/app-drawer.css",
     "components/css/logo.css",
     "components/css/grouped-list.css",
-    "components/css/links-list.css",
-    "components/css/tabs-switching.css"
+    "components/css/tabs-switching.css",
+    "components/css/context-menu.css"
 ])
 
 importJSFromList([
@@ -28,7 +28,8 @@ importJSFromList([
     "components/js/app-drawer.js",
     "components/js/copy-box.js",
     "components/js/footer.js",
-    "components/js/tabs-switching.js"
+    "components/js/tabs-switching.js",
+    "components/js/context-menu.js"
 ])
 
 setAttribute("html", "lang", "en")
@@ -83,6 +84,19 @@ function router() {
     }
 }
 
+const menu = document.createElement("div");
+
+menu.id = "menu";
+menu.className = "context-menu";
+
+menu.innerHTML = `
+    <button onclick="location.reload()">Refresh</button>
+    <button onclick="copyURL()">Copy URL</button>
+    <button onclick="copy()">Copy</button>
+`;
+
+document.body.appendChild(menu);
+
 function showHome() {
     scrollUp();
     setTitle("Nether Modern Web")
@@ -108,12 +122,13 @@ function showComponents() {
     setTitle("Components - Nether Modern Web")
 
     const components = [
-        { label: "A", key: "a" },
+        { label: "A (Hyper Text Link)", key: "a" },
         { label: "All", key: "all" },
         { label: "App Drawer", key: "app-drawer" },
         { label: "Body", key: "body" },
         { label: "Button", key: "button" },
         { label: "Cards", key: "cards" },
+        { label: "Context Menu", key: "Context-Menu"},
         { label: "Copy Box", key: "copy-box" },
         { label: "Footer", key: "footer" },
         { label: "Form", key: "form" },
@@ -125,7 +140,7 @@ function showComponents() {
         { label: "Links List", key: "links-list" },
         { label: "Logo", key: "logo" },
         { label: "Main", key: "main" },
-        { label: "P", key: "p" },
+        { label: "P (paragraph)", key: "p" },
         { label: "Section", key: "section" },
         { label: "Services Icons", key: "services-icons" },
         { label: "Table", key: "table" },
@@ -165,15 +180,16 @@ function showCSSFileDetails(nameUpperCase, nameLowerCase) {
         <section>
             <div class="tabs-switching">
                 <div class="tabs">
-                    <button class="tab active" onclick="showTab('css', this)">css</button>
-                    <button class="tab" onclick="showTab('js', this)">js</button>
-                    <button class="tab" onclick="showTab('html', this)">html</button>
+                    <button class="tab active" onclick="showTab('css', this)">CSS</button>
+                    <button class="tab" onclick="showTab('js', this)">JS</button>
+                    <button class="tab" onclick="showTab('html', this)">HTML</button>
                 </div>
 
                 <div class="tab-content active" id="css">
                     <h2>CSS</h2>
-                    <li>Use one of the following methods to import the CSS file</li>
-                    <li>Do not use both of them</li>
+                    <p>Use one of the following methods to import the CSS file</p>
+                    <br>
+                    <p>Do not use both of them</p>
                     <br>
                     <div class="copy-box">
                         <div class="head">
@@ -195,6 +211,7 @@ function showCSSFileDetails(nameUpperCase, nameLowerCase) {
                         </div>
                     </div>
                     <br>
+                    <p>Or copy the CSS code</p>
                     <div class="copy-box">
                         <div class="head">
                             <span class="language">CSS</span>
@@ -204,11 +221,8 @@ function showCSSFileDetails(nameUpperCase, nameLowerCase) {
                         </div>
                     </div>
                     <br>
-                    <button><a href="https://modern-web.nether.click/components/css/${nameLowerCase}.css"
-                            download>Download
-                            File</a></button>
+                    <button><a href="https://modern-web.nether.click/components/css/${nameLowerCase}.css" download>Download File</a></button>
                 </div>
-
                 <div class="tab-content" id="js">
                     <h2>JS</h2>
                     <div class="copy-box">
@@ -217,7 +231,7 @@ function showCSSFileDetails(nameUpperCase, nameLowerCase) {
                         </div>
                         <div class="body">
                             <pre
-                                class="code">&lt;script src&quot;https://modern-web.nether.click/components/css/${nameLowerCase}.js&quot;&gt;</pre>
+                                class="code">&lt;script src&quot;https://modern-web.nether.click/components/js/${nameLowerCase}.js&quot;&gt;</pre>
                         </div>
                     </div>
                     <br>
@@ -229,6 +243,8 @@ function showCSSFileDetails(nameUpperCase, nameLowerCase) {
                             <pre class="code" id="js"></pre>
                         </div>
                     </div>
+                    <br>
+                    <button><a href="https://modern-web.nether.click/components/css/${nameLowerCase}.css" download>Download File</a></button>
                 </div>
 
                 <div class="tab-content" id="html">

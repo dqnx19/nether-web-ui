@@ -37,6 +37,17 @@
                     "sizes": "96x96"
                 }
             ]
+        },
+        {
+            "name": "About",
+            "short_name": "About",
+            "url":"/?page=about",
+            "icons": [
+                {
+                    "src": "/img/links.icons/about.svg",
+                    "sizes": "96x96"
+                }
+            ]
         }
     ],
     "categories": [

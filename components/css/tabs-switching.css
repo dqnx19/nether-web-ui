@@ -1,6 +1,6 @@
 .tabs {
     display: flex;
-    border-bottom: 1px solid #ccc;
+    gap: 5px;
 }
 
 .tab {
@@ -11,7 +11,7 @@
 }
 
 .tab.active {
-    border-bottom: 3px solid #0078d7;
+    background-color: #0078d7;
     font-weight: bold;
 }
 

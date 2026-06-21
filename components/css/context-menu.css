@@ -1,0 +1,33 @@
+.context-menu {
+    display: none;
+}
+
+.context-menu.open {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    background: radial-gradient(circle at top left, #1f1f2e 0%, #0f0f17 40%, #0a0a0f 100%);
+
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 8px;
+    width: 170px;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(12px);
+
+    z-index: 10000;
+}
+
+.context-menu button {
+    /*padding: 8px;*/
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.context-menu button:hover {
+    background: #222;
+}
