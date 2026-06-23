@@ -6,34 +6,7 @@ header * {
     pointer-events: auto;
 }
 
-.app-drawer {
-    display: none;
-}
-
-.app-drawer.open {
-    position: fixed;
-    top: 70px;
-    left: 20px;
-    display: flex;
-    justify-content: start;
-    flex-direction: column;
-    gap: 10px;
-
-    z-index: 99999;
-
-    background-color: #282a2c;
-    background-color: transparent;
-    backdrop-filter: blur(1000px);
-
-    opacity: 0.95;
-    padding: 20px;
-
-    border-radius: 20px;
-    max-height: 70vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-
+/* Outside of app drawer */
 .app-drawer-button {
     all: unset;
     position: fixed;
@@ -61,6 +34,32 @@ header * {
     border-radius: 50%;
     background: white;
 }
+ /* App Drawer */
+.app-drawer {
+    display: none;
+}
+
+.app-drawer.open {
+    position: fixed;
+    top: 70px;
+    left: 20px;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    gap: 10px;
+
+    z-index: 99999;
+
+    background-color: #282a2c;
+
+    opacity: 0.95;
+    padding: 20px;
+
+    border-radius: 20px;
+    max-height: 70vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
 
 .app-drawer button:not(.app-drawer-button),
 .app-drawer a {
@@ -76,10 +75,29 @@ header * {
     border-radius: 10px;
     cursor: pointer;
     transition: transform 0.2s ease;
+    padding: 10px;
 }
 
 .app-drawer a img,
 .app-drawer button img {
     width: 48px;
     height: 48px;
+}
+
+.app-drawer a,
+.app-drawer button:not(.app-drawer-button) {
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.app-drawer a:hover,
+.app-drawer button:not(.app-drawer-button):hover {
+    transform: translateX(5px) scale(1.03);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+@media(max-width: 600px) {
+    .app-drawer.open {
+        right: 20px;
+    }
 }

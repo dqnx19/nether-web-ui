@@ -21,3 +21,16 @@ header {
     overflow-wrap: break-word;
     overflow: visible;
 }
+
+.logo {
+    width: 75px;
+    height: 75px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.logo img {
+    width: 75px;
+    height: 75px;
+}

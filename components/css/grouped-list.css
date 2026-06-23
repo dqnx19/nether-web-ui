@@ -13,45 +13,61 @@
 
     padding: 18px 20px;
     background: #1a1a1d;
-    border-radius: 12px;
-    border: 1px solid #2a2a2d;
+    border-radius: 14px;
+    border: 1px solid #18181a;
 
     color: #e6e6e6;
-    transition: 
+
+    transition:
         background-color .25s ease,
         border-color .25s ease,
-        transform .2s ease,
-        box-shadow .25s ease;
+        transform .25s cubic-bezier(.2, .8, .2, 1),
+        box-shadow .25s ease,
+        opacity .25s ease;
 }
 
 /* HOVER */
 .grouped-list .item:hover {
-    background: #242428;
+    background: #232327;
     border-color: #3a3a3d;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    transform: translateX(6px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
     cursor: pointer;
+}
+
+/* ACTIVE (kliknutí) */
+.grouped-list .item:active {
+    transform: translateX(3px) scale(0.98);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+/* FOCUS (klávesnice) */
+.grouped-list .item:focus-visible {
+    outline: 2px solid #6a5cff;
+    outline-offset: 3px;
 }
 
 /* ICON */
 .grouped-list .item img {
     width: 28px;
     height: 28px;
-    opacity: 0.9;
-    transition: opacity .2s ease;
+    opacity: 0.85;
+    transition: opacity .25s ease, transform .25s ease, filter .25s ease;
 }
 
 .grouped-list .item:hover img {
     opacity: 1;
+    transform: scale(1.07);
+    filter: drop-shadow(0 0 4px rgba(255,255,255,0.25));
 }
 
-/* FIRST & LAST ITEM RADIUS (pokud chceš skupinu jako card) */
+/* FIRST & LAST ITEM RADIUS */
 .grouped-list .item:first-child {
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
+    border-top-left-radius: 26px;
+    border-top-right-radius: 26px;
 }
 
 .grouped-list .item:last-child {
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 26px;
+    border-bottom-right-radius: 26px;
 }

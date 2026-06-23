@@ -1,0 +1,47 @@
+.timeline {
+    display: flex;
+    flex-direction: column;
+}
+
+.event {
+    display: flex;
+    gap: 15px;
+    position: relative;
+    padding-bottom: 30px;
+}
+
+.marker {
+    width: 14px;
+    height: 14px;
+    background: #3498db;
+    border-radius: 50%;
+    margin-top: 3px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.marker::after {
+    content: "";
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: calc(100% + 30px);
+    background: #ccc;
+}
+
+.event:last-child .marker::after {
+    display: none;
+}
+
+.date {
+    width: 120px;
+    font-weight: bold;
+    color: #666;
+    flex-shrink: 0;
+}
+
+.content {
+    flex: 1;
+}

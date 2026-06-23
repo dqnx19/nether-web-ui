@@ -1,4 +1,4 @@
-import { setFavicon, setAttribute, createElement, setTitle, scrollUp, setContentOfHeader, setContentOfMain, setContentOfFooter, importCSSFromList, importJSFromList, getURLParam } from "https://js.nether.click/nether.js"
+import { setFavicon, setAttribute, createElement, setTitle, scrollUp, setContentOfHeader, setContentOfMain, setContentOfFooter, importCSSFromList, importJSFromList, getURLParam } from "https://frameworks.nether.click/nether.js"
 
 importCSSFromList([
     "fonts/lexend/lexend.css",
@@ -17,10 +17,10 @@ importCSSFromList([
     "components/css/cards.css",
     "components/css/copy-box.css",
     "components/css/app-drawer.css",
-    "components/css/logo.css",
     "components/css/grouped-list.css",
     "components/css/tabs-switching.css",
-    "components/css/context-menu.css"
+    "components/css/context-menu.css",
+    "components/css/timeline.css"
 ])
 
 importJSFromList([
@@ -145,6 +145,7 @@ function showComponents() {
         { label: "Services Icons", key: "services-icons" },
         { label: "Table", key: "table" },
         { label: "Tabs Switching", key: "tabs-switching" },
+        { label: "Timeline", key: "timeline"},
         { label: "Train Formation", key: "train-formation" }
     ];
 
@@ -289,9 +290,23 @@ function showAbout() {
         <section>
             <h2>What is Nether Modern Web</h2>
             <ul>
-                <li>Founded in May 2026</li>
                 <li>Web service providing free css and js components and basic styles for web developement</li>
             </ul>
+        </section>
+        <section>
+            <h2>History (timeline)</h2>
+            <div class="timeline">
+                <div class="event">
+                    <div class="marker"></div>
+                    <div class="date">May 2026</div>
+                    <div class="content">Founded</div>
+                </div>
+                <div class="event">
+                    <div class="marker"></div>
+                    <div class="date">May 2026</div>
+                    <div class="content">Joined nether ecosystem and changed from CSS Reset to Nether Modern web</div>
+                </div>
+            </div>
         </section>
     `)
 }
