@@ -1,23 +1,47 @@
 table {
-    width: auto;
-    min-width: max-content;
-    overflow: hidden;
-
+    width: 100%;
     border-collapse: separate;
     border-spacing: 0;
-    border-radius: 10px;
-
-    z-index: 0;
-    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
 }
 
-th, td {
+/* Header */
+th {
     font-family: 'Lexend', sans-serif;
-    font-weight: bold;
+    font-weight: 600;
     font-size: 15px;
-
     text-align: left;
-    
-    width: 175px;
-    height: 35px;
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Cells */
+td {
+    font-family: 'Lexend', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    padding: 14px 18px;
+    color: #eaeaea;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: background 0.15s ease;
+}
+
+/* Hover row */
+tr:hover td {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Last row border fix */
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* Optional: subtle shadow */
+table {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
 }

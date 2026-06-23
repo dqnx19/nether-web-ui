@@ -84,18 +84,12 @@ setContentOfFooter(`
     <button onclick="showAbout()">
         <img src="img/links-icons/about.svg">
     </button>
-    <button onclick="showPlayground()">
-        <img src="img/links-icons/playground.svg">
-    </button>
 `);
 
 window.showHome = showHome
 window.showComponents = showComponents
 window.showAbout = showAbout
 window.showCSSFileDetails = showCSSFileDetails
-window.showPlayground = showPlayground
-window.newComponent = newComponent
-window.newElement = newElement
 
 function router() {
     switch (getURLParam("page")) {
@@ -144,10 +138,6 @@ function showHome() {
                 <button class="item" onclick="showAbout()">
                     <img src="img/links-icons/about.svg">
                     About
-                </button>
-                <button class="item" onclick="showPlayground()">
-                    <img src="img/links-icons/playground.svg">
-                    Playground
                 </button>
             </div>
         </section>
@@ -347,46 +337,6 @@ function showAbout() {
             </div>
         </section>
     `)
-}
-
-function showPlayground() {
-    scrollUp()
-    setTitle("Nether Modern Web Playground")
-    setContentOfMain(`
-        <h1>Playground</h1>
-        <div class="menu-bar">
-            <div class="menu-item">
-                New Component
-                <div class="dropdown">
-                    <button onclick="newComponent('a')">&lt;a&gt; (HyperText Link)</button>
-                    <button onclick="newComponent('div', 'app-drawer')">App Drawer</button>
-                    <button onclick="newComponent()"></button>
-                </div>
-            </div>
-        </div>
-        <div class="page"></div>
-    `)
-}
-
-function newComponent(name) {
-    fetch(`components/html/${name}.html`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`Component ${name} not found (newComponent - pages.js - Nether Modern Web)`);
-            }
-            return response.text();
-        })
-        .then(data => {
-            document.querySelector(".page").insertAdjacentHTML("beforeend", data);
-        })
-        .catch(error => {
-            console.error(error);
-        });
-}
-
-function newElement(elname) {
-    const el = document.createElement(elname)
-        (elname, 'document.querySelector(".page")')
 }
 
 router();
