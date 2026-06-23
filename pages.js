@@ -3,33 +3,64 @@ import { setFavicon, setAttribute, createElement, setTitle, scrollUp, setContent
 importCSSFromList([
     "fonts/lexend/lexend.css",
 
+    "components/css/a.css",
     "components/css/all.css",
+    "components/css/app-drawer.css",
+
     "components/css/body.css",
-    "components/css/main.css",
-    "components/css/headings.css",
-    "components/css/p.css",
-    "components/css/section.css",
-    "components/css/header.css",
-    "components/css/li.css",
     "components/css/button.css",
-    "components/css/footer.css",
 
     "components/css/cards.css",
-    "components/css/copy-box.css",
-    "components/css/app-drawer.css",
-    "components/css/grouped-list.css",
-    "components/css/tabs-switching.css",
     "components/css/context-menu.css",
-    "components/css/timeline.css"
+    "components/css/copy-box.css",
+
+    "components/css/footer.css",
+    "components/css/form.css",
+
+    "components/css/grouped-list.css",
+
+    "components/css/header.css",
+    "components/css/headings.css",
+
+    "components/css/img.css",
+
+    "components/css/li.css",
+
+    "components/css/main.css",
+    "components/css/menu-bar.css",
+
+    "components/css/p.css",
+
+    "components/css/section.css",
+    "components/css/services-icons.css",
+
+    "components/css/table.css",
+    "components/css/tabs-switching.css",
+    "components/css/timeline.css",
+    "components/css/train-formation.css"
 ])
 
 importJSFromList([
     "https://nether.click/js/import-app-drawer.js",
+    "https://nether.click/js/import-app-check.js",
+
+    "components/js/a.js",
+    "components/js/all.js",
     "components/js/app-drawer.js",
+
+    "components/js/body.js",
+    "components/js/button.js",
+
+    "components/js/context-menu.js",
     "components/js/copy-box.js",
+
     "components/js/footer.js",
+    "components/js/form.js",
+
+    "components/js/menu-bar.js",
+
     "components/js/tabs-switching.js",
-    "components/js/context-menu.js"
+    "components/js/timeline.js"
 ])
 
 setAttribute("html", "lang", "en")
@@ -53,20 +84,22 @@ setContentOfFooter(`
     <button onclick="showAbout()">
         <img src="img/links-icons/about.svg">
     </button>
+    <button onclick="showPlayground()">
+        <img src="img/links-icons/playground.svg">
+    </button>
 `);
-
-if (getURLParam("showas") === "app") {
-    header.style.display = "none";
-}
 
 window.showHome = showHome
 window.showComponents = showComponents
 window.showAbout = showAbout
 window.showCSSFileDetails = showCSSFileDetails
+window.showPlayground = showPlayground
+window.newComponent = newComponent
+window.newElement = newElement
 
 function router() {
     switch (getURLParam("page")) {
-        case "home": 
+        case "home":
             showHome()
             return
 
@@ -112,6 +145,10 @@ function showHome() {
                     <img src="img/links-icons/about.svg">
                     About
                 </button>
+                <button class="item" onclick="showPlayground()">
+                    <img src="img/links-icons/playground.svg">
+                    Playground
+                </button>
             </div>
         </section>
     `)
@@ -120,35 +157,6 @@ function showHome() {
 function showComponents() {
     scrollUp();
     setTitle("Components - Nether Modern Web")
-
-    const components = [
-        { label: "A (Hyper Text Link)", key: "a" },
-        { label: "All", key: "all" },
-        { label: "App Drawer", key: "app-drawer" },
-        { label: "Body", key: "body" },
-        { label: "Button", key: "button" },
-        { label: "Cards", key: "cards" },
-        { label: "Context Menu", key: "Context-Menu"},
-        { label: "Copy Box", key: "copy-box" },
-        { label: "Footer", key: "footer" },
-        { label: "Form", key: "form" },
-        { label: "Grouped List", key: "grouped-list" },
-        { label: "Header", key: "header" },
-        { label: "Headings", key: "headings" },
-        { label: "Img", key: "img" },
-        { label: "Li", key: "li" },
-        { label: "Links List", key: "links-list" },
-        { label: "Logo", key: "logo" },
-        { label: "Main", key: "main" },
-        { label: "P (paragraph)", key: "p" },
-        { label: "Section", key: "section" },
-        { label: "Services Icons", key: "services-icons" },
-        { label: "Table", key: "table" },
-        { label: "Tabs Switching", key: "tabs-switching" },
-        { label: "Timeline", key: "timeline"},
-        { label: "Train Formation", key: "train-formation" }
-    ];
-
 
     setContentOfMain(`
         <h1>Components</h1>
@@ -172,6 +180,35 @@ function showComponents() {
         container.appendChild(button);
     });
 }
+
+const components = [
+    { label: "A (Hyper Text Link)", key: "a" },
+    { label: "All", key: "all" },
+    { label: "App Drawer", key: "app-drawer" },
+    { label: "Body", key: "body" },
+    { label: "Button", key: "button" },
+    { label: "Cards", key: "cards" },
+    { label: "Context Menu", key: "Context-Menu" },
+    { label: "Copy Box", key: "copy-box" },
+    { label: "Footer", key: "footer" },
+    { label: "Form", key: "form" },
+    { label: "Grouped List", key: "grouped-list" },
+    { label: "Header", key: "header" },
+    { label: "Headings", key: "headings" },
+    { label: "Img", key: "img" },
+    { label: "Li", key: "li" },
+    { label: "Links List", key: "links-list" },
+    { label: "Logo", key: "logo" },
+    { label: "Main", key: "main" },
+    { label: "Menu Bar", key: "menu-bar" },
+    { label: "P (paragraph)", key: "p" },
+    { label: "Section", key: "section" },
+    { label: "Services Icons", key: "services-icons" },
+    { label: "Table", key: "table" },
+    { label: "Tabs Switching", key: "tabs-switching" },
+    { label: "Timeline", key: "timeline" },
+    { label: "Train Formation", key: "train-formation" }
+];
 
 function showCSSFileDetails(nameUpperCase, nameLowerCase) {
     scrollUp();
@@ -213,6 +250,7 @@ function showCSSFileDetails(nameUpperCase, nameLowerCase) {
                     </div>
                     <br>
                     <p>Or copy the CSS code</p>
+                    <br>
                     <div class="copy-box">
                         <div class="head">
                             <span class="language">CSS</span>
@@ -222,7 +260,9 @@ function showCSSFileDetails(nameUpperCase, nameLowerCase) {
                         </div>
                     </div>
                     <br>
-                    <button><a href="https://modern-web.nether.click/components/css/${nameLowerCase}.css" download>Download File</a></button>
+                    <button>
+                        <a href="https://modern-web.nether.click/components/css/${nameLowerCase}.css" download>Download File</a>
+                    </button>
                 </div>
                 <div class="tab-content" id="js">
                     <h2>JS</h2>
@@ -231,8 +271,7 @@ function showCSSFileDetails(nameUpperCase, nameLowerCase) {
                             <span class="language">HTML</span>
                         </div>
                         <div class="body">
-                            <pre
-                                class="code">&lt;script src&quot;https://modern-web.nether.click/components/js/${nameLowerCase}.js&quot;&gt;</pre>
+                            <pre class="code">&lt;script src&quot;https://modern-web.nether.click/components/js/${nameLowerCase}.js&quot;&gt;</pre>
                         </div>
                     </div>
                     <br>
@@ -247,7 +286,6 @@ function showCSSFileDetails(nameUpperCase, nameLowerCase) {
                     <br>
                     <button><a href="https://modern-web.nether.click/components/css/${nameLowerCase}.css" download>Download File</a></button>
                 </div>
-
                 <div class="tab-content" id="html">
                     <h2>HTML (Example)</h2>
                     <div class="copy-box">
@@ -309,6 +347,46 @@ function showAbout() {
             </div>
         </section>
     `)
+}
+
+function showPlayground() {
+    scrollUp()
+    setTitle("Nether Modern Web Playground")
+    setContentOfMain(`
+        <h1>Playground</h1>
+        <div class="menu-bar">
+            <div class="menu-item">
+                New Component
+                <div class="dropdown">
+                    <button onclick="newComponent('a')">&lt;a&gt; (HyperText Link)</button>
+                    <button onclick="newComponent('div', 'app-drawer')">App Drawer</button>
+                    <button onclick="newComponent()"></button>
+                </div>
+            </div>
+        </div>
+        <div class="page"></div>
+    `)
+}
+
+function newComponent(name) {
+    fetch(`components/html/${name}.html`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Component ${name} not found (newComponent - pages.js - Nether Modern Web)`);
+            }
+            return response.text();
+        })
+        .then(data => {
+            document.querySelector(".page").insertAdjacentHTML("beforeend", data);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+}
+
+function newElement(elname) {
+    const el = document.createElement(elname)
+        (elname, 'document.querySelector(".page")')
 }
 
 router();
