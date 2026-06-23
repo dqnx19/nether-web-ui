@@ -1,5 +1,10 @@
-a:not(header a) {
+a {
     font-family: 'Lexend', sans-serif;
     font-size: 11pt;
     text-decoration: none;
+}
+
+a:hover {
+    background-color: #58a6ff;
+    text-decoration: underline;
 }

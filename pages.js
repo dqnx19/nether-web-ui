@@ -1,4 +1,4 @@
-import { setFavicon, setAttribute, createElement, setTitle, scrollUp, setContentOfHeader, setContentOfMain, setContentOfFooter, importCSSFromList, importJSFromList, getURLParam } from "https://frameworks.nether.click/nether.js"
+import { setFavicon, setAttribute, createElement, setTitle, scrollUp, setContentOfHeader, setContentOfMain, setContentOfFooter, importCSSFromList, importJSFromList, getURLParam } from "https://js.nether.click/nether.js"
 
 importCSSFromList([
     "fonts/lexend/lexend.css",

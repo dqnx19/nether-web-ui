@@ -60,7 +60,7 @@
 }
 
 /* zobraz dropdown při hoveru */
-.menu-item:hover .dropdown {
+.menu-item:hover .dropdown, .dropdown:hover {
     display: flex;
 }
 
