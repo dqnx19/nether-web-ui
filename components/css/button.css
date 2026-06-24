@@ -7,6 +7,7 @@ button:not(header button, footer button) {
     cursor: pointer;
     padding: 10px;
     transition: background-color 0.2s ease, transform 0.1s ease;
+    position: relative;
 }
 
 button:not(header button, footer button):hover {
@@ -15,8 +16,4 @@ button:not(header button, footer button):hover {
 
 button:not(header button, footer button):active {
     transform: scale(0.98);
-}
-
-button:not(header button, footer button) * {
-    text-decoration: none;
 }

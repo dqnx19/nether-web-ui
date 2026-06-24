@@ -9,11 +9,23 @@
     background: transparent;
     cursor: pointer;
     border-radius: 10px;
+
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
 }
 
 .tab.active {
     background-color: #0078d7;
     font-weight: bold;
+}
+
+.tab img {
+    width: 32px;
+    height: 32px;
+    
+    border-radius: 0px;
 }
 
 .tab-content {

@@ -69,19 +69,19 @@ setFavicon("img/icons/favicon.svg")
 
 setContentOfHeader(`
     <div class="app-drawer-wrapper"></div>
-    <button onclick="showHome()" class="logo">
+    <button onclick="showHome()" class="logo" title="Shows Home Page">
         <img src="img/icons/favicon.svg">
     </button>
 `);
 
 setContentOfFooter(`
-    <button onclick="showHome()">
+    <button onclick="showHome()" title="Shows Home Page">
         <img src="img/icons/favicon.svg">
     </button>
-    <button onclick="showComponents()">
+    <button onclick="showComponents()" title="Shows Components Page">
         <img src="img/links-icons/components.svg">
     </button>
-    <button onclick="showAbout()">
+    <button onclick="showAbout()" title="Shows About Page">
         <img src="img/links-icons/about.svg">
     </button>
 `);
@@ -208,16 +208,26 @@ function showCSSFileDetails(nameUpperCase, nameLowerCase) {
         <section>
             <div class="tabs-switching">
                 <div class="tabs">
-                    <button class="tab active" onclick="showTab('css', this)" data-tab="css">CSS</button>
-                    <button class="tab" onclick="showTab('js', this)" data-tab="js">JS</button>
-                    <button class="tab" onclick="showTab('html', this)" data-tab="html">HTML</button>
+                    <button class="tab active" onclick="showTab('css', this)" data-tab="css">
+                        <img src="img/brands/css-logo.png" alt="CSS3 Logo">
+                        CSS
+                    </button>
+                    <button class="tab" onclick="showTab('js', this)" data-tab="js">
+                        <img src="img/brands/js-logo.png" alt="JS Logo">
+                        JS
+                    </button>
+                    <button class="tab" onclick="showTab('html', this)" data-tab="html">
+                        <img src="img/brands/html-logo.png" alt="HTML5 Logo">
+                        HTML (Example)
+                    </button>
                 </div>
 
                 <div class="tab-content active" id="css">
                     <h2>CSS</h2>
-                    <p>Use one of the following methods to import the CSS file</p>
-                    <br>
-                    <p>Do not use both of them</p>
+                    <ul>
+                        <li>Use one of the following methods to import the CSS file</li>
+                        <li>Do not use both of them</li>
+                    </ul>
                     <br>
                     <div class="copy-box">
                         <div class="head">
@@ -316,23 +326,32 @@ function showAbout() {
     setContentOfMain(`
         <h1>About</h1>
         <section>
-            <h2>What is Nether Modern Web</h2>
-            <ul>
-                <li>Web service providing free css and js components and basic styles for web developement</li>
-            </ul>
-        </section>
-        <section>
-            <h2>History (timeline)</h2>
-            <div class="timeline">
-                <div class="event">
-                    <div class="marker"></div>
-                    <div class="date">May 2026</div>
-                    <div class="content">Founded</div>
+            <div class="tabs-switching">
+                <div class="tabs">
+                    <button class="tab active" onclick="showTab('what_is_nether_modern_web', this)" data-tab="what_is_nether_modern_web">What is Nether Modern Web</button>
+                    <button class="tab" onclick="showTab('history', this)" data-tab="history">History</button>
                 </div>
-                <div class="event">
-                    <div class="marker"></div>
-                    <div class="date">May 2026</div>
-                    <div class="content">Joined nether ecosystem and changed from CSS Reset to Nether Modern web</div>
+                <div class="tab-content active" id="what_is_nether_modern_web">
+                    <h2>What is Nether Modern Web</h2>
+                    <ul>
+                        <li>Web service providing free css and js components and basic styles for web developement</li>
+                    </ul>
+                </div>
+                <div class="tab-content" id="history">
+                    <h2>History</h2>
+                    <div class="timeline">
+                        <div class="event">
+                            <div class="marker"></div>
+                            <div class="date">May 2026</div>
+                            <div class="content">Founded</div>
+                        </div>
+                        <div class="event">
+                            <div class="marker"></div>
+                            <div class="date">May 2026</div>
+                            <div class="content">Joined nether ecosystem and changed from CSS Reset to Nether Modern web
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

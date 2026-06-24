@@ -37,3 +37,35 @@
     line-height: 1.5;
     white-space: pre-wrap;
 }
+
+/* Light mode */
+@media (prefers-color-scheme: light) {
+    .copy-box {
+        border-color: #d9d9df;
+        background: #ffffff;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .copy-box:hover {
+        border-color: #bfc3cc;
+        box-shadow: 0 6px 28px rgba(0,0,0,0.12);
+    }
+
+    .copy-box .head {
+        background: #f5f7fa;
+        border-bottom-color: #d9d9df;
+        color: #1f2328;
+    }
+
+    .copy-box .language {
+        color: #0f0f0f;
+    }
+
+    .copy-box .body {
+        background: #ffffff;
+    }
+
+    .copy-box .body .code {
+        color: #24292f;
+    }
+}

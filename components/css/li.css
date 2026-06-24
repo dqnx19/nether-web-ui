@@ -1,5 +1,22 @@
 li {
-    font-size: 15px;
-    
+    font-size: 16px;
+    line-height: 1.6;
+    color: #e2e8f0;
     margin-left: 30px;
+}
+
+li::marker {
+    color: #4f46e5;
+    font-weight: bold;
+}
+
+/* Light mode */
+@media (prefers-color-scheme: light) {
+    li {
+        color: #334155;
+    }
+
+    li::marker {
+        color: #4338ca;
+    }
 }

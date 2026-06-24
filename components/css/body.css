@@ -4,7 +4,13 @@ body {
 
     overflow-x: auto;
 
-    /* background-color: #0d0d0f; */
     background-color: #010409;
     text-rendering: optimizeLegibility;
+}
+
+/* Light mode */
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: #ffffff;
+    }
 }
