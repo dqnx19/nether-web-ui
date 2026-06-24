@@ -208,9 +208,9 @@ function showCSSFileDetails(nameUpperCase, nameLowerCase) {
         <section>
             <div class="tabs-switching">
                 <div class="tabs">
-                    <button class="tab active" onclick="showTab('css', this)">CSS</button>
-                    <button class="tab" onclick="showTab('js', this)">JS</button>
-                    <button class="tab" onclick="showTab('html', this)">HTML</button>
+                    <button class="tab active" onclick="showTab('css', this)" data-tab="css">CSS</button>
+                    <button class="tab" onclick="showTab('js', this)" data-tab="js">JS</button>
+                    <button class="tab" onclick="showTab('html', this)" data-tab="html">HTML</button>
                 </div>
 
                 <div class="tab-content active" id="css">

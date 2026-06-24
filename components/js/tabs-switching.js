@@ -1,4 +1,4 @@
-function showTab(id, button) {
+function showTab(id, button = null) {
     document.querySelectorAll('.tab-content').forEach(content => {
         content.classList.remove('active');
     });
@@ -7,6 +7,13 @@ function showTab(id, button) {
         tab.classList.remove('active');
     });
 
-    document.getElementById(id).classList.add('active');
-    button.classList.add('active');
+    document.getElementById(id)?.classList.add('active');
+
+    if (button) {
+        button.classList.add('active');
+    } else {
+        document
+            .querySelector(`.tab[data-tab="${id}"]`)
+            ?.classList.add('active');
+    }
 }
