@@ -36,3 +36,14 @@
 .tab-content.active {
     display: block;
 }
+
+@media (prefers-color-scheme: light) {
+    .tab {
+        color: black;
+    }
+
+    .tab:hover {
+        background-color: #cacaca;
+    }
+
+}

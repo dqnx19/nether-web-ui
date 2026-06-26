@@ -3,7 +3,6 @@ button:not(header button, footer button) {
     text-align: center;
     height: 50px;
     border-radius: 10px;
-    border: 1px solid #1d2228;
     cursor: pointer;
     padding: 10px;
     transition: background-color 0.2s ease, transform 0.1s ease;
@@ -16,4 +15,11 @@ button:not(header button, footer button):hover {
 
 button:not(header button, footer button):active {
     transform: scale(0.98);
+}
+
+@media (prefers-color-scheme: light) {
+    button:not(header button, footer button) {
+        background-color: #ededed;
+        color: black;
+    }
 }

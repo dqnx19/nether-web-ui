@@ -1,4 +1,4 @@
-import { setFavicon, setAttribute, createElement, setTitle, scrollUp, setContentOfHeader, setContentOfMain, setContentOfFooter, importCSSFromList, importJSFromList, getURLParam } from "https://js.nether.click/nether.js"
+import { setFavicon, setAttribute, setTitle, scrollUp, setContentOfHeader, setContentOfMain, setContentOfFooter, importCSSFromList, importJSFromList, getURLParam } from "https://js.nether.click/nether.js"
 
 importCSSFromList([
     "fonts/lexend/lexend.css",
@@ -70,26 +70,26 @@ setFavicon("img/icons/favicon.svg")
 setContentOfHeader(`
     <div class="app-drawer-wrapper"></div>
     <button onclick="showHome()" class="logo" title="Shows Home Page">
-        <img src="img/icons/favicon.svg">
+        <img src="img/icons/favicon.svg" alt="Nether Modern Web Logo">
     </button>
 `);
 
 setContentOfFooter(`
     <button onclick="showHome()" title="Shows Home Page">
-        <img src="img/icons/favicon.svg">
+        <img src="img/icons/favicon.svg" alt="Nether Modern Web Logo">
     </button>
     <button onclick="showComponents()" title="Shows Components Page">
-        <img src="img/links-icons/components.svg">
+        <img src="img/links-icons/components.svg" alt="Components page link icon">
     </button>
     <button onclick="showAbout()" title="Shows About Page">
-        <img src="img/links-icons/about.svg">
+        <img src="img/links-icons/about.svg" alt="About page link icon">
     </button>
 `);
 
 window.showHome = showHome
 window.showComponents = showComponents
 window.showAbout = showAbout
-window.showCSSFileDetails = showCSSFileDetails
+window.showComponent = showComponent
 
 function router() {
     switch (getURLParam("page")) {
@@ -131,12 +131,12 @@ function showHome() {
         <h1>Nether Modern Web</h1>
         <section>
             <div class="grouped-list">
-                <button class="item" onclick="showComponents()">
-                    <img src="img/links-icons/components.svg">
+                <button class="item" onclick="showComponents()" title="Displays Components page">
+                    <img src="img/links-icons/components.svg" alt="Components page link icon">
                     Components
                 </button>
-                <button class="item" onclick="showAbout()">
-                    <img src="img/links-icons/about.svg">
+                <button class="item" onclick="showAbout()" title="Displays About page">
+                    <img src="img/links-icons/about.svg" alt="About page link icon">
                     About
                 </button>
             </div>
@@ -164,7 +164,7 @@ function showComponents() {
 
         button.className = "item"
         button.onclick = () => {
-            showCSSFileDetails(component.label, component.key);
+            showComponent(component.label, component.key);
         };
 
         container.appendChild(button);
@@ -200,7 +200,7 @@ const components = [
     { label: "Train Formation", key: "train-formation" }
 ];
 
-function showCSSFileDetails(nameUpperCase, nameLowerCase) {
+function showComponent(nameUpperCase, nameLowerCase) {
     scrollUp();
     setTitle(`${nameUpperCase} - Nether Modern Web`)
     setContentOfMain(`

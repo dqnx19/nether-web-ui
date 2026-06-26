@@ -45,3 +45,13 @@
 .content {
     flex: 1;
 }
+
+@media (prefers-color-scheme: light) {
+    .date {
+        color: black;
+    }
+
+    .content {
+        color: black;
+    }
+}
