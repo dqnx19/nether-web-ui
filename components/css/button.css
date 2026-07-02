@@ -1,12 +1,15 @@
 button:not(header button, footer button) {
-    background-color: #0d1117;
+    background-color: #191b1e;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+
     text-align: center;
     height: 50px;
     border-radius: 10px;
     cursor: pointer;
     padding: 10px;
-    transition: background-color 0.2s ease, transform 0.1s ease;
+    
     position: relative;
+    border: none;
 }
 
 button:not(header button, footer button):hover {

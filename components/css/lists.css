@@ -6,11 +6,10 @@ li {
 }
 
 li::marker {
-    color: #4f46e5;
+    color: #353535;
     font-weight: bold;
 }
 
-/* Light mode */
 @media (prefers-color-scheme: light) {
     li {
         color: #334155;

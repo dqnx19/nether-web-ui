@@ -24,7 +24,7 @@ importCSSFromList([
 
     "components/css/img.css",
 
-    "components/css/li.css",
+    "components/css/lists.css",
 
     "components/css/main.css",
     "components/css/menu-bar.css",
@@ -70,13 +70,13 @@ setFavicon("img/icons/favicon.svg")
 setContentOfHeader(`
     <div class="app-drawer-wrapper"></div>
     <button onclick="showHome()" class="logo" title="Shows Home Page">
-        <img src="img/icons/favicon.svg" alt="Nether Modern Web Logo">
+        <img src="img/icons/favicon.svg" alt="Nether Web UI Logo">
     </button>
 `);
 
 setContentOfFooter(`
     <button onclick="showHome()" title="Shows Home Page">
-        <img src="img/icons/favicon.svg" alt="Nether Modern Web Logo">
+        <img src="img/icons/favicon.svg" alt="Nether Web UI Logo">
     </button>
     <button onclick="showComponents()" title="Shows Components Page">
         <img src="img/links-icons/components.svg" alt="Components page link icon">
@@ -126,9 +126,9 @@ document.body.appendChild(menu);
 
 function showHome() {
     scrollUp();
-    setTitle("Nether Modern Web")
+    setTitle("Nether Web UI")
     setContentOfMain(`
-        <h1>Nether Modern Web</h1>
+        <h1>Nether Web UI</h1>
         <section>
             <div class="grouped-list">
                 <button class="item" onclick="showComponents()" title="Displays Components page">
@@ -146,7 +146,7 @@ function showHome() {
 
 function showComponents() {
     scrollUp();
-    setTitle("Components - Nether Modern Web")
+    setTitle("Components - Nether Web UI")
     setContentOfMain(`
         <h1>Components</h1>
         <section> 
@@ -185,8 +185,7 @@ const components = [
     { label: "Header", key: "header" },
     { label: "Headings", key: "headings" },
     { label: "Img", key: "img" },
-    { label: "Li", key: "li" },
-    { label: "Links List", key: "links-list" },
+    { label: "Lists", key: "lists" },
     { label: "Logo", key: "logo" },
     { label: "Main", key: "main" },
     { label: "Menu Bar", key: "menu-bar" },
@@ -201,7 +200,7 @@ const components = [
 
 function showComponent(nameUpperCase, nameLowerCase) {
     scrollUp();
-    setTitle(`${nameUpperCase} - Nether Modern Web`)
+    setTitle(`${nameUpperCase} - Nether Web UI`)
     setContentOfMain(`
         <h1>${nameUpperCase}</h1>
         <section>
@@ -234,7 +233,7 @@ function showComponent(nameUpperCase, nameLowerCase) {
                         </div>
                         <div class="body">
                             <pre
-                                class="code">@import url("https://modern-web.nether.click/components/css/${nameLowerCase}.css");</pre>
+                                class="code">@import url("https://web-ui.nether.click/components/css/${nameLowerCase}.css");</pre>
                         </div>
                     </div>
                     <br>
@@ -244,7 +243,7 @@ function showComponent(nameUpperCase, nameLowerCase) {
                         </div>
                         <div class="body">
                             <pre
-                                class="code">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://modern-web.nether.click/components/css/${nameLowerCase}.css&quot;&gt;</pre>
+                                class="code">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://web-ui.nether.click/components/css/${nameLowerCase}.css&quot;&gt;</pre>
                         </div>
                     </div>
                     <br>
@@ -260,7 +259,7 @@ function showComponent(nameUpperCase, nameLowerCase) {
                     </div>
                     <br>
                     <button>
-                        <a href="https://modern-web.nether.click/components/css/${nameLowerCase}.css" download>Download File</a>
+                        <a href="https://web-ui.nether.click/components/css/${nameLowerCase}.css" download>Download File</a>
                     </button>
                 </div>
                 <div class="tab-content" id="js">
@@ -270,7 +269,7 @@ function showComponent(nameUpperCase, nameLowerCase) {
                             <span class="language">HTML</span>
                         </div>
                         <div class="body">
-                            <pre class="code">&lt;script src&quot;https://modern-web.nether.click/components/js/${nameLowerCase}.js&quot;&gt;</pre>
+                            <pre class="code">&lt;script src&quot;https://web-ui.nether.click/components/js/${nameLowerCase}.js&quot;&gt;</pre>
                         </div>
                     </div>
                     <br>
@@ -283,7 +282,7 @@ function showComponent(nameUpperCase, nameLowerCase) {
                         </div>
                     </div>
                     <br>
-                    <button><a href="https://modern-web.nether.click/components/css/${nameLowerCase}.css" download>Download File</a></button>
+                    <button><a href="https://web-ui.nether.click/components/css/${nameLowerCase}.css" download>Download File</a></button>
                 </div>
                 <div class="tab-content" id="html">
                     <h2>HTML (Example)</h2>
@@ -321,17 +320,17 @@ function showComponent(nameUpperCase, nameLowerCase) {
 
 function showAbout() {
     scrollUp()
-    setTitle("About - Nether Modern Web")
+    setTitle("About - Nether Web UI")
     setContentOfMain(`
         <h1>About</h1>
         <section>
             <div class="tabs-switching">
                 <div class="tabs">
-                    <button class="tab active" onclick="showTab('what_is_nether_modern_web', this)" data-tab="what_is_nether_modern_web">What is Nether Modern Web</button>
+                    <button class="tab active" onclick="showTab('what_is_nether_web_ui', this)" data-tab="what_is_nether_web_ui">What is Nether Web UI</button>
                     <button class="tab" onclick="showTab('history', this)" data-tab="history">History</button>
                 </div>
-                <div class="tab-content active" id="what_is_nether_modern_web">
-                    <h2>What is Nether Modern Web</h2>
+                <div class="tab-content active" id="what_is_nether_web_ui">
+                    <h2>What is Nether Web UI</h2>
                     <ul>
                         <li>Web service providing free css and js components and basic styles for web developement</li>
                     </ul>
@@ -340,15 +339,19 @@ function showAbout() {
                     <h2>History</h2>
                     <div class="timeline">
                         <div class="event">
-                            <div class="marker"></div>
-                            <div class="date">May 2026</div>
-                            <div class="content">Founded</div>
+                            <span class="marker"></span>
+                            <span class="date">May 2026</span>
+                            <span class="content">Founded</span>
                         </div>
                         <div class="event">
-                            <div class="marker"></div>
-                            <div class="date">May 2026</div>
-                            <div class="content">Joined nether ecosystem and changed from CSS Reset to Nether Modern web
-                            </div>
+                            <span class="marker"></span>
+                            <span class="date">May 2026</span>
+                            <span class="content">Joined nether ecosystem and changed from CSS Reset to Nether Modern web</span>
+                        </div>
+                        <div class="event">
+                            <span class="marker"></span>
+                            <span class="date">July 2026</span>
+                            <span class="content">Changed from Nether Modern web to Nether Web UI</span>
                         </div>
                     </div>
                 </div>

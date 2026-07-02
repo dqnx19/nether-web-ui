@@ -1,6 +1,11 @@
 .tabs {
     display: flex;
     gap: 5px;
+
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    overflow: visible;
+    overflow-x: auto;
 }
 
 .tab {

@@ -1,4 +1,3 @@
-/* --- Globální interakce headeru --- */
 header {
     pointer-events: none;
 }
@@ -7,7 +6,6 @@ header * {
     pointer-events: auto;
 }
 
-/* --- Spouštěcí tlačítko (3x3 tečky) --- */
 .app-drawer-button {
     all: unset;
     position: fixed;
@@ -29,7 +27,6 @@ header * {
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
 }
 
-/* Ikona teček */
 .dots {
     display: grid;
     grid-template-columns: repeat(3, 5px);
@@ -45,7 +42,6 @@ header * {
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* --- App Drawer (Skleněný design) --- */
 .app-drawer {
     display: none;
 }
@@ -60,7 +56,6 @@ header * {
     flex-direction: column;
     gap: 6px;
 
-    /* Efekt matného skla (Glassmorphism) */
     background-color: rgba(40, 42, 44, 0.75);
     backdrop-filter: blur(16px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
@@ -73,13 +68,11 @@ header * {
     overflow-y: auto;
     overflow-x: hidden;
     
-    /* Moderní prostorový stín */
     box-shadow: 
         0 4px 30px rgba(0, 0, 0, 0.2),
         0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* Stylování scrollbaru uvnitř draweru */
 .app-drawer.open::-webkit-scrollbar {
     width: 6px;
 }
@@ -89,7 +82,6 @@ header * {
     border-radius: 10px;
 }
 
-/* Položky uvnitř (Odkazy a Tlačítka) */
 .app-drawer a, 
 .app-drawer button:not(.app-drawer-button) {
     background: transparent;
@@ -113,41 +105,39 @@ header * {
     position: relative;
 }
 
-/* Obrázky/Ikony v položkách */
 .app-drawer a img,
 .app-drawer button:not(.app-drawer-button) img {
     width: 32px;
     height: 32px;
     object-fit: contain;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+    border-radius: 0px;
 }
 
-/* Moderní hover efekt */
 .app-drawer a:hover, 
 .app-drawer button:not(.app-drawer-button):hover {
     background-color: rgba(255, 255, 255, 0.08);
     color: #ffffff;
-    padding-left: 20px; /* Elegantní posun textu místo zvětšování */
+    padding-left: 20px;
 }
 
-/* Zvětšení samotné ikony na hover */
 .app-drawer a:hover img,
 .app-drawer button:not(.app-drawer-button):hover img {
     transform: scale(1.08);
 }
 
-/* Stav při kliknutí (Active klik) */
 .app-drawer a:active, 
 .app-drawer button:not(.app-drawer-button):active {
     background-color: rgba(255, 255, 255, 0.12);
     transform: scale(0.98);
 }
 
-/* --- Responzivita (Mobily) --- */
 @media (max-width: 600px) {
     .dots span {
         background-color: rgb(0 0 0 / 0.08);
     }
+
     .app-drawer.open {
         left: 16px;
         right: 16px;

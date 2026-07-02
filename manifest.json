@@ -1,6 +1,6 @@
 {
-    "name": "Nether Modern Web",
-    "short_name": "Nether Modern Web",
+    "name": "Nether Web UI",
+    "short_name": "Nether Web UI",
     "description": "Modern CSS styles and JS scripts for web development.",
     "start_url": "/?showas=app",
     "scope": "/",
