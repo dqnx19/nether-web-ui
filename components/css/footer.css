@@ -32,14 +32,13 @@ footer a {
     align-items: center;
     gap: 10px;
 
-    padding: 10px 16px;
+    padding: 5px;
     border-radius: 12px;
     cursor: pointer;
 
     border: none;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(6px);
 
+    background: transparent;
     box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }

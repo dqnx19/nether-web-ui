@@ -23,9 +23,10 @@
 }
 
 .context-menu button {
-    /*padding: 8px;*/
     cursor: pointer;
     border-radius: 10px;
+
+    border: none;
 }
 
 .context-menu button:hover {

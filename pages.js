@@ -147,7 +147,6 @@ function showHome() {
 function showComponents() {
     scrollUp();
     setTitle("Components - Nether Modern Web")
-
     setContentOfMain(`
         <h1>Components</h1>
         <section> 
