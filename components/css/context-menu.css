@@ -27,6 +27,8 @@
     border-radius: 10px;
 
     border: none;
+
+    width: 100%;
 }
 
 .context-menu button:hover {

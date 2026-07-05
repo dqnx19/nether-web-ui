@@ -1,32 +1,39 @@
+:root {
+    --transition: 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    --glass: rgba(40, 42, 44, 0.72);
+    --stroke: rgba(255, 255, 255, 0.08);
+}
+
+/* HEADER */
 header {
-    pointer-events: none;
+    position: relative;
+    z-index: 1000;
 }
 
-header * {
-    pointer-events: auto;
-}
-
+/* BUTTON */
 .app-drawer-button {
     all: unset;
     position: fixed;
     top: 20px;
     left: 20px;
-    z-index: 1000;
+    z-index: 2000;
+
     cursor: pointer;
-    padding: 8px;
+    padding: 10px;
     border-radius: 50%;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+    transition: transform var(--transition), background var(--transition);
 }
 
 .app-drawer-button:hover {
-    background-color: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.08);
 }
 
-.app-drawer-button:hover .dots span {
-    background: #ffffff;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+.app-drawer-button:active {
+    transform: scale(0.92);
 }
 
+/* DOTS */
 .dots {
     display: grid;
     grid-template-columns: repeat(3, 5px);
@@ -39,9 +46,15 @@ header * {
     height: 5px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.7);
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
 }
 
+.app-drawer-button:hover .dots span {
+    background: #fff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+/* DRAWER */
 .app-drawer {
     display: none;
 }
@@ -50,110 +63,162 @@ header * {
     position: fixed;
     top: 75px;
     left: 20px;
-    z-index: 99999;
+    z-index: 1500;
 
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    width: 290px;
+    max-height: 75vh;
+
+    padding: 14px;
+
+    background: var(--glass);
+    backdrop-filter: blur(18px) saturate(180%);
+    -webkit-backdrop-filter: blur(18px) saturate(180%);
+
+    border: 1px solid var(--stroke);
+    border-radius: 26px;
+
+    overflow-y: auto;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.35);
+
+    animation: drawerIn 0.35s var(--transition);
+}
+
+/* iPhone-like open animation */
+@keyframes drawerIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.98);
+        filter: blur(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+/* GROUPS */
+.app-drawer .group {
     display: flex;
     flex-direction: column;
     gap: 6px;
 
-    background-color: rgba(40, 42, 44, 0.75);
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    padding: 10px;
+    border-radius: 20px;
 
-    padding: 12px;
-    border-radius: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
 
-    max-height: 75vh;
-    overflow-y: auto;
-    overflow-x: hidden;
+    position: relative;
+
+    transition: transform var(--transition),
+                background var(--transition),
+                box-shadow var(--transition);
+}
+
+/* GROUP hover = iPhone lift + glow */
+.app-drawer .group:hover {
+    transform: translateY(-2px) scale(1.01);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.25),
+        0 0 18px rgba(255, 255, 255, 0.06);
+}
+
+/* separator line */
+.app-drawer .group + .group {
+    margin-top: 6px;
+}
+
+/* ITEMS */
+.app-drawer a,
+.app-drawer button {
+    all: unset;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 12px 14px;
+    border-radius: 16px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+    font-weight: 500;
+    color: #f3f4f6;
+
+    transition:
+        transform var(--transition),
+        background var(--transition),
+        box-shadow var(--transition),
+        filter var(--transition);
+}
+
+/* ICONS */
+.app-drawer a img,
+.app-drawer button img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+
+    transition: var(--transition);
+}
+
+/* 🍎 iPhone-style hover (smooth lift + glow) */
+.app-drawer a:hover,
+.app-drawer button:hover {
+    background: rgba(255, 255, 255, 0.08);
+
+    transform: translateY(-2px) scale(1.02);
 
     box-shadow:
-        0 4px 30px rgba(0, 0, 0, 0.2),
-        0 1px 3px rgba(0, 0, 0, 0.1);
+        0 10px 20px rgba(0, 0, 0, 0.25),
+        0 0 12px rgba(255, 255, 255, 0.05);
+
+    filter: brightness(1.1);
 }
 
-.app-drawer .group {
-    background-color: #909090;
-    border-radius: 20px;
-    padding: 10px;
+.app-drawer a:hover img,
+.app-drawer button:hover img {
+    transform: scale(1.12);
 }
 
+/* click feel (iOS tap) */
+.app-drawer a:active,
+.app-drawer button:active {
+    transform: scale(0.97);
+}
+
+/* SCROLLBAR */
 .app-drawer.open::-webkit-scrollbar {
     width: 6px;
 }
 
 .app-drawer.open::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.12);
     border-radius: 10px;
 }
 
-.app-drawer a,
-.app-drawer button:not(.app-drawer-button) {
-    background: transparent;
-    border: none;
-    font-family: inherit;
-    text-align: left;
-
-    display: flex;
-    align-items: center;
-    gap: 16px;
-
-    width: 260px;
-    padding: 12px 16px;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 500;
-    color: #f3f4f6;
-    border-radius: 16px;
-    cursor: pointer;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-}
-
-.app-drawer a img,
-.app-drawer button:not(.app-drawer-button) img {
-    width: 32px;
-    height: 32px;
-    object-fit: contain;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-
-    border-radius: 0px;
-}
-
-.app-drawer a:hover,
-.app-drawer button:not(.app-drawer-button):hover {
-    background-color: rgba(255, 255, 255, 0.08);
-    color: #ffffff;
-    padding-left: 20px;
-}
-
-.app-drawer a:hover img,
-.app-drawer button:not(.app-drawer-button):hover img {
-    transform: scale(1.08);
-}
-
-.app-drawer a:active,
-.app-drawer button:not(.app-drawer-button):active {
-    background-color: rgba(255, 255, 255, 0.12);
-    transform: scale(0.98);
-}
-
+/* MOBILE */
 @media (max-width: 600px) {
-    .dots span {
-        background-color: rgb(0 0 0 / 0.08);
-    }
-
     .app-drawer.open {
-        left: 16px;
-        right: 16px;
+        left: 12px;
+        right: 12px;
         top: auto;
-        border-radius: 28px;
+        bottom: 12px;
+
+        width: auto;
+        border-radius: 30px;
     }
 
-    .app-drawer a,
-    .app-drawer button:not(.app-drawer-button) {
-        width: 100%;
-        box-sizing: border-box;
+    .dots span {
+        background: rgba(0, 0, 0, 0.15);
     }
 }

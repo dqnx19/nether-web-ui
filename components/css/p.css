@@ -1,4 +1,16 @@
 p {
-    font-weight: bold;
-    font-size: 11pt;
+    margin: 0 0 12px 0;
+
+    font-size: clamp(0.95rem, 0.3vw + 0.9rem, 1.05rem);
+    font-weight: 500;
+
+    line-height: 1.6;
+    letter-spacing: 0.2px;
+
+    color: rgba(255, 255, 255, 0.75);
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    max-width: 70ch;
 }

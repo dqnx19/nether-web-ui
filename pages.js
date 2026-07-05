@@ -129,18 +129,30 @@ function showHome() {
     setTitle("Nether Web UI")
     setContentOfMain(`
         <h1>Nether Web UI</h1>
-        <section>
-            <div class="grouped-list">
-                <button class="item" onclick="showComponents()" title="Displays Components page">
-                    <img src="img/links-icons/components.svg" alt="Components page link icon">
-                    Components
-                </button>
-                <button class="item" onclick="showAbout()" title="Displays About page">
-                    <img src="img/links-icons/about.svg" alt="About page link icon">
-                    About
-                </button>
+        <!--<section>-->
+            <div class="cards">
+                <div class="card" title="Displays Components page">
+                    <div class="header">
+                        <img src="img/links-icons/components.svg" alt="Components page link icon">
+                        <span class="heading">Components</span>
+                    </div>
+                    <div class="body">
+                        <span class="description">List of all UI Components</span>
+                        <button onclick="showComponents()">Open Link</button>
+                    </div>
+                </div>
+                <div class="card" title="Displays About page">
+                    <div class="header">
+                        <img src="img/links-icons/about.svg" alt="About page link icon">
+                        <span class="heading">About</span>
+                    </div>
+                    <div class="body">
+                        <span class="description">Information about the project and its authors.</span>
+                        <button onclick="showAbout()">Open Link</button>
+                    </div>
+                </div>
             </div>
-        </section>
+        <!--</section>-->
     `)
 }
 

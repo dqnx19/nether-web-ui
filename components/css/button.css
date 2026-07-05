@@ -1,28 +1,65 @@
 button:not(header button, footer button) {
+    appearance: none;
+    -webkit-appearance: none;
+
     background-color: #191b1e;
-    transition: background-color 0.2s ease, transform 0.1s ease;
+    color: #f3f4f6;
 
-    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+
     height: 50px;
-    border-radius: 10px;
+    padding: 10px 14px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
     cursor: pointer;
-    padding: 10px;
-    
+
     position: relative;
-    border: none;
+    overflow: hidden;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.15s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
 }
 
+/* HOVER – jemný lift + světlo */
 button:not(header button, footer button):hover {
-    background-color: #262c36;
+    background-color: #242a33;
+    border-color: rgba(255, 255, 255, 0.12);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.25);
+
+    transform: translateY(-1px);
 }
 
+/* ACTIVE – iOS “press” feel */
 button:not(header button, footer button):active {
-    transform: scale(0.98);
+    transform: translateY(0) scale(0.97);
+    box-shadow: none;
 }
 
+/* FOCUS – důležité pro modern UI */
+button:not(header button, footer button):focus-visible {
+    outline: 2px solid rgba(255, 165, 0, 0.6);
+    outline-offset: 2px;
+}
+
+/* LIGHT MODE */
 @media (prefers-color-scheme: light) {
     button:not(header button, footer button) {
-        background-color: #ededed;
-        color: black;
+        background-color: #f2f2f2;
+        color: #111;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    button:not(header button, footer button):hover {
+        background-color: #e8e8e8;
     }
 }

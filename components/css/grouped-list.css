@@ -1,7 +1,7 @@
 .grouped-list {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
     margin-top: 16px;
 }
 
@@ -9,98 +9,111 @@
 .grouped-list .item {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
 
-    padding: 18px 20px;
-    background: #1a1a1d;
-    border-radius: 14px;
-    border: 1px solid #18181a;
+    padding: 16px 18px;
 
-    color: #e6e6e6;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+
+    color: rgba(255, 255, 255, 0.9);
+
+    cursor: pointer;
+
+    position: relative;
+    overflow: hidden;
 
     transition:
-        background-color .25s ease,
-        border-color .25s ease,
-        transform .25s cubic-bezier(.2, .8, .2, 1),
-        box-shadow .25s ease,
-        opacity .25s ease;
+        transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        filter 0.25s ease;
+}
+
+/* subtle glow layer (iOS-like highlight) */
+.grouped-list .item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: radial-gradient(
+        circle at top left,
+        rgba(255, 255, 255, 0.08),
+        transparent 60%
+    );
+
+    opacity: 0;
+    transition: opacity 0.25s ease;
 }
 
 /* HOVER */
 .grouped-list .item:hover {
-    background: #232327;
-    border-color: #3a3a3d;
-    transform: translateX(6px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
-    cursor: pointer;
+    transform: translateX(6px) translateY(-1px);
+
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.12);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
-/* ACTIVE (kliknutí) */
+.grouped-list .item:hover::before {
+    opacity: 1;
+}
+
+/* ACTIVE */
 .grouped-list .item:active {
     transform: translateX(3px) scale(0.98);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
 
-/* FOCUS (klávesnice) */
+/* FOCUS */
 .grouped-list .item:focus-visible {
-    outline: 2px solid #6a5cff;
+    outline: 2px solid rgba(99, 102, 241, 0.6);
     outline-offset: 3px;
 }
 
 /* ICON */
 .grouped-list .item img {
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
     opacity: 0.85;
-    transition: opacity .25s ease, transform .25s ease, filter .25s ease;
+
+    transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
 .grouped-list .item:hover img {
     opacity: 1;
-    transform: scale(1.07);
-    filter: drop-shadow(0 0 4px rgba(255,255,255,0.25));
+    transform: scale(1.1);
 }
 
-/* FIRST & LAST ITEM RADIUS */
-.grouped-list .item:first-child {
-    border-top-left-radius: 26px;
-    border-top-right-radius: 26px;
-}
-
+/* REMOVE HARSH CORNERS LOGIC */
+.grouped-list .item:first-child,
 .grouped-list .item:last-child {
-    border-bottom-left-radius: 26px;
-    border-bottom-right-radius: 26px;
+    border-radius: 16px;
 }
 
+/* LIGHT MODE */
 @media (prefers-color-scheme: light) {
     .grouped-list .item {
-        background: #ffffff;
-        color: #1f1f23;
-        border-color: #e5e7eb;
-        box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+        background: rgba(255, 255, 255, 0.8);
+        color: #111827;
+        border-color: rgba(0, 0, 0, 0.08);
+        backdrop-filter: blur(10px);
     }
 
     .grouped-list .item:hover {
-        background: #f8fafc;
-        border-color: #cbd5e1;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        background: rgba(255, 255, 255, 1);
+        border-color: rgba(99, 102, 241, 0.2);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
     }
 
-    .grouped-list .item:active {
-        box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-    }
-
-    .grouped-list .item:focus-visible {
-        outline: 2px solid #4f46e5;
-    }
-
-    .grouped-list .item img {
-        opacity: 0.75;
-        filter: none;
-    }
-
-    .grouped-list .item:hover img {
-        opacity: 1;
-        filter: drop-shadow(0 0 4px rgba(79, 70, 229, 0.15));
+    .grouped-list .item::before {
+        background: radial-gradient(
+            circle at top left,
+            rgba(99, 102, 241, 0.08),
+            transparent 60%
+        );
     }
 }
