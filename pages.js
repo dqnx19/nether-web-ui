@@ -1,4 +1,4 @@
-import { setFavicon, setAttribute, setTitle, scrollUp, setContentOfHeader, setContentOfMain, setContentOfFooter, importCSSFromList, importJSFromList, getURLParam } from "https://js.nether.click/nether.js"
+import { highlightSyntax, setFavicon, setAttribute, setTitle, scrollUp, setContentOfHeader, setContentOfMain, setContentOfFooter, importCSSFromList, importJSFromList, getURLParam } from "https://js.nether.click/nether.js"
 
 importCSSFromList([
     "fonts/lexend/lexend.css",
@@ -210,7 +210,7 @@ const components = [
     { label: "Train Formation", key: "train-formation" }
 ];
 
-function showComponent(nameUpperCase, nameLowerCase) {
+async function showComponent(nameUpperCase, nameLowerCase) {
     scrollUp();
     setTitle(`${nameUpperCase} - Nether Web UI`)
     setContentOfMain(`
@@ -244,8 +244,7 @@ function showComponent(nameUpperCase, nameLowerCase) {
                             <span class="language">CSS</span>
                         </div>
                         <div class="body">
-                            <pre
-                                class="code">@import url("https://web-ui.nether.click/components/css/${nameLowerCase}.css");</pre>
+                            <pre class="code css">@import url("https://web-ui.nether.click/components/css/${nameLowerCase}.css");</pre>
                         </div>
                     </div>
                     <br>
@@ -255,7 +254,7 @@ function showComponent(nameUpperCase, nameLowerCase) {
                         </div>
                         <div class="body">
                             <pre
-                                class="code">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://web-ui.nether.click/components/css/${nameLowerCase}.css&quot;&gt;</pre>
+                                class="code html">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://web-ui.nether.click/components/css/${nameLowerCase}.css&quot;&gt;</pre>
                         </div>
                     </div>
                     <br>
@@ -266,7 +265,7 @@ function showComponent(nameUpperCase, nameLowerCase) {
                             <span class="language">CSS</span>
                         </div>
                         <div class="body">
-                            <pre class="code" id="css"></pre>
+                            <pre class="code css" id="css"></pre>
                         </div>
                     </div>
                     <br>
@@ -281,7 +280,7 @@ function showComponent(nameUpperCase, nameLowerCase) {
                             <span class="language">HTML</span>
                         </div>
                         <div class="body">
-                            <pre class="code">&lt;script src&quot;https://web-ui.nether.click/components/js/${nameLowerCase}.js&quot;&gt;</pre>
+                            <pre class="code html">&lt;script src&quot;https://web-ui.nether.click/components/js/${nameLowerCase}.js&quot;&gt;</pre>
                         </div>
                     </div>
                     <br>
@@ -290,7 +289,7 @@ function showComponent(nameUpperCase, nameLowerCase) {
                             <span class="language">JS</span>
                         </div>
                         <div class="body">
-                            <pre class="code" id="js"></pre>
+                            <pre class="code js" id="js"></pre>
                         </div>
                     </div>
                     <br>
@@ -303,7 +302,7 @@ function showComponent(nameUpperCase, nameLowerCase) {
                             <span class="language">HTML</span>
                         </div>
                         <div class="body">
-                            <pre class="code" type="text" id="html"></pre>
+                            <pre class="code html" type="text" id="html"></pre>
                         </div>
                     </div>
                 </div>
@@ -311,23 +310,27 @@ function showComponent(nameUpperCase, nameLowerCase) {
         </section>
     `)
 
-    fetch("components" + "/" + "css" + "/" + nameLowerCase + ".css")
+    await fetch("components" + "/" + "css" + "/" + nameLowerCase + ".css")
         .then(response => response.text())
         .then(data => {
             document.querySelector(".code#css").textContent = data;
         });
 
-    fetch("components" + "/" + "js" + "/" + nameLowerCase + ".js")
+    await fetch("components" + "/" + "js" + "/" + nameLowerCase + ".js")
         .then(response => response.text())
         .then(data => {
             document.querySelector(".code#js").textContent = data;
         });
 
-    fetch("components" + "/" + "html" + "/" + nameLowerCase + ".html")
+    await fetch("components" + "/" + "html" + "/" + nameLowerCase + ".html")
         .then(response => response.text())
         .then(data => {
             document.querySelector(".code#html").textContent = data;
         });
+
+    /* highlightSyntax("css", ".code.css")
+    highlightSyntax("js", ".code.js")
+    highlightSyntax("html", ".code.html") */
 }
 
 function showAbout() {
