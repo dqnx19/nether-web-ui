@@ -202,6 +202,7 @@ const components = [
     { label: "Main", key: "main" },
     { label: "Menu Bar", key: "menu-bar" },
     { label: "P (paragraph)", key: "p" },
+    { label: "Payment Terminal", key: "payment-terminal" },
     { label: "Section", key: "section" },
     { label: "Services Icons", key: "services-icons" },
     { label: "Table", key: "table" },
