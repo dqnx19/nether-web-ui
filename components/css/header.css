@@ -4,22 +4,17 @@ header {
     left: 0;
     right: 0;
 
-    height: 72px;
+    height: 100px;
     width: 100%;
+    
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
     z-index: 1000;
-
-    background: rgba(20, 20, 20, 0.35);
-    backdrop-filter: blur(14px) saturate(180%);
-    -webkit-backdrop-filter: blur(14px) saturate(180%);
-
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
 .logo {
@@ -28,6 +23,13 @@ header {
     border: none;
     background-color: transparent;
     cursor: pointer;
+    transition: none;
+    border-radius: 0%;
+    background-color: unset;
+}
+
+.logo:hover {
+    background-color: none;
 }
 
 .logo img {

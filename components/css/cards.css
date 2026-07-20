@@ -14,7 +14,7 @@
     width: 100%;
     padding: 20px;
 
-    background: rgba(255, 255, 255, 0.03);
+    background: rgb(51, 49, 49);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 20px;
 
@@ -27,16 +27,6 @@
         box-shadow .25s ease,
         background .25s ease,
         border-color .25s ease;
-}
-
-.card:hover {
-    transform: translateY(-4px);
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 165, 0, 0.5);
-
-    box-shadow:
-        0 12px 28px rgba(0, 0, 0, 0.3),
-        0 0 20px rgba(255, 165, 0, 0.15);
 }
 
 .card .header {

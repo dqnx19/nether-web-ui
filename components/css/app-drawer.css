@@ -4,13 +4,11 @@
     --stroke: rgba(255, 255, 255, 0.08);
 }
 
-/* HEADER */
 header {
     position: relative;
     z-index: 1000;
 }
 
-/* BUTTON */
 .app-drawer-button {
     all: unset;
     position: fixed;

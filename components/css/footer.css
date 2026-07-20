@@ -6,8 +6,6 @@ footer {
 
     transition: height 0.1s ease;
 
-    background-color: #070a0f;
-
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 
@@ -21,8 +19,7 @@ footer {
     z-index: 1000;
 
     overflow-x: auto;
-
-    align-items: flex-end; /* Tlačítka se zarovnají dolů */
+    align-items: flex-end;
 }
 
 footer button,

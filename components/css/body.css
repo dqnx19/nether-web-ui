@@ -2,9 +2,9 @@ body {
     min-width: 100vw;
     min-height: 100vh;
 
-    overflow-x: auto;
+    background: rgb(3, 3, 0);
 
-    background-color: #010409;
+    overflow: hidden;
     text-rendering: optimizeLegibility;
 }
 
