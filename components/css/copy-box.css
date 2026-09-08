@@ -2,26 +2,25 @@
 
 .copy-box {
     display: flex;
+    gap: 5px;
     flex-direction: column;
-    border: 1px solid #2a2a2d;
-    border-radius: 16px;
-    background: #141416;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
-    transition: border-color .25s ease, box-shadow .25s ease;
 }
 
-.copy-box:hover {
-    border-color: #3a3a3d;
-    box-shadow: 0 6px 28px rgba(0,0,0,0.35);
+.copy-box > * {
+    background-color: #2c2e35;
 }
 
 .copy-box .head {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
     display: flex;
     align-items: center;
     padding: 16px 20px;
-    background: #0f0f0f;
-    border-bottom: 1px solid #2a2a2d;
     font-weight: 600;
     font-size: 1.05rem;
     color: #f0f0f0;
@@ -29,7 +28,12 @@
 
 .copy-box .body {
     padding: 20px;
-    background: #1a1a1d;
+
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .copy-box .body .code {
@@ -43,32 +47,7 @@
 
 /* Light mode */
 @media (prefers-color-scheme: light) {
-    .copy-box {
-        border-color: #d9d9df;
-        background: #ffffff;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    }
-
-    .copy-box:hover {
-        border-color: #bfc3cc;
-        box-shadow: 0 6px 28px rgba(0,0,0,0.12);
-    }
-
-    .copy-box .head {
-        background: #f5f7fa;
-        border-bottom-color: #d9d9df;
-        color: #1f2328;
-    }
-
-    .copy-box .language {
-        color: #0f0f0f;
-    }
-
-    .copy-box .body {
-        background: #ffffff;
-    }
-
-    .copy-box .body .code {
-        color: #24292f;
+    .copy-box > * {
+        background-color: #f0f2f5;
     }
 }

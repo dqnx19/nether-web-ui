@@ -22,7 +22,7 @@ await importCSSFromList([
     "components/css/header.css",
     "components/css/headings.css",
 
-    "components/css/img.css",
+    "components/css/image.css",
 
     "components/css/lists.css",
 
@@ -39,7 +39,7 @@ await importCSSFromList([
     "components/css/timeline.css",
     "components/css/popup.css",
     "components/css/train-formation.css"
-])
+]);
 
 await importJSFromList([
     "https://nether.click/js/import-app-drawer.js",
@@ -67,7 +67,7 @@ await importJSFromList([
     "components/js/popup.js",
 
     "lib/marked.js"
-])
+]);
 
 setAttribute("html", "lang", "en")
 
@@ -138,6 +138,7 @@ async function showHome() {
 
     nwui.cards.create({
         parent: "main",
+        id: "links"
     });
 
     maindb.forEach(page => {
@@ -145,7 +146,7 @@ async function showHome() {
             onclick: page.func,
             image: `img/links-icons/${page.techname}.svg`,
             heading: page.name,
-            parent: ".cards"
+            parent: "#links"
         })
     });
 }
