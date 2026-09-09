@@ -2,7 +2,7 @@
     all: unset;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 5px;
     padding: 8px 0;
 }
 
@@ -31,18 +31,15 @@
         transform .2s ease;
 }
 
-/* Hover = zvýšení elevation */
 .grouped-list .item:hover {
     background: hsl(220 15% 16%);
     box-shadow: 0 4px 10px hsl(0 0% 0% / 0.25);
 }
 
-/* Active = jemný “press” efekt */
 .grouped-list .item:active {
     transform: scale(0.97);
 }
 
-/* Ikona v kruhu – typické pro Pixel UI */
 .grouped-list .item img {
     width: 32px;
     height: 32px;
@@ -64,7 +61,6 @@
     border-radius: 20px;
 }
 
-/* Light mode */
 @media (prefers-color-scheme: light) {
     .grouped-list .item {
         background: hsl(0 0% 100%);
