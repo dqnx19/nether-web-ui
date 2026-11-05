@@ -3,7 +3,6 @@
 ```JavaScript
 nwui.timeline.create({
     parent: "",
-    class: "",
     id: "",
     events: [
         {

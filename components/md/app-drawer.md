@@ -1,20 +1,18 @@
+## Importing API
+```javascript
+import * as appDrawer from "./app-drawer.js";
+```
+
 ## API - Create
 
 ```javascript
-nwui.appDrawer.create({
-    parent: 
-    class: 
-    id:
+appDrawer.create({
+    parent: "body",
     apps: [
         {
-            name: "App 1",
-            link: "https://example.com",
-            icon: "https://example.com/favicon.png"
-        },
-        {
-            name: "App 2",
-            link: "https://example.com",
-            icon: "https://example.com/favicon.png"
+            name: "",
+            icon: "",
+            link: ""
         }
     ]
 });
@@ -23,5 +21,7 @@ nwui.appDrawer.create({
 ## API - Toggle
 
 ```javascript
-nwui.appDrawer.toggle({ selector: ".app-drawer"})
+toggle({
+    selector: ".app-drawer"
+});
 ```
