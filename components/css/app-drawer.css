@@ -1,194 +1,40 @@
-:root {
-    --transition: 0.28s cubic-bezier(0.22, 1, 0.36, 1);
-    --stroke: rgba(255, 255, 255, 0.08);
+.app-drawer {
+    display: none;
+    flex-direction: column;
+
+    width: 300px;
+    height: 100px;
+
+    background-color: rgb(12, 12, 12);
 }
 
-header {
-    position: relative;
-    z-index: 1000;
+.app-drawer.open {
+    display: flex;
 }
 
-.app-drawer-button {
-    all: unset;
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 2000;
-
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 50%;
-
-    transition: transform var(--transition), background var(--transition);
-}
-
-.app-drawer-button:hover {
-    background: rgba(255, 255, 255, 0.08);
-}
-
-.app-drawer-button:active {
-    transform: scale(0.92);
-}
-
-/* DOTS */
-.dots {
+.app-drawer-button .dots {
     display: grid;
     grid-template-columns: repeat(3, 5px);
     grid-template-rows: repeat(3, 5px);
     gap: 4px;
 }
 
-.dots span {
+.app-drawer-button .dots span {
     width: 5px;
     height: 5px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.7);
-    transition: var(--transition);
 }
 
-.app-drawer-button:hover .dots span {
-    background: #fff;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+.app-drawer .app {
+
 }
 
-/* DRAWER */
-.app-drawer {
-    display: none;
+.app-drawer .app:hover {
+    background-color: deepskyblue;
 }
 
-.app-drawer.open {
-    position: fixed;
-    top: 75px;
-    left: 20px;
-    z-index: 1500;
-
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-
-    width: 350px;
-    height: 500px;
-    max-height: 75vh;
-
-    padding: 14px;
-
-    background: #282a2c;
-    backdrop-filter: blur(18px) saturate(180%);
-    -webkit-backdrop-filter: blur(18px) saturate(180%);
-
-    border: 1px solid var(--stroke);
-    border-radius: 26px;
-
-    overflow-y: auto;
-
-    box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.35);
-}
-
-.app-drawer .group {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-
-    padding: 10px;
-    border-radius: 20px;
-
-    background: #1b1b1b;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-
-    position: relative;
-
-    transition: transform var(--transition),
-                background var(--transition),
-                box-shadow var(--transition);
-}
-
-/* separator line */
-.app-drawer .group + .group {
-    margin-top: 6px;
-}
-
-/* ITEMS */
-.app-drawer a,
-.app-drawer button {
-    all: unset;
-
-    display: flex;
-    align-items: center;
-    gap: 14px;
-
-    padding: 12px 14px;
-    border-radius: 16px;
-
-    cursor: pointer;
-
-    font-size: 15px;
-    font-weight: 500;
-    color: #f3f4f6;
-
-    transition:
-        transform var(--transition),
-        background var(--transition),
-        box-shadow var(--transition),
-        filter var(--transition);
-}
-
-/* ICONS */
-.app-drawer a img,
-.app-drawer button img {
-    width: 28px;
-    height: 28px;
-    object-fit: contain;
-
-    transition: var(--transition);
-}
-
-/* 🍎 iPhone-style hover (smooth lift + glow) */
-.app-drawer a:hover,
-.app-drawer button:hover {
-    background: rgba(255, 255, 255, 0.08);
-
-    box-shadow:
-        0 10px 20px rgba(0, 0, 0, 0.25),
-        0 0 12px rgba(255, 255, 255, 0.05);
-
-    filter: brightness(1.1);
-}
-
-.app-drawer a:hover img,
-.app-drawer button:hover img {
-    transform: scale(1.12);
-}
-
-/* click feel (iOS tap) */
-.app-drawer a:active,
-.app-drawer button:active {
-    transform: scale(0.97);
-}
-
-/* SCROLLBAR */
-.app-drawer.open::-webkit-scrollbar {
-    width: 6px;
-}
-
-.app-drawer.open::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.12);
-    border-radius: 10px;
-}
-
-/* MOBILE */
-@media (max-width: 600px) {
-    .app-drawer.open {
-        left: 12px;
-        right: 12px;
-        top: 100px;
-        bottom: 12px;
-
-        width: auto;
-        border-radius: 30px;
-    }
-
-    .dots span {
-        background: rgba(0, 0, 0, 0.15);
-    }
+.app-drawer .app img {
+    width: 32px;
+    height: 32px;
 }

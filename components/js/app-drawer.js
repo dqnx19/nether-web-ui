@@ -1,76 +1,58 @@
-document.addEventListener("click", (e) => {
-    const app_drawer = document.querySelector(".app-drawer");
-    const app_drawer_button = document.querySelector(".app-drawer-button");
+export function create(options = {}) {
+    const wrapper = document.createElement("div");
+    wrapper.className = "app-drawer-wrapper";
 
-    if (!app_drawer || !app_drawer_button) return;
+    const toggleButton = document.createElement("button");
+    toggleButton.className = "app-drawer-button";
+    toggleButton.type = "button";
 
-    const clickedInsideDrawer = app_drawer.contains(e.target);
-    const clickedButton = app_drawer_button.contains(e.target);
-
-    if (!clickedInsideDrawer && !clickedButton) {
-        app_drawer.classList.remove("open");
-    }
-});
-
-window.nwui = window.nwui || {};
-
-nwui.appDrawer = {
-    create(options = {}) {
-        const element = document.createElement("div");
-        
-        element.classList.add(options.class);
-        element.id = options.id;
-
-        element.className = "app-drawer-wrapper";
-        element.innerHTML = `
-            <div class="app-drawer-wrapper">
-                <button onclick="nwui.appDrawer.toggle()" class="app-drawer-button">
-                <div class="dots">
-                    <span></span><span></span><span></span>
-                    <span></span><span></span><span></span>
-                    <span></span><span></span><span></span>
-                </div>
-            </button>
-            <div class="app-drawer">
-                <button onclick="nwui.appDrawer.toggle()" class="app-drawer-button"></button>
-            </div>
+    toggleButton.innerHTML = `
+        <div class="dots">
+            <span></span><span></span><span></span>
+            <span></span><span></span><span></span>
+            <span></span><span></span><span></span>
         </div>
-        `
+    `;
 
-        const app_drawer = document.querySelector(".app-drawer");
-        
+    const appDrawer = document.createElement("div");
+    appDrawer.className = "app-drawer";
 
-        options.apps.forEach(app => {
-            const appButton = document.createElement("a");
+    (options.apps ?? []).forEach(app => {
+        const appButton = document.createElement("a");
 
-            appButton.href = app.link;
-            appButton.innerHTML = `
-                <img src="${app.icon}" alt="${app.name} icon">
-                <span>${app.name}</span>
-            `
+        appButton.href = app.link;
+        appButton.innerHTML = `
+            <img src="${app.icon}" alt="${app.name} icon">
+            <span>${app.name}</span>
+        `;
 
-            app_drawer.appendChild(appButton)
-        });
+        appDrawer.appendChild(appButton);
+    });
 
-        if (options.parent) {
-            const parent = typeof options.parent === "string"
-                ? document.querySelector(options.parent)
-                : options.parent;
+    toggleButton.addEventListener("click", () => {
+        toggle({ selector: appDrawer });
+    });
 
-            if (parent) {
-                parent.appendChild(element);
-            }
-        }
-    },
-    
-    toggle(options = {}) {
-        const app_drawer = document.querySelector(options.selector);
+    wrapper.append(toggleButton, appDrawer);
 
-        if (!app_drawer) {
-            console.log("App drawer not found");
-            return;
-        }
+    const parent = typeof options.parent === "string"
+        ? document.querySelector(options.parent)
+        : options.parent ?? document.body;
 
-        app_drawer.classList.toggle("open");
+    parent?.appendChild(wrapper);
+
+    return wrapper;
+}
+
+export function toggle(options = {}) {
+    const appDrawer = typeof options.selector === "string"
+        ? document.querySelector(options.selector)
+        : options.selector;
+
+    if (!appDrawer) {
+        console.log("App drawer not found");
+        return;
     }
+
+    appDrawer.classList.toggle("open");
 }
