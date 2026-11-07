@@ -1,11 +1,25 @@
 ## API - Create
 ```javascript
-nwui.copyBox.create({
+copyBox.create({
     parent: "",
     id: "",
-    class: "",
     language: "",
     code: "",
-    render: ""
 });
+```
+
+## API - changeLanguage
+```javascript
+copyBox.changeLanguage({
+	id: "", // copy box id
+	language: "" // language that will be set
+})
+```
+
+## API changeCode
+```javascript
+copyBox.changeCode({
+	id: "" // copy box id
+	code: "" // code that will be set
+})
 ```
