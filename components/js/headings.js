@@ -1,19 +1,14 @@
-window.nwui = window.nwui || {};
+export function create(options = {}) {
+    const id = options.id;
+    const content = options.content;
 
-nwui.headings = {
-    create(options = {}) {
-        const heading = document.createElement(`h${options.level}`);
+    const heading = document.createElement(`h${options.level || 1}`);
+    heading.dataset.id = id || "";
+    heading.textContent = content || "";
 
-        heading.className = options.class || "";
-        heading.id = options.id || "";
-        heading.innerHTML = options.content || "";
+    typeof options.parent === "string"
+        ? document.querySelector(options.parent).appendChild(heading)
+        : options.parent.appendChild(heading)
 
-        if (typeof options.parent === "string") {
-            document.querySelector(options.parent)?.appendChild(heading);
-        } else if (options.parent instanceof HTMLElement) {
-            options.parent.appendChild(heading);
-        }
-
-        return heading;
-    }
-};
+    return heading;
+}
