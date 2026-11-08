@@ -1,30 +1,26 @@
-## API - Create
+## API – create
 
-```JAVASCRIPT
-nwui.cards.create({
-    parent: "",
-    class: "",
-    id: "",
+```javascript
+Cards.create({
+    parent: "", // Parent HTML element or CSS selector
+    id: "", // Unique ID for identifying the card container
     cards: [
         {
-            class: "",
-            id: "",
-            onclick: "",
-            image: "",
-            heading: ""
+            onclick: "", // Click handler (function or JavaScript string)
+            image: "", // Image URL
+            heading: "" // Card heading
         }
     ]
-})
+});
 ```
 
-## API - addCard
+## API – addCard
 
-```JAVASCRIPT
-nwui.cards.addCard({
-    class: "",
-    id: "",
-    onclick: "",
-    image: "",
-    heading: "",
-    parent: ""
-})
+```javascript
+Cards.addCard({
+    parent: "", // ID of the existing card container
+    onclick: "", // Click handler (function or JavaScript string)
+    image: "", // Image URL
+    heading: "" // Card heading
+});
+```
