@@ -2,13 +2,12 @@
 
 ```javascript
 nwui.detailsPanel.create({
-    parent: "",
-    class: "",
-    id: "",
+    parent: "", // HTML element
+    id: "", // id 
     details: [
         {
-            image: "",
-            text: ""
+            image: "", // detail image
+            text: "" // detail text
         }
     ]
 })
@@ -18,8 +17,8 @@ nwui.detailsPanel.create({
 
 ```javascript
 nwui.detailsPanel.addDetail({
-    parent: "",
-    image: "",
-    text: ""
+    parent: "", // details panel id
+    image: "", // detail image
+    text: "" // detail text
 })
 ```

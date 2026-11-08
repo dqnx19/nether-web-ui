@@ -1,66 +1,57 @@
-window.nwui = window.nwui || {};
+export function create(options = {}) {
+    const parent = options.parent;
+    const id = options.id;
+    const details = options.details;
 
-nwui.detailsPanel = {
-    create(options = {}) {
-        const detailsPanel = document.createElement("div");
-        detailsPanel.className = "details-panel";
+    const detailsPanel = document.createElement("div");
+    detailsPanel.className = "details-panel";
 
-        if (options.class) {
-            detailsPanel.classList.add(options.class);
-        }
+    id
+        ? detailsPanel.dataset.id = id
+        : null
 
-        if (options.id) {
-            detailsPanel.id = options.id;
-        }
+    if (details) {
+        details.forEach(detailSrc => {
+            const detail = document.createElement("div");
+            detail.className = "detail";
+            detailsPanel.appendChild(detail);
 
-        if (options.details) {
-            options.details.forEach(detailSrc => {
-                const detail = document.createElement("div");
-                detail.className = "detail";
-                detailsPanel.appendChild(detail);
+            const image = document.createElement("img");
+            image.src = detailSrc.image;
+            detail.appendChild(image);
 
-                const image = document.createElement("img");
-                image.src = detailSrc.image;
-                detail.appendChild(image);
+            const text = document.createElement("span");
+            text.textContent = detailSrc.text;
+            detail.appendChild(text);
+        });
+    };
 
-                const text = document.createElement("span");
-                text.textContent = detailSrc.text;
-                detail.appendChild(text);
-            });
-        };
-
-        if (options.parent) {
-            const parent = typeof options.parent === "string"
-                ? document.querySelector(options.parent)
-                : options.parent;
-
-            if (parent) {
-                parent.appendChild(detailsPanel);
-            }
-        }
-    },
-
-    addDetail(options = {}) {
-        const detail = document.createElement("div");
-        detail.className = "detail";
-        if (options.parent) {
-            const parent = typeof options.parent === "string"
-                ? document.querySelector(options.parent)
-                : options.parent;
-
-            if (parent) {
-                parent.appendChild(detail);
-            }
-        }
-
-        const image = document.createElement("img");
-        image.src = options.image;
-        detail.appendChild(image);
-
-        const text = document.createElement("span");
-        text.textContent = options.text;
-        detail.appendChild(text);
-
-        return detail;
+    if (parent) {
+        typeof parent === "string"
+            ? document.querySelector(parent).appendChild(detailsPanel)
+            : parent.appendChild(detailsPanel)
     }
+
+    return detailsPanel;
+}
+
+export function addDetail(options = {}) {
+    const parent = options.parent;
+    const image = options.image;
+    const text = options.text;
+
+    const detail = document.createElement("div");
+    detail.className = "detail";
+
+    const img = document.createElement("img");
+    img.src = image;
+    detail.appendChild(img);
+
+    const span = document.createElement("span");
+    span.textContent = text;
+    detail.appendChild(span);
+
+    document.querySelector(`.details-panel[data-id="${parent}"]`).appendChild(detail)
+
+    return detail;
 }
