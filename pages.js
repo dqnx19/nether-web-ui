@@ -1,99 +1,66 @@
-import { createElement, importCSSFromList, importJSFromList, setFavicon, setAttribute, setTitle, scrollUp, setContentOfHeader, setContentOfMain, setContentOfFooter, /* importCSSFromList, importJSFromList */ getURLParam } from "https://js.nether.click/nether.js"
+import * as vorxel from "https://vorxel.nether.click/vorxel.js"
+import { marked } from "./lib/marked.js";
+import * as App from "./components/js/app.js"
 
-await importCSSFromList([
-    "fonts/lexend/lexend.css",
-
-    "components/css/a.css",
-    "components/css/all.css",
-    "components/css/app-drawer.css",
-
-    "components/css/body.css",
-    "components/css/button.css",
-
-    "components/css/cards.css",
-    "components/css/context-menu.css",
-    "components/css/copy-box.css",
-
-    "components/css/footer.css",
-    "components/css/form.css",
-
-    "components/css/grouped-list.css",
-
-    "components/css/header.css",
-    "components/css/headings.css",
-
-    "components/css/image.css",
-
-    "components/css/lists.css",
-
-    "components/css/main.css",
-    "components/css/menu-bar.css",
-
-    "components/css/p.css",
-
-    "components/css/section.css",
-    "components/css/services-icons.css",
-
-    "components/css/table.css",
-    "components/css/tabs.css",
-    "components/css/timeline.css",
-    "components/css/popup.css",
-    "components/css/train-formation.css"
+vorxel.importCSS([
+    { href: "fonts/lexend/lexend.css" },
+    { href: "components/css/app.css"},
+    { href: "components/css/app-drawer.css" },
+    { href: "components/css/button.css" },
+    { href: "components/css/cards.css" },
+    { href: "components/css/copy-box.css" },
+    { href: "components/css/footer.css" },
+    { href: "components/css/grouped-list.css" },
+    { href: "components/css/header.css" },
+    { href: "components/css/headings.css" },
+    { href: "components/css/image.css" },
+    { href: "components/css/lists.css" },
+    { href: "components/css/main.css" },
+    { href: "components/css/menu-bar.css" },
+    { href: "components/css/section.css" },
+    { href: "components/css/services-icons.css" },
+    { href: "components/css/table.css" },
+    { href: "components/css/tabs.css" },
+    { href: "components/css/timeline.css" },
 ]);
 
-await importJSFromList([
-    "https://nether.click/js/import-app-drawer.js",
-    "https://nether.click/js/import-app-check.js",
+/* vorxel.importJS([
+    { src: "https://nether.click/js/import-app-drawer.js" },
+    { src: "https://nether.click/js/import-app-check.js" },
+]);*/
 
-    "components/js/a.js",
-    "components/js/all.js",
-    "components/js/app-drawer.js",
+vorxel.setFavicon({ url: "img/icons/favicon.svg" });
 
-    "components/js/body.js",
-    "components/js/button.js",
-
-    "components/js/cards.js",
-    "components/js/copy-box.js",
-
-    "components/js/footer.js",
-    "components/js/form.js",
-
-    "components/js/headings.js",
-
-    "components/js/menu-bar.js",
-
-    "components/js/tabs.js",
-    "components/js/timeline.js",
-    "components/js/popup.js",
-
-    "lib/marked.js"
-]);
-
-setAttribute("html", "lang", "en")
-
-setFavicon("img/icons/favicon.svg")
+App.create({
+    language: "en"
+})
 
 const maindb = await fetch("json/pages.json").then(r => r.json());
 
-setContentOfHeader(`
-    <div class="app-drawer-wrapper"></div>
-    <button onclick="showHome()" class="logo" title="Shows Home Page">
-        <img src="img/icons/favicon.svg" alt="Nether Web UI Logo">
-    </button>
-`);
+vorxel.createElement({
+    element: "main",
+    parent: document.body
+})
 
-setContentOfFooter(`
+vorxel.createElement({
+    element: "footer",
+    parent: document.body
+})
+
+vorxel.setHTML({
+    selector: "footer",
+    content: `
         <button onclick="showHome()" title="shows home page">
             <img src="img/icons/favicon.svg" alt="home page link icon">
         </button>
-    `
-    +
-    maindb.map(element => `
-        <button onclick="${element.func}" title="Shows ${element.name} page">
-            <img src="img/links-icons/${element.techname}.svg" alt="${element.name} page link icon">
-        </button>
-    `).join("")
-);
+        `
+        +
+        maindb.map(element => `
+            <button onclick="${element.func}" title="Shows ${element.name} page">
+                <img src="img/links-icons/${element.techname}.svg" alt="${element.name} page link icon">
+            </button>
+        `).join("")
+});
 
 window.showHome = showHome
 window.showComponents = showComponents
@@ -126,9 +93,12 @@ marked.use({
 });
 
 async function showHome() {
-    scrollUp();
-    setTitle("Nether Web UI");
-    setContentOfMain("");
+    vorxel.scrollUp();
+    vorxel.setTitle({ title: "Nether Web UI" });
+    vorxel.setHTML({
+        selector: "main",
+        content: ""
+    })
 
     nwui.headings.create({
         level: 1,
@@ -152,9 +122,12 @@ async function showHome() {
 }
 
 async function showComponents() {
-    scrollUp();
-    setTitle("Components - Nether Web UI");
-    setContentOfMain("");
+    vorxel.scrollUp();
+    vorxel.setTitle({ title: "Components - Nether Web UI" });
+    vorxel.setHTML({
+        selector: "main",
+        content: ""
+    })
 
     nwui.headings.create({
         level: 1,
@@ -182,9 +155,12 @@ async function showComponents() {
 }
 
 async function showAbout() {
-    scrollUp();
+    vorxel.scrollUp();
     setTitle("About - Nether Web UI");
-    setContentOfMain("");
+    vorxel.setHTML({
+        selector: "main",
+        content: ""
+    })
 
     nwui.headings.create({
         level: 1,
