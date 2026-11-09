@@ -2,15 +2,13 @@
 
 ```javascript
 nwui.tabs.create({
-    class: "",
-    id: "",
     parent: "",
+    id: "",
     tabs: [
         {
-            class: "",
             id: "",
-            title: "",
             image: "",
+            title: "",
             innerHTML: ""
         }
     ]
@@ -21,11 +19,10 @@ nwui.tabs.create({
 
 ```javascript
 nwui.tabs.addTab({
-    class: "",
-    id: "",
-    title: "",
-    image: "",
     parent: "",
+    id: "",
+    image: "",
+    title: "",
     innerHTML: ""
 })
 ```
@@ -34,6 +31,7 @@ nwui.tabs.addTab({
 
 ```javascript
 nwui.tabs.displayTab({
-    selector: ""
+    tabs: "",
+    tab: ""
 })
 ```

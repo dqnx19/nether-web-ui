@@ -1,239 +1,140 @@
-window.nwui = window.nwui || {};
-
-nwui.tabs = {
-
-    create(options = {}) {
-
-        const tabs = document.createElement("div");
-        tabs.className = "tabs";
-
-        if (options.class) {
-            tabs.classList.add(options.class);
-        }
-
-        if (options.id) {
-            tabs.id = options.id;
-        }
-
-
-        const buttons = document.createElement("div");
-        buttons.className = "buttons";
-
-        const contents = document.createElement("div");
-        contents.className = "contents";
-
-
-        tabs.appendChild(buttons);
-        tabs.appendChild(contents);
-
-
-        // Parent může být selector nebo DOM element
-        if (options.parent) {
-
-            let parent;
-
-            if (typeof options.parent === "string") {
-                parent = document.querySelector(options.parent);
-            } else {
-                parent = options.parent;
-            }
-
-            if (parent) {
-                parent.appendChild(tabs);
-            }
-        }
-
-
-        // Přidání karet
-        if (Array.isArray(options.tabs)) {
-
-            options.tabs.forEach(card => {
-
-                nwui.tabs.addTab({
-                    ...card,
-                    parent: tabs
-                });
-
-            });
-
-        }
-
-
-        // Aktivace první karty
-        if (options.tabs?.length) {
-
-            const firstCard = tabs.querySelector(
-                `.content[data-tab-id="${options.tabs[0].id}"]`
-            );
-
-            if (firstCard) {
-                nwui.tabs.displayTab({
-                    selector: firstCard
-                });
-            }
-        }
-
-
-        return tabs;
-    },
-
-
-    addTab(options = {}) {
-
-        let parent;
-
-        if (typeof options.parent === "string") {
-            parent = document.querySelector(options.parent);
-        } else {
-            parent = options.parent;
-        }
-
-        if (!parent) {
-            return null;
-        }
-
-
-        const buttons = parent.querySelector(".buttons");
-        const contents = parent.querySelector(".contents");
-
-        if (!buttons || !contents) {
-            return null;
-        }
-
-
-        // Content
-        const content = document.createElement("div");
-
-        content.className = "content";
-
-        if (options.class) {
-            content.classList.add(options.class);
-        }
-
-        if (options.id) {
-            content.dataset.tabId = options.id;
-            content.id = options.id;
-        }
-
-        content.innerHTML = options.innerHTML ?? "";
-
-        contents.appendChild(content);
-
-
-        // Button
-        const button = document.createElement("button");
-
-        button.className = "button";
-
-        if (options.class) {
-            button.classList.add(options.class);
-        }
-
-        // ID tabu
-        if (options.id) {
-            button.dataset.tabId = options.id;
-        }
-
-
-        // Image
-        if (options.image) {
-
-            const image = document.createElement("img");
-
-            image.src = options.image;
-            image.className = "image";
-
-            button.appendChild(image);
-        }
-
-
-        // Title
-        if (options.title) {
-
-            const title = document.createElement("span");
-
-            title.className = "title";
-            title.textContent = options.title;
-
-            button.appendChild(title);
-        }
-
-
-        // Click
-        button.onclick = () => {
-
-            nwui.tabs.displayTab({
-                selector: content
-            });
-
-        };
-
-
-        buttons.appendChild(button);
-
-
-        return content;
-    },
-
-
-    displayTab(options = {}) {
-
-        // Selector může být string nebo DOM element
-        let card;
-
-        if (typeof options.selector === "string") {
-            card = document.querySelector(options.selector);
-        } else {
-            card = options.selector;
-        }
-
-        if (!card) {
-            return false;
-        }
-
-
-        const tabs = card.closest(".tabs");
-
-        if (!tabs) {
-            return false;
-        }
-
-
-        // Deaktivace všech contentů
-        tabs.querySelectorAll(
-            ".contents .content.active"
-        ).forEach(content => {
-
-            content.classList.remove("active");
-
-        });
-
-
-        // Aktivace vybraného contentu
-        card.classList.add("active");
-
-
-        // Najdeme button podle ID karty
-        const tabId = card.dataset.tabId;
-
-        tabs.querySelectorAll(
-            ".buttons .button.active"
-        ).forEach(button => {
-
-            button.classList.remove("active");
-
-        });
-
-
-        const button = tabs.querySelector(
-            `.buttons .button[data-tab-id="${tabId}"]`
-        );
-
-        if (button) {
-            button.classList.add("active");
-        }
-
-
-        return true;
+export function create(options = {}) {
+    if (typeof options === "string") {
+        options = JSON.parse(options);
     }
-};
+
+    const parent = options.parent;
+    const id = options.id;
+    const tabs = options.tabs;
+
+    const tabsDiv = document.createElement("div");
+    tabsDiv.className = "tabs";
+    tabsDiv.dataset.id = id;
+
+    const buttonsDiv = document.createElement("div");
+    buttonsDiv.className = "buttons";
+    tabsDiv.appendChild(buttonsDiv);
+
+    const contentsDiv = document.createElement("div");
+    contentsDiv.className = "contents";
+    tabsDiv.appendChild(contentsDiv);
+
+    tabs.forEach(tab => {
+        const button = document.createElement("button");
+        button.className = "button";
+        button.dataset.id = tab.id;
+
+        button.addEventListener("click", () => {
+            buttonsDiv.querySelectorAll(".button").forEach(btn => {
+                btn.classList.remove("active");
+            });
+
+            contentsDiv.querySelectorAll(".content").forEach(item => {
+                item.classList.remove("active");
+            });
+
+            button.classList.add("active");
+            content.classList.add("active");
+        });
+
+        const buttonImage = document.createElement("img");
+        buttonImage.src = tab.image;
+        button.appendChild(buttonImage);
+
+        const buttonTitle = document.createElement("span");
+        buttonTitle.textContent = tab.title;
+        button.appendChild(buttonTitle);
+
+        buttonsDiv.appendChild(button);
+
+
+        const content = document.createElement("div");
+        content.className = "content";
+        content.dataset.id = tab.id;
+        content.innerHTML = tab.innerHTML;
+
+        contentsDiv.appendChild(content);
+    });
+
+    typeof parent === "string"
+        ? document.querySelector(parent).appendChild(tabsDiv)
+        : parent.appendChild(tabsDiv)
+
+    buttonsDiv.querySelector(".button")?.click();
+
+    return tabsDiv;
+}
+
+export function addTab(options = {}) {
+    if (typeof options === "string") {
+        options = JSON.parse(options);
+    }
+
+    const parent = options.parent;
+    const id = options.id;
+    const image = options.image;
+    const title = options.title;
+    const innerHTML = options.innerHTML;
+
+    const button = document.createElement("button");
+    button.className = "button";
+    button.dataset.id = id;
+
+    const buttonImage = document.createElement("img");
+    buttonImage.src = image;
+    button.appendChild(buttonImage);
+
+    const buttonTitle = document.createElement("span");
+    buttonTitle.textContent = title;
+    button.appendChild(buttonTitle);
+
+
+    const content = document.createElement("div");
+    content.className = "content";
+    content.dataset.id = id;
+    content.innerHTML = innerHTML;
+
+    button.addEventListener("click", () => {
+        target.querySelectorAll(".button").forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+        target.querySelectorAll(".content").forEach(item => {
+            item.classList.remove("active");
+        });
+
+        button.classList.add("active");
+        content.classList.add("active");
+    });
+
+    const target = document.querySelector(`.tabs[data-id="${parent}"]`);
+    target.querySelector(".buttons").appendChild(button);
+    target.querySelector(".contents").appendChild(content)
+}
+
+export function displayTab(options = {}) {
+    if (typeof options === "string") {
+        options = JSON.parse(options);
+    }
+
+    const tabs = options.tabs;
+    const tab = options.tab;
+
+    const target = document.querySelector(`.tabs[data-id="${tabs}"]`);
+
+    target.querySelectorAll(".button.active, .content.active")
+        .forEach(element => {
+            element.classList.remove("active");
+        });
+
+    const button = target.querySelector(
+        `.buttons .button[data-id="${CSS.escape(tab)}"]`
+    );
+
+    const content = target.querySelector(
+        `.contents .content[data-id="${CSS.escape(tab)}"]`
+    );
+
+    button.classList.add("active");
+    content.classList.add("active");
+}
