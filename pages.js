@@ -24,6 +24,8 @@ vorxel.importCSS([
     { href: "components/css/timeline.css" },
 ]);
 
+vorxel.importCSS({ href: "components/css/popup.css"})
+
 /* vorxel.importJS([
     { src: "https://nether.click/js/import-app-drawer.js" },
     { src: "https://nether.click/js/import-app-check.js" },
@@ -33,6 +35,12 @@ vorxel.setFavicon({ url: "img/icons/favicon.svg" });
 
 App.create({
     language: "en"
+})
+
+import * as Popup from "./components/js/popup.js";
+Popup.create({
+    innerHTML: "<h1>idk</h1>",
+    addCloseButton: true
 })
 
 const maindb = await fetch("json/pages.json").then(r => r.json());

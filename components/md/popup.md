@@ -1,20 +1,15 @@
-## Code example
-```html
-<div class="popup"></div>
-```
-
 ## API - Create
 ```javascript
-nwui.popup.create({
-    parent: "",
-    class: ""
-    id: ""
-    innerHTML: ""
+Popup.create({
+    id: "", // popup id
+    innerHTML: "", // Popup content
+    addCloseButton: "" // adds button to close popup
 })
 ```
 
 ## API - Close
 ```javascript
-nwui.popup.close({
-    selector: ""
-})
+Popup.close({
+    id: "" // popup id
+});
+```
