@@ -1,10 +1,13 @@
 import * as vorxel from "https://vorxel.nether.click/vorxel.js"
 import { marked } from "./lib/marked.js";
 import * as App from "./components/js/app.js"
+import * as Headings from "./components/js/headings.js"
+import * as Cards from "./components/js/cards.js"
+import * as Tabs from "./components/js/tabs.js"
 
 vorxel.importCSS([
     { href: "fonts/lexend/lexend.css" },
-    { href: "components/css/app.css"},
+    { href: "components/css/app.css" },
     { href: "components/css/app-drawer.css" },
     { href: "components/css/button.css" },
     { href: "components/css/cards.css" },
@@ -24,7 +27,7 @@ vorxel.importCSS([
     { href: "components/css/timeline.css" },
 ]);
 
-vorxel.importCSS({ href: "components/css/popup.css"})
+vorxel.importCSS({ href: "components/css/popup.css" })
 
 /* vorxel.importJS([
     { src: "https://nether.click/js/import-app-drawer.js" },
@@ -35,12 +38,6 @@ vorxel.setFavicon({ url: "img/icons/favicon.svg" });
 
 App.create({
     language: "en"
-})
-
-import * as Popup from "./components/js/popup.js";
-Popup.create({
-    innerHTML: "<h1>idk</h1>",
-    addCloseButton: true
 })
 
 const maindb = await fetch("json/pages.json").then(r => r.json());
@@ -108,23 +105,24 @@ async function showHome() {
         content: ""
     })
 
-    nwui.headings.create({
+    Headings.create({
         level: 1,
         content: "Welcome to Nether Web UI",
         parent: "main",
     });
 
-    nwui.cards.create({
+    Cards.create({
         parent: "main",
-        id: "links"
+        id: "links",
+        cards: []
     });
 
     maindb.forEach(page => {
-        nwui.cards.addCard({
+        Cards.addCard({
             onclick: page.func,
             image: `img/links-icons/${page.techname}.svg`,
             heading: page.name,
-            parent: "#links"
+            parent: "links"
         })
     });
 }
@@ -137,15 +135,16 @@ async function showComponents() {
         content: ""
     })
 
-    nwui.headings.create({
+    Headings.create({
         level: 1,
         content: "Components",
         parent: "main"
     })
 
-    nwui.tabs.create({
+    Tabs.create({
         parent: "main",
-        id: "components"
+        id: "components",
+        tabs: []
     })
 
     const components = await fetch("json/components.json").then(r => r.json());
@@ -153,10 +152,10 @@ async function showComponents() {
     components.forEach(async component => {
         const readme = await fetch(`components/md/${component.techname}.md`).then(r => r.text());
 
-        nwui.tabs.addTab({
+        Tabs.addTab({
             title: component.name,
             id: component.techname,
-            parent: "#components",
+            parent: "components",
             innerHTML: marked.parse(readme)
         })
     })
@@ -164,53 +163,23 @@ async function showComponents() {
 
 async function showAbout() {
     vorxel.scrollUp();
-    setTitle("About - Nether Web UI");
+    vorxel.setTitle("About - Nether Web UI");
     vorxel.setHTML({
         selector: "main",
         content: ""
     })
 
-    nwui.headings.create({
+    Headings.create({
         level: 1,
         parent: "main",
         content: "About"
     })
 
-    nwui.tabs.create({
-        parent: "main",
-        id: "about",
-        tabs: [
-            {
-                title: "What is Nether Web UI",
-                id: "what_is_nether_web_ui",
-                innerHTML: `
-                    <ul>
-                        <li>Web service providing free css and js components and basic styles for web developement</li>
-                    </ul>
-                `
-            },
-            {
-                title: "History",
-                id: "history",
-                innerHTML: ``
-            }
-        ]
+    vorxel.setHTML({
+        selector: "main",
+        content: marked.parse(await fetch("readme.md").then(readme => readme.text()))
     })
 
-    const db = await fetch("json/about.json").then(data => data.json());
-
-    nwui.timeline.create({
-        parent: "#history",
-        id: "timeline",
-    })
-
-    db.history.forEach(event => {
-        nwui.timeline.addEvent({
-            parent: "#timeline",
-            date: event.date,
-            description: event.content
-        })
-    })
 }
 
 showHome();
