@@ -11,6 +11,12 @@ export function create(options = {}) {
 
     body.dataset.theme = theme;
     body.dataset.language = language;
+
+    return body;
+}
+
+export function getAppRoot() {
+    return document.body;
 }
 
 export function setTheme(options = {}) {
