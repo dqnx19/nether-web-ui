@@ -1,5 +1,17 @@
 [
     {
+        "techname": "payment-card",
+        "name": "Payment Card"
+    },
+    {
+        "techname": "text",
+        "name": "Text"
+    },
+    {
+        "techname": "app",
+        "name": "App"
+    },
+    {
         "techname": "app-drawer",
         "name": "App Drawer"
     },
