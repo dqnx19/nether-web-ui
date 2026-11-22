@@ -1,4 +1,4 @@
-import * as vorxel from "https://vorxel.nether.click/vorxel.js"
+import * as vorxel from "https://vorxel.nether.click/vorxel/vorxel.js"
 import { marked } from "./lib/marked.js";
 import * as App from "./components/js/app.js"
 import * as Headings from "./components/js/headings.js"
