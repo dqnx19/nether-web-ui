@@ -71,32 +71,6 @@ window.showHome = showHome
 window.showComponents = showComponents
 window.showAbout = showAbout
 
-marked.use({
-    renderer: {
-        code({ text, lang }) {
-            const escapeHtml = (text) => {
-                return text
-                    .replaceAll("&", "&amp;")
-                    .replaceAll("<", "&lt;")
-                    .replaceAll(">", "&gt;")
-                    .replaceAll('"', "&quot;")
-                    .replaceAll("'", "&#039;");
-            };
-
-            return `
-                <div class="copy-box">
-                    <div class="head">
-                        <span class="language">${escapeHtml(lang || "")}</span>
-                    </div>
-                    <div class="body">
-                        <div class="code">${escapeHtml(text)}</div>
-                    </div>
-                </div>
-            `;
-        }
-    }
-});
-
 async function showHome() {
     vorxel.scrollUp();
     vorxel.setTitle({ title: "Nether Web UI" });
