@@ -1,7 +1,12 @@
+## API - useStyles
+```javascript
+Button.useStyles()
+```
+
 ## API - create
 
 ```javascript
-nwui.button.create({
+Button.create({
     class: "",
     id: "",
     onclick: "",
