@@ -1,3 +1,5 @@
+import { applyStyles } from "../internal/applyStyles.js"
+
 export function useStyles() {
     applyStyles({
         selector: "button:not(header button, footer button)",
