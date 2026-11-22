@@ -1,5 +1,5 @@
 export function create(options = {}) {
-    const theme = options.theme;
+    const theme = options.theme ?? "light";
     const language = options.language;
 
     if (!document.body) {
@@ -20,7 +20,7 @@ export function getAppRoot() {
 }
 
 export function setTheme(options = {}) {
-    const theme = options.theme;
+    const theme = options.theme ?? "light";
 
     const body = document.body;
     if (body) body.dataset.theme = theme;
