@@ -1,19 +1,15 @@
+## API - useStyles
+```javascript
+Header.useStyles()
+```
+
 ## API - create
 
 ```javascript
-nwui.header.create({
+Header.create({
     class: "",
     id: "",
     logo: "",
     parent: ""
-})
-```
-
-## API - changeLogo
-
-```javascript
-nwui.header.changeLogo({
-    selector: "",
-    src: ""
 })
 ```

@@ -1,46 +1,81 @@
-window.nwui = window.nwui || {};
+import { applyStyles } from "../internal/applyStyles.js"
 
-nwui.header = {
-    create(options = {}) {
-        const header = document.createElement("header");
-
-        if (options.class) {
-            header.classList.add(options.class);
+export function useStyles() {
+    applyStyles({
+        selector: "header",
+        styles: {
+            "position": "fixed",
+            "top": "0",
+            "left": "0",
+            "right": "0",
+            "height": "100px",
+            "width": "100%",
+            "border-bottom-left-radius": "10px",
+            "border-bottom-right-radius": "10px",
+            "display": "flex",
+            "align-items": "center",
+            "justify-content": "center",
+            "z-index": "1000"
         }
+    });
 
-        if (options.id) {
-            header.id = options.id;
+    applyStyles({
+        selector: ".logo",
+        styles: {
+            "width": "75px",
+            "height": "75px",
+            "border": "none",
+            "background-color": "transparent",
+            "cursor": "pointer",
+            "transition": "none",
+            "border-radius": "0%",
+            "background-color": "unset"
         }
+    });
 
-        if (options.logo) {
-            const logo = document.createElement("img");
-
-            logo.src = options.logo;
-            header.appendChild(logo);
+    applyStyles({
+        selector: ".logo:hover",
+        styles: {
+            "background-color": "none"
         }
+    });
 
-        if (options.parent) {
-            const parent = typeof options.parent === "string"
-                ? document.querySelector(options.parent)
-                : options.parent;
-
-            if (parent) {
-                parent.appendChild(header);
-            }
+    applyStyles({
+        selector: ".logo img",
+        styles: {
+            "width": "75px",
+            "height": "75px"
         }
+    });
+}
 
-        return header;
-    },
+export function create(options = {}) {
+    const header = document.createElement("header");
 
-    changeLogo(options = {}) {
-        if (options.selector) {
-            const selector = typeof options.selector === "string"
-                ? document.querySelector(options.selector)
-                : options.selector;
+    if (options.class) {
+        header.classList.add(options.class);
+    }
 
-            if (selector instanceof HTMLImageElement) {
-                selector.src = options.src;
-            }
+    if (options.id) {
+        header.dataset.id = options.id;
+    }
+
+    if (options.logo) {
+        const logo = document.createElement("img");
+
+        logo.src = options.logo;
+        header.appendChild(logo);
+    }
+
+    if (options.parent) {
+        const parent = typeof options.parent === "string"
+            ? document.querySelector(options.parent)
+            : options.parent;
+
+        if (parent) {
+            parent.appendChild(header);
         }
     }
-};
+
+    return header;
+}
