@@ -3,6 +3,11 @@
 import * as appDrawer from "./app-drawer.js";
 ```
 
+## API - useStyles
+```javascript
+appDrawer.useStyles();
+```
+
 ## API - Create
 
 ```javascript
