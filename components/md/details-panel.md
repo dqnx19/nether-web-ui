@@ -1,7 +1,12 @@
+## API - useStyles
+```javascript
+detailsPanel.useStyles();
+```
+
 ## API - create
 
 ```javascript
-nwui.detailsPanel.create({
+detailsPanel.create({
     parent: "", // HTML element
     id: "", // id 
     details: [
@@ -16,7 +21,7 @@ nwui.detailsPanel.create({
 ## API - addDetail
 
 ```javascript
-nwui.detailsPanel.addDetail({
+detailsPanel.addDetail({
     parent: "", // details panel id
     image: "", // detail image
     text: "" // detail text
