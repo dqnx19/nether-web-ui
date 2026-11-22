@@ -1,3 +1,8 @@
+## API - useStyles
+```javascript
+copyBox.useStyles();
+```
+
 ## API - Create
 ```javascript
 copyBox.create({
