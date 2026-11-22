@@ -1,3 +1,8 @@
+## API - useStyles
+```javascript
+Headings.useStyles();
+```
+
 ## API - Create
 
 ```javascript
