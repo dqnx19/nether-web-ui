@@ -1,3 +1,4 @@
-<footer>
-    
-</footer>
+## API - useStyles
+```javascript
+Footer.useStyles();
+```
