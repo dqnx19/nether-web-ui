@@ -1,6 +1,11 @@
+## API useStyles
+```javascript
+Lists.useStyles()
+```
+
 ## API - Create
 ```JavaScript
-nwui.lists.create({
+Lists.create({
     ordered: 
     parent: 
     class: 
