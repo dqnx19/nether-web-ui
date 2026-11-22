@@ -1,3 +1,8 @@
+## API - useStyles
+```javascript
+appDrawer.useStyles();
+```
+
 ## API - create
 
 ```javascript
