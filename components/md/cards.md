@@ -1,3 +1,8 @@
+## API - useStyles
+```javascript
+Cards.useStyles()
+```
+
 ## API – create
 
 ```javascript
