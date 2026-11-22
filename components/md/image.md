@@ -1,7 +1,12 @@
+## API - useStyles
+```javascript
+Image.useStyles()
+```
+
 ## API - create
 
 ```javascript
-nwui.image.create({
+Image.create({
     class: "",
     id: "",
     source: "",
@@ -10,14 +15,5 @@ nwui.image.create({
     height: "",
     title: "",
     parent: ""
-})
-```
-
-## API - changeSrc
-
-```javascript
-nwui.image.changeSrc({
-    selector: "",
-    src: ""
 })
 ```
