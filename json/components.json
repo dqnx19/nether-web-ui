@@ -1,19 +1,7 @@
 [
     {
-        "techname": "a",
-        "name": "A"
-    },
-    {
-        "techname": "all",
-        "name": "All"
-    },
-    {
         "techname": "app-drawer",
         "name": "App Drawer"
-    },
-    {
-        "techname": "body",
-        "name": "Body"
     },
     {
         "techname": "button",
@@ -22,10 +10,6 @@
     {
         "techname": "cards",
         "name": "Cards"
-    },
-    {
-        "techname": "context-menu",
-        "name": "Context Menu"
     },
     {
         "techname": "copy-box",
@@ -72,20 +56,12 @@
         "name": "Menu Bar"
     },
     {
-        "techname": "p",
-        "name": "Paragraph"
-    },
-    {
         "techname": "payment-terminal",
         "name": "Payment Terminal"
     },
     {
         "techname": "popup",
         "name": "Popup"
-    },
-    {
-        "techname": "section",
-        "name": "Section"
     },
     {
         "techname": "services-icons",
