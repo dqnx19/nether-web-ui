@@ -1,15 +1,8 @@
-export function applyStyles(options = {}) {
-    const selector = options.selector;
-    const styles = options.styles ?? {};
+export function applyStyles(styles) {
+    const styles = styles ?? "";
 
     const style = document.createElement("style");
-
-    const css = Object.entries(styles)
-        .map(([property, value]) => `${property}: ${value};`)
-        .join("\n");
-
-    style.textContent = `${selector} {\n${css}\n}`;
-
+    style.textContent = styles;
     document.head.appendChild(style);
 
     return style;
