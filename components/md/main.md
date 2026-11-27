@@ -1,3 +1,5 @@
-<main>
+## API - useStyles
 
-</main>
+```javascript
+Main.useStyles()
+```

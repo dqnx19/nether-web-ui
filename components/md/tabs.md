@@ -1,7 +1,12 @@
+## API - useStyles
+```javascript
+Tabs.useStyles()
+```
+
 ## API - create
 
 ```javascript
-nwui.tabs.create({
+Tabs.create({
     parent: "",
     id: "",
     tabs: [
@@ -18,7 +23,7 @@ nwui.tabs.create({
 ## API - addTab
 
 ```javascript
-nwui.tabs.addTab({
+Tabs.addTab({
     parent: "",
     id: "",
     image: "",
@@ -30,7 +35,7 @@ nwui.tabs.addTab({
 ## API - displayTab
 
 ```javascript
-nwui.tabs.displayTab({
+Tabs.displayTab({
     tabs: "",
     tab: ""
 })

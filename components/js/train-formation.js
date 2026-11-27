@@ -1,4 +1,8 @@
-.formation {
+import { applyStyles } from "../internal/applyStyles.js"
+
+export function useStyles() {
+    applyStyles(`
+        .formation {
     display: flex;
     flex-wrap: wrap;
     overflow-x: visible;
@@ -38,4 +42,6 @@
 .bus-rear {
     width: 100px;
     border-radius: 10px;
+}
+    `)
 }

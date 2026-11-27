@@ -1,7 +1,12 @@
+## API - useStyles
+```javascript
+Timeline.useStyles()
+```
+
 ## API - Create
 
 ```JavaScript
-nwui.timeline.create({
+Timeline.create({
     parent: "",
     id: "",
     events: [
@@ -16,7 +21,7 @@ nwui.timeline.create({
 ## API - addEvent
 
 ```JavaScript
-nwui.timeline.addEvent({
+Timeline.addEvent({
     parent: "",
     date: "",
     description: ""

@@ -1,3 +1,8 @@
+## API - useStyles
+```javascript
+Text.useStyles()
+```
+
 ## API - Create
 ```javascript
 Text.create({

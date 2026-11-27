@@ -1,1 +1,4 @@
-<!-- Nothing here -->
+## API - useStyles
+```javascript
+paymentTerminal.useStyles();
+```

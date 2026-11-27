@@ -1,3 +1,4 @@
-<div class="services-icons">
-    <img src="" alt="Service Icon">
-</div>
+## API - useStyles
+```javascript
+servicesIcons.useStyles()
+```

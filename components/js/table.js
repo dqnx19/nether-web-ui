@@ -1,4 +1,8 @@
-table {
+import { applyStyles } from "../internal/applyStyles.js"
+
+export function useStyles() {
+    applyStyles(`
+        table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
@@ -44,4 +48,5 @@ tr:last-child td {
 /* Optional: subtle shadow */
 table {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}`)
 }

@@ -1,3 +1,34 @@
+import { applyStyles } from "../internal/applyStyles.js"
+
+export function useStyles() {
+    applyStyles(`
+        .popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 90%;
+    max-width: 450px;
+    padding: 24px;
+
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+
+    z-index: 10000;
+}
+
+.popup .close-button {
+    background-color: rgb(255, 0, 0);
+
+    border-radius: 10px;
+    width: 100%;
+}
+    `)
+}
+
 export function create(options = {}) {
     if (typeof options === "string") {
         options = JSON.parse(options);

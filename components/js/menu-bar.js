@@ -1,1 +1,103 @@
-// Nothing heres
+import { applyStyles } from "../internal/applyStyles.js"
+
+export function useStyles() {
+    applyStyles(`
+        .menu-bar {
+    all: unset;
+    
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+
+    padding: 8px;
+
+    background-color: blue;
+    border: 1px solid #030300;
+    border-radius: 10px;
+
+    align-items: center;
+}
+
+.menu-item {
+    all: unset;
+
+    position: relative;
+
+    padding: 5px 8px;
+
+    border-radius: 6px;
+
+    color: white;
+
+    cursor: pointer;
+    user-select: none;
+
+    transition: background-color 0.15s ease;
+}
+
+.menu-item:hover {
+    all: unset;
+
+    background-color: blueviolet;
+}
+
+.menu-item .dropdown {
+    all: unset;
+
+    display: none;
+
+    position: absolute;
+
+    top: calc(100% + 4px);
+    left: 0;
+
+    min-width: 160px;
+
+    padding: 4px;
+
+    background-color: #1a1a1a;
+
+    border: 1px solid #000;
+    border-radius: 8px;
+
+    flex-direction: column;
+    gap: 2px;
+
+    z-index: 1000;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.menu-item:hover .dropdown, .dropdown:hover {
+    all: unset;
+
+    display: flex;
+}
+
+/* ===== DROPDOWN BUTTONS ===== */
+.menu-item .dropdown button {
+    all: unset;
+
+    width: 100%;
+
+    padding: 4px 6px;
+
+    font-size: 12px;
+    text-align: left;
+
+    color: white;
+    background: transparent;
+
+    border: none;
+    border-radius: 4px;
+
+    cursor: pointer;
+}
+
+.menu-item .dropdown button:hover {
+    all: unset;
+
+    background-color: rgba(255, 255, 255, 0.15);
+}
+    `)
+}

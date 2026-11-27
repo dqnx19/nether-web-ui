@@ -1,4 +1,8 @@
-.services-icons img {
+import { applyStyles } from "../internal/applyStyles";
+
+export function useStyles() {
+    applyStyles(`
+        .services-icons img {
     width: 50px;
     height: 50px;
     filter: brightness(0);
@@ -8,4 +12,5 @@
     .services-icons img {
         filter: brightness(0) invert(1);
     }
+}`)
 }

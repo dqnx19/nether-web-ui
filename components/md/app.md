@@ -12,6 +12,11 @@ app.create({
 })
 ```
 
+## API - getAppRoot
+```javascript
+app.getAppRoot();
+```
+
 ## API - setTheme
 
 ```javascript

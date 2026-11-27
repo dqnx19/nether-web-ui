@@ -1,3 +1,8 @@
+## API - useStyles
+```javascript
+Popup.useStyles()
+```
+
 ## API - Create
 ```javascript
 Popup.create({

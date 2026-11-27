@@ -1,4 +1,8 @@
-main {
+import { applyStyles } from "../internal/applyStyles.js"
+
+export function useStyles() {
+    applyStyles(`
+        main {
     margin: 125px auto;
 
     width: calc(100% - 40px);
@@ -64,4 +68,6 @@ main {
     main {
         background-color: #ffffff;
     }
+}
+    `)
 }
