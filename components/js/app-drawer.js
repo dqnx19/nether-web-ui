@@ -1,46 +1,34 @@
 import { applyStyles } from "../internal/applyStyles.js"
 
 export function useStyles() {
-    applyStyles({
-        selector: "app-drawer",
-        styles: {
-            "display": "none",
-            "flex-direction": "column",
+    applyStyles(`
+        app-drawer {
+    display: none;
+    flex-direction: column;
 
-            "width": "300px",
-            "height": "100px",
+    width: 300px;
+    height: 100px;
 
-            "background-color": "rgb(12, 12, 12)"
-        }
-    })
+    background-color: rgb(12, 12, 12);
+}
 
-    applyStyles({
-        selector: ".app-drawer.open",
-        styles: {
-            "display": "flex"
-        }
-    })
+.app-drawer.open {
+    display: flex;
+}
 
-    applyStyles({
-        selector: ".app-drawer-button .dots",
-        styles: {
-            "display": "grid",
-            "grid-template-columns": "repeat(3, 5px)",
-            "grid-template-rows": "repeat(3, 5px)",
-            "gap": "4px"
-        }
-    })
+.app-drawer-button .dots {
+    display: grid;
+    grid-template-columns: repeat(3, 5px);
+    grid-template-rows: repeat(3, 5px);
+    gap: 4px;
+}
 
-    applyStyles({
-        selector: ".app-drawer-button .dots span",
-        styles: {
-            "width": "5px",
-            "height": "5px",
-            "border-radius": "50%",
-            "background": "rgba(255, 255, 255, 0.7)"
-        }
-
-    })
+.app-drawer-button .dots span {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.7);
+}`)
 }
 
 export function create(options = {}) {

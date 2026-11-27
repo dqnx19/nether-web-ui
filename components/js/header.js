@@ -1,52 +1,41 @@
 import { applyStyles } from "../internal/applyStyles.js"
 
 export function useStyles() {
-    applyStyles({
-        selector: "header",
-        styles: {
-            "position": "fixed",
-            "top": "0",
-            "left": "0",
-            "right": "0",
-            "height": "100px",
-            "width": "100%",
-            "border-bottom-left-radius": "10px",
-            "border-bottom-right-radius": "10px",
-            "display": "flex",
-            "align-items": "center",
-            "justify-content": "center",
-            "z-index": "1000"
-        }
-    });
+    applyStyles(`
+        header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    width: 100%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
 
-    applyStyles({
-        selector: ".logo",
-        styles: {
-            "width": "75px",
-            "height": "75px",
-            "border": "none",
-            "background-color": "transparent",
-            "cursor": "pointer",
-            "transition": "none",
-            "border-radius": "0%",
-            "background-color": "unset"
-        }
-    });
+.logo {
+    width: 75px;
+    height: 75px;
+    border: none;
+    background-color: unset;
+    cursor: pointer;
+    transition: none;
+    border-radius: 0%;
+}
 
-    applyStyles({
-        selector: ".logo:hover",
-        styles: {
-            "background-color": "none"
-        }
-    });
+.logo:hover {
+    background-color: none;
+}
 
-    applyStyles({
-        selector: ".logo img",
-        styles: {
-            "width": "75px",
-            "height": "75px"
-        }
-    });
+.logo img {
+    width: 75px;
+    height: 75px;
+}
+    `)
 }
 
 export function create(options = {}) {

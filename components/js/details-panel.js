@@ -1,63 +1,47 @@
 import { applyStyles } from "../internal/applyStyles.js"
 
 export function useStyles() {
-    applyStyles({
-        selector: ".details-panel",
-        styles: {
-            "background-color": "var(--background-color)",
-            "color": "var(--color)",
-            "border-radius": "12px",
-            "padding": "16px 20px",
-            "display": "flex",
-            "flex-direction": "column",
-            "gap": "14px"
-        }
-    });
+    applyStyles(`
+        .details-panel {
+    background-color: var(--background-color);
+    color: var(--color);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
 
-    applyStyles({
-        selector: ".details-panel .detail",
-        styles: {
-            "display": "flex",
-            "align-items": "center",
-            "gap": "12px",
-            "font-size": "18px",
-            "font-weight": "400",
-            "line-height": "1.4"
-        }
-    });
+.details-panel .detail {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.4;
+}
 
-    applyStyles({
-        selector: ".details-panel .detail img",
-        styles: {
-            "width": "28px",
-            "height": "28px",
-            "object-fit": "contain",
-            "flex-shrink": "0"
-        }
-    });
+.details-panel .detail img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
 
-    applyStyles({
-        selector: ".details-panel .detail span",
-        styles: {
-            "font-weight": "600"
-        }
-    });
+.details-panel .detail span {
+    font-weight: 600;
+}
 
-    applyStyles({
-        selector: ":root, [data-theme=\"dark\"]",
-        styles: {
-            "--background-color": "#12315a",
-            "--color": "#f1f5ff"
-        }
-    });
+:root,
+[data-theme="dark"] {
+    --background-color: #12315a;
+    --color: #f1f5ff;
+}
 
-    applyStyles({
-        selector: '[data-theme="light"]',
-        styles: {
-            "--background-color": "#f8fafc",
-            "--color": "#1e293b"
-        }
-    });
+[data-theme="light"] {
+    --background-color: #f8fafc;
+    --color: #1e293b;
+}`)
 }
 
 export function create(options = {}) {

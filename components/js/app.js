@@ -1,45 +1,36 @@
 import { applyStyles } from "../internal/applyStyles.js"
 
 export function useStyles() {
-    applyStyles({
-        selector: "*",
-        styles: {
-            "margin": "0",
-            "padding": "0",
-            "box-sizing": "border-box",
-            "color": "var(--color)",
-            "font-family": "'Lexend', sans-serif",
-            "font-weight": "bold",
-            "-webkit-font-smoothing": "antialiased"
-        }
-    });
+    applyStyles(`
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--color);
+    font-family: 'Lexend', sans-serif;
+    font-weight: bold;
+    -webkit-font-smoothing: antialiased;
+}
 
-    applyStyles({
-        selector: "body",
-        styles: {
-            "min-width": "100vw",
-            "min-height": "100vh",
-            "overflow": "hidden",
-            "text-rendering": "optimizeLegibility",
-            "background-color": "var(--background-color)"
-        }
-    });
+body {
+    min-width: 100vw;
+    min-height: 100vh;
+    overflow: hidden;
+    text-rendering: optimizeLegibility;
+    background-color: var(--background-color);
+}
 
-    applyStyles({
-        selector: ':root, [data-theme="light"]',
-        styles: {
-            "--background-color": "#f8fafd",
-            "--color": "black"
-        }
-    });
+:root,
+[data-theme="light"] {
+    --background-color: #f8fafd;
+    --color: black;
+}
 
-    applyStyles({
-        selector: '[data-theme="dark"]',
-        styles: {
-            "--background-color": "#1b1b1b",
-            "--color": "white"
-        }
-    });
+[data-theme="dark"] {
+    --background-color: #1b1b1b;
+    --color: white;
+}
+`)
 }
 
 export function create(options = {}) {

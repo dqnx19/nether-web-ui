@@ -1,14 +1,12 @@
 import { applyStyles } from "../internal/applyStyles.js"
 
 export function useStyles() {
-    applyStyles({
-        selector: "li",
-        styles: {
-            "font-size": "16px",
-            "line-height": "1.6",
-            "margin-left": "30px"
-        }
-    });
+    applyStyles(`
+        li {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-left: 30px;
+}`)
 }
 
 export function create(options = {}) {

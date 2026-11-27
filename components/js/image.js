@@ -1,12 +1,11 @@
 import { applyStyles } from "../internal/applyStyles.js"
 
 export function useStyles() {
-    applyStyles({
-        selector: "img",
-        styles: {
-            "border-radius": "20px"
-        }
-    });
+    applyStyles(`
+        img {
+    border-radius: 20px;
+}
+    `)
 }
 
 export function create(options = {}) {
