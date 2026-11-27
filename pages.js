@@ -4,30 +4,18 @@ import * as App from "./components/js/app.js"
 import * as Headings from "./components/js/headings.js"
 import * as Cards from "./components/js/cards.js"
 import * as Tabs from "./components/js/tabs.js"
+import * as Header from "./components/js/header.js"
+import * as Main from "./components/js/main.js"
+import * as Footer from "./components/js/footer.js"
 
-vorxel.importCSS([
-    { href: "fonts/lexend/lexend.css" },
-    { href: "components/css/app.css" },
-    { href: "components/css/app-drawer.css" },
-    { href: "components/css/button.css" },
-    { href: "components/css/cards.css" },
-    { href: "components/css/copy-box.css" },
-    { href: "components/css/footer.css" },
-    { href: "components/css/grouped-list.css" },
-    { href: "components/css/header.css" },
-    { href: "components/css/headings.css" },
-    { href: "components/css/image.css" },
-    { href: "components/css/lists.css" },
-    { href: "components/css/main.css" },
-    { href: "components/css/menu-bar.css" },
-    { href: "components/css/section.css" },
-    { href: "components/css/services-icons.css" },
-    { href: "components/css/table.css" },
-    { href: "components/css/tabs.css" },
-    { href: "components/css/timeline.css" },
-]);
 
-vorxel.importCSS({ href: "components/css/popup.css" })
+App.useStyles();
+Headings.useStyles();
+Cards.useStyles();
+Tabs.useStyles();
+Header.useStyles();
+Main.useStyles();
+Footer.useStyles();
 
 /* vorxel.importJS([
     { src: "https://nether.click/js/import-app-drawer.js" },
@@ -37,7 +25,8 @@ vorxel.importCSS({ href: "components/css/popup.css" })
 vorxel.setFavicon({ url: "img/icons/favicon.svg" });
 
 App.create({
-    language: "en"
+    language: "en",
+    theme: "dark"
 })
 
 const maindb = await fetch("json/pages.json").then(r => r.json());
